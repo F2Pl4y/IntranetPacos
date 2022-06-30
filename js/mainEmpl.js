@@ -37,8 +37,8 @@ window.addEventListener('load', (e) => {
 function empSelect() {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/empleados/select/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/select/",
+        // url: "http://127.0.0.1:5000/empleados/select/",
+        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -70,8 +70,8 @@ function empSelect() {
 function AdminSelect() {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/admins/select/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/admins/select/",
+        // url: "http://127.0.0.1:5000/admins/select/",
+        url: "https://f3rn4nd021py.pythonanywhere.com/admins/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -104,8 +104,8 @@ function AdminSelect() {
 function empGet(id) {
     $.ajax({
         type: "GET",
-        url: "http://127.0.0.1:5000/empleados/get/" + id + "/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/get/" + id + "/",
+        // url: "http://127.0.0.1:5000/empleados/get/" + id + "/",
+        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/get/" + id + "/",
         dataType: "json",
         success: function (data) {
             $('#txtidEmpleado').val(data["resultado"]["idEmpleado"]);
@@ -123,8 +123,8 @@ function empEliminar(id) {
     const url = window.location.pathname;
     $.ajax({
         type: "DELETE",
-        url: "http://127.0.0.1:5000/empleados/delete/" + id + "/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/delete/" + id + "/",
+        // url: "http://127.0.0.1:5000/empleados/delete/" + id + "/",
+        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/delete/" + id + "/",
         dataType: "json",
         success: function (data) {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
@@ -138,7 +138,6 @@ function empEliminar(id) {
     });
     return false;
 }
-
 function crearMensaje(mensaje) {
     const elementoMensaje = document.getElementById('mensaje');
     elementoMensaje.classList.add("visible");
@@ -147,8 +146,6 @@ function crearMensaje(mensaje) {
     parrafo.appendChild(document.createTextNode(mensaje));
     elementoMensaje.appendChild(parrafo);
 }
-
-
 function empInsert() {
     var registrosEmpl = new FormData();
     registrosEmpl.append("txtnombreEmpleado2", $('#txtnombreEmpleado2').val());
@@ -158,8 +155,8 @@ function empInsert() {
     registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/empleados/create/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
+        // url: "http://127.0.0.1:5000/empleados/create/",
+        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -183,8 +180,8 @@ function AdminInsert() {
     registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/empleados/create/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
+        // url: "http://127.0.0.1:5000/empleados/create/",
+        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -202,7 +199,6 @@ function AdminInsert() {
 
 function cursoUpdate() {
     const url = window.location.pathname;
-
     var registrosEmpl = new FormData();
     registrosEmpl.append("txtidEmpleado", $('#txtidEmpleado').val());
     registrosEmpl.append("txtnombreEmpleado", $('#txtnombreEmpleado').val());
@@ -212,8 +208,8 @@ function cursoUpdate() {
     registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     $.ajax({
         type: "PUT",
-        url: "http://127.0.0.1:5000/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        // url: "http://127.0.0.1:5000/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -232,3 +228,23 @@ function cursoUpdate() {
     // limpiar contraseña
     formulario2.reset();
 }
+// ocultar contraseña con ojito
+$("#imgContrasena").click(function () {
+
+    var control = $(this);
+    var estatus = control.data('activo');
+
+    var icon = control.find('span');
+    if (estatus == false) {
+
+        control.data('activo', true);
+        $(icon).removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close');
+        $("#txtPassword").attr('type', 'text');
+    }
+    else {
+
+        control.data('activo', false);
+        $(icon).removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open');
+        $("#txtPassword").attr('type', 'password');
+    }
+});

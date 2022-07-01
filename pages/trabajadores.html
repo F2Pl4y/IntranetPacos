@@ -85,9 +85,8 @@
                                 placeholder="example@gmail.com" id="txtcorreoEmpleado2">
                         </div>
                         <div class="form-group">
-
                             <label for="email2">Contraseña:</label>
-                            <input type="password" class="form-control" name="txtpasswordEmpleado2"
+                            <!-- <input type="password" class="form-control" name="txtpasswordEmpleado2"
                                 id="txtpasswordEmpleado2" placeholder="***********" data-toggle="tooltip" title="min: 3"
                                 data-placement="right">
                             <div class="input-group-append" style="display: flexbox !important;">
@@ -95,6 +94,15 @@
                                     onclick="mostrarPassword()">
                                     <span class="fa fa-eye-slash icon"></span>
                                 </button>
+                            </div> -->
+                            <div class="input-group" id="show_hide_password">
+                                <input class="form-control" type="password" name="txtpasswordEmpleado2"
+                                    placeholder="∗∗∗∗∗∗∗∗∗∗" id="txtpasswordEmpleado2" data-toggle="tooltip"
+                                    title="min: 3" data-placement="right">
+                                <a id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"
+                                    style="position: absolute; right: calc(-23%);">
+                                    <i class="fa fa-eye-slash icon"></i>
+                                </a>
                             </div>
                         </div>
                         <div class="form-group">
@@ -156,7 +164,7 @@
                             <table class="table table-bordered" style="text-align: center;">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>IDs</th>
                                         <th>Cargo</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
@@ -199,8 +207,6 @@
                         <div class="form-group" style="align-content: center;text-align: center;">
                             <button type="submit" id="btnEnviarCI" class="btn btn-primary" class="close"
                                 data-dismiss="modal">Actualizar</button>
-                            <!-- <button type="submit" id="btnEnviarCI" class="btn btn-primary"
-                                onclick="cerrarModal()">Actualizar</button> -->
                         </div>
                     </form>
                 </div>
@@ -267,7 +273,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="cuentasAdmin.html">
+                    <!-- <a href="cuentasAdmin.html">
+                        <i class="fa fa-lock-open"></i>Cuentas Admin
+                    </a> -->
+                    <a href="https://main--pacosbill.netlify.app/pages/cuentasadmin.html">
                         <i class="fa fa-lock-open"></i>Cuentas Admin
                     </a>
                 </li>
@@ -306,11 +315,14 @@
                         <th>Cant. Encuestas</th>
                         <th>Estado</th>
                         <th>ID CARGO</th>
-                        <th>Acciones</th>
+                        <th>Accionessss</th>
                     </tr>
                 </thead>
                 <!-- <tbody id="tablaTrabajadores"> -->
-                <tbody id="contenido2"></tbody>
+                <!-- <tbody id="contenido2"> -->
+                <tbody id="contenido2">
+                    <!-- <div id="contenido2"></div> -->
+                </tbody>
                 <!-- </tbody> -->
             </table>
         </div>
@@ -377,13 +389,22 @@
                             </div>
                             <div class="form-group">
                                 <label for="email2">Contraseña:</label>
-                                <input type="password" class="form-control" name="txtpasswordEmpleado"
+                                <!-- <input type="password" class="form-control" name="txtpasswordEmpleado"
                                     placeholder="Ingrese su contraseña" id="txtpasswordEmpleado" data-toggle="tooltip"
                                     title="min: 3" data-placement="right">
                                 <button id="show_password" class="btn btn-primary" type="button"
                                     onclick="mostrarPassword()">
                                     <span class="fa fa-eye-slash icon"></span>
-                                </button>
+                                </button> -->
+                                <div class="input-group" id="show_hide_password">
+                                    <input class="form-control" type="password" name="txtpasswordEmpleado"
+                                        placeholder="∗∗∗∗∗∗∗∗∗∗" id="txtpasswordEmpleado" data-toggle="tooltip"
+                                        title="min: 3" data-placement="right">
+                                    <a id="show_password" class="btn btn-primary" type="button"
+                                        onclick="mostrarPassword()" style="position: absolute; right: calc(-23%);">
+                                        <i class="fa fa-eye-slash icon"></i>
+                                    </a>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="email3">Encuestas Realizadas:</label>

@@ -82,12 +82,21 @@
                         </div>
                         <div class="form-group">
                             <label for="email2">Contraseña:</label>
-                            <input type="password" class="form-control" name="txtpasswordEmpleado2"
-                                placeholder="Ingrese su contraseña" id="txtpasswordEmpleado2">
-                            <button id="show_password" class="btn btn-primary" type="button"
+                            <!-- <input type="password" class="form-control" name="txtpasswordEmpleado2"
+                                placeholder="Ingrese su contraseña" id="txtpasswordEmpleado2"> -->
+                            <!-- <button id="show_password" class="btn btn-primary" type="button"
                                 onclick="mostrarPassword()">
-                                <span class="fa fa-eye-slash icon"></span>
-                            </button>
+                                <i class="fa fa-eye-slash icon"></i>
+                            </button> -->
+                            <div class="input-group" id="show_hide_password">
+                                <input class="form-control" type="password" name="txtpasswordEmpleado2"
+                                    placeholder="Ingrese su contraseña" id="txtpasswordEmpleado2" data-toggle="tooltip"
+                                    title="min: 3" data-placement="right">
+                                <a id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"
+                                    style="position: absolute; right: calc(-23%);">
+                                    <i class="fa fa-eye-slash icon"></i>
+                                </a>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="email3">Encuestas Realizadas:</label>
@@ -158,9 +167,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="encuesta.html">
+                    <!-- <a href="encuesta.html">
                         <i class="fa fa-check-square-o"></i>Encuestas
-                    </a>
+                    </a> -->
                 </li>
                 <li>
                     <a href="moduloEncuesta.html">
@@ -170,7 +179,7 @@
                 </li>
                 <li>
                     <!-- <a href="cuentasadmin.html"> -->
-                    <a href="https://main--pacosbill.netlify.app/pages/cuentasadmin.html">
+                    <a href="cuentasadmin.html">
                         <i class="fa fa-lock-open"></i>Cuentas Admin
                     </a>
                 </li>
@@ -188,14 +197,23 @@
                 <input type="text" class="form-control" id="inputTrabajador" placeholder="Buscar por nombre"
                     style="z-index: 0;">
             </div>
+
             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores">Nuevo</a>
             <!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Cargo">Cargos</a> -->
         </div>
+
         <!-- a partir de aqui cambiar -->
         <div class="tabla table-responsive">
             <style>
                 #contenido2 {
                     text-align: center;
+                }
+
+                .table td,
+                .table th {
+                    /* padding: .75rem; */
+                    vertical-align: middle;
+                    /* border-top: 1px solid #dee2e6; */
                 }
             </style>
             <table class="table table-bordered table-hover">
@@ -215,43 +233,6 @@
                 <!-- </tbody> -->
             </table>
         </div>
-        <!-- <div class="tabla table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Cant. Encuestas</th>
-                        <th>Estado</th>
-                        <th>ID CARGO</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaTrabajadores">
-                    <tr>
-                        <td>1</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                        <td>10</td>
-                        <td>Mesero</td>
-                        <td>
-                            <img src="../img/trabajadores/Goku.jpg" alt="">
-                        </td>
-                        <td class="grupoBotones">
-                            <div class="btn-group">
-                                <button class="btn btn-primary">
-                                    <i class='bx bx-up-arrow-alt'></i>
-                                </button>
-                                <button class="btn btn-danger">
-                                    <i class='bx bx-trash'></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> -->
         <div class="modal fade" id="myModal2">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -277,14 +258,18 @@
                                     placeholder="example@gmail.com" id="txtcorreoEmpleado">
                             </div>
                             <div class="form-group">
-                                <label for="email2">Contraseña:</label>
-                                <input type="password" class="form-control" name="txtpasswordEmpleado"
-                                    placeholder="Ingrese su contraseña" id="txtpasswordEmpleado" data-toggle="tooltip"
-                                    title="min: 3" data-placement="right">
-                                <button id="show_password" class="btn btn-primary" type="button"
-                                    onclick="mostrarPassword()">
-                                    <span class="fa fa-eye-slash icon"></span>
-                                </button>
+                                <div class="form-group">
+                                    <label for="email2">Contraseña:</label>
+                                    <div class="input-group" id="show_hide_password">
+                                        <input class="form-control" type="password" name="txtpasswordEmpleado"
+                                            placeholder="Ingrese su contraseña" id="txtpasswordEmpleado"
+                                            data-toggle="tooltip" title="min: 3" data-placement="right">
+                                        <a id="show_password" class="btn btn-primary" type="button"
+                                            onclick="mostrarPassword()" style="position: absolute; right: calc(-23%);">
+                                            <i class="fa fa-eye-slash icon"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="email3">Encuestas Realizadas:</label>

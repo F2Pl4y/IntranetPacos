@@ -91,7 +91,7 @@
                             <label for="pwd">Correo:</label>
                             <input type="text" class="form-control" name="txtcorreoEmpleado2" data-toggle="tooltip"
                                 title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom"
-                                id="txtcorreoEmpleado2">
+                                id="txtcorreoEmpleado2" placeholder="example@gmail.com">
                         </div>
                         <div class="form-group col-5">
                             <label for="email2">Contraseña:</label>
@@ -243,7 +243,7 @@
             </table>
         </div>
         <div class="modal fade" id="myModal2">
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content" style="background: #698FED;">
                     <div class="modal-header">
                         <h4 class="modal-title" style="position: fixed;">Datos del administrador:</h4>
@@ -256,42 +256,45 @@
                         <form action="#" class="formulario2" method="POST" enctype="multipart/form-data"
                             id="formulario2">
                             <input type="hidden" name="txtidEmpleado" id="txtidEmpleado">
-                            <div class="form-group">
+                            <div class="form-group col-5">
                                 <label for="email">Nombre del administrador:</label>
                                 <input type="text" class="ferValid form-control" name="txtnombreEmpleado"
                                     placeholder="Ingrese su nombre" id="txtnombreEmpleado" data-toggle="tooltip"
                                     title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-5">
                                 <label for="pwd">Correo:</label>
                                 <input type="text" class="form-control" name="txtcorreoEmpleado"
                                     placeholder="example@gmail.com" id="txtcorreoEmpleado">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-5">
                                 <div class="form-group">
                                     <label for="email2">Contraseña:</label>
                                     <div class="input-group" id="show_hide_password">
                                         <input class="form-control" type="password" name="txtpasswordEmpleado"
-                                            placeholder="∗∗∗∗∗∗∗∗∗∗" id="txtpasswordEmpleado"
-                                            data-toggle="tooltip" title="min: 3" data-placement="right">
-                                        <a id="show_password" class="btn btn-primary" type="button"
-                                            onclick="mostrarPassword()" style="position: absolute; right: calc(-23%);">
-                                            <i class="fa fa-eye-slash icon"></i>
-                                        </a>
+                                            placeholder="∗∗∗∗∗∗∗∗∗∗" id="txtpasswordEmpleado" data-toggle="tooltip"
+                                            title="min: 3" data-placement="right">
+                                        <div class="input-group-prepend">
+                                            <span id="show_password" class="input-group-text" type="button"
+                                                onclick="mostrarPassword()">
+                                                <i class="fa fa-eye-slash icon"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-5">
                                 <label for="email3">Encuestas Realizadas:</label>
                                 <input type="text" class="ferValid2 form-control" name="txtencuestasRealizadas"
                                     id="txtencuestasRealizadas" data-toggle="tooltip" title="Ingrese sólo números"
                                     data-placement="right">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-5">
                                 <label for="pwd3">Estado:</label>
-                                <input type="text" class="form-control" name="txtestado" id="txtestado" disabled>
+                                <input type="text" class="form-control" name="txtestado" id="txtestado" disabled
+                                    style="text-align: center;">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group col-5">
                                 <label for="pwd4">ID Cargo:</label>
                                 <select id="contenidoCargosList3" class="form-control" name="txtidCargo2"
                                     onchange="ShowSelected();" style="text-align: center;"></select>

@@ -128,14 +128,12 @@
     <div class="modal fade" id="myModal1X">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content" style="background: #2BB8AF;">
-                <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title w-100 text-center">
                         CARGOS ACTIVOS1X
                     </h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <!-- Modal body -->
                 <div class="modal-body">
                     <div class="modal-body">
                         <div class="tablaResponsive">
@@ -258,9 +256,9 @@
                         <input type="hidden" id="valorActualizar">
                         <div class="form-group">
                             <label for="email">ID</label><br>
-                            <select id="contenidoCargosList" class="form-control" name="micargonuevo"
+                            <!-- <select id="contenidoCargosList" class="form-control" name="micargonuevo"
                                 onchange="ShowSelected();">
-                            </select>
+                            </select> -->
                             <!-- <input type="text" class="form-control" name="micargonuevo" id="micargonuevo"> -->
                         </div>
                         <div class="form-group" style="align-content: center;text-align: center;">
@@ -356,7 +354,7 @@
         <!-- <input type="text" class="form-control" id="inputTrabajador" style="z-index: 0;"> -->
         <div class="form-group">
             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores" value="1"
-                id="AgregarEmpleadoBtn">
+                id="AgregarEmpleadoBtn" onclick="cargosCombo()">
                 AGREGAR EMPLEADO&nbsp;&nbsp;<i class="gg-user-list" style="display: inline-block;"></i>
             </a>&nbsp;
             <!-- Primer paso -->
@@ -378,8 +376,6 @@
                 </thead>
                 <tbody id="contenido2" style="background: #E89A6B;">
                 </tbody>
-                <!-- <section  style="background: #E89A6B;"> -->
-                <!-- </section> -->
             </table>
         </div>
         <div class="modal fade" id="myModal2">
@@ -461,6 +457,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/mainEmpl.js"></script>
     <script src="../js/validaciones.js"></script>
+
+
     <script src="../js/mainCargos.js"></script>
     <!-- mis iconos -->
     <!-- FALTA MEJORAR TRABAJADORES -->

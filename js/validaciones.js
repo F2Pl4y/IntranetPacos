@@ -39,3 +39,4 @@ $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
 // faltaria validar estos datos con python
+

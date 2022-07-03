@@ -1,6 +1,7 @@
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');
+    cargosCombo2();
     boton1.addEventListener('click', (e) => {
         e.preventDefault();
         if (url === "/pages/trabajadores.html") {
@@ -34,7 +35,42 @@ window.addEventListener('load', (e) => {
         }
     });
 });
-
+function cargosCombo2() {
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/cargos/select/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/cargos/select/",
+        dataType: "json",
+        success: function (data) {
+            var tabla = '';
+            $.each(data["resultado"], function (llave, valor) {
+                if (document.getElementById("AgregarEmpleadoBtn").value == 1) {
+                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
+                    template += '</option>';
+                    // template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')></a>';
+                    // template += '<option>' + valor["idCargo"] + '</option></div>';
+                    tabla += template;
+                } else {
+                    // console.log("el cargo es: " + valor["idCargo"]);
+                    // var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"];
+                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
+                    template += '</option>';
+                    // template +='<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')></a>';
+                    tabla += template;
+                }
+            });
+            // tercer paso
+            $('#contenidoCargosList').html(tabla);
+            $('#contenidoCargosList2').html(tabla);
+            $('#contenidoCargosList3').html(tabla);
+            $('#contenidoCargosList4').html(tabla);
+            $('#contenidoCargosList5').html(tabla);
+            // var cod = document.getElementById("micargonuevo").value;
+            // var cod = document.getElementById("contenido Cargos List").value;
+            // console.log("codigo es:" + cod);
+        }
+    });
+}
 function empSelect() {
     $.ajax({
         type: "GET",

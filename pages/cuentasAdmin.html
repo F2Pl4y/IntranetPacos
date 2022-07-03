@@ -51,8 +51,6 @@
                     <div>Teléfono: 123456789
                     </div>
                 </div>
-
-                <!-- Modal footer -->
                 <div class="modal-footer">
                     <div class="propiedades">
                         <button type="button" class="btn btn-danger btnCerrarSesion">
@@ -67,11 +65,12 @@
     </div>
     <div class="modal fade modalCrear" id="crearTrabajadores">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content" style="background: #1AC06D;">
+            <div class="modal-content" style="background: #698FED;">
                 <div class="modal-header">
                     <h4 class="modal-title w-100 text-center">
-                        Registrar trabajadores
+                        REGISTRAR TRABAJADOR
                     </h4>
+
                     <button type="button" class="close" data-dismiss="modal"
                         style="position: absolute;left: 92%;">&times;</button>
                 </div>
@@ -81,7 +80,7 @@
                 <div class="modal-body">
                     <form action="#" class="formulario" method="POST" enctype="multipart/form-data" id="formulario">
                         <input type="hidden" name="txtidEmpleado" id="txtidEmpleado">
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="email">Nombre</label>
                             <input type="text" class="ferValid form-control" name="txtnombreEmpleado2"
                                 placeholder="Ingrese su nombre" id="txtnombreEmpleado2" data-toggle="tooltip"
@@ -94,7 +93,7 @@
                                 title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom"
                                 id="txtcorreoEmpleado2">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="email2">Contraseña:</label>
                             <!-- <input type="password" class="form-control" name="txtpasswordEmpleado2"
                                 placeholder="Ingrese su contraseña" id="txtpasswordEmpleado2"> -->
@@ -104,30 +103,34 @@
                             </button> -->
                             <div class="input-group" id="show_hide_password">
                                 <input class="form-control" type="password" name="txtpasswordEmpleado2"
-                                    placeholder="Ingrese su contraseña" id="txtpasswordEmpleado2" data-toggle="tooltip"
+                                    placeholder="Ingrese su contraseñas" id="txtpasswordEmpleado2" data-toggle="tooltip"
                                     title="min: 3" data-placement="right">
-                                <a id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"
-                                    style="position: absolute; right: calc(-23%);">
-                                    <i class="fa fa-eye-slash icon"></i>
-                                </a>
+                                <div class="input-group-prepend">
+                                    <span id="show_password" class="input-group-text" type="button"
+                                        onclick="mostrarPassword()">
+                                        <i class="fa fa-eye-slash icon"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="email3">Encuestas Realizadas:</label>
                             <input type="text" class="ferValid2 form-control" name="txtencuestasRealizadas2"
                                 id="txtencuestasRealizadas2" data-toggle="tooltip" title="Ingrese sólo números"
                                 data-placement="right">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="pwd3">Estado:</label>
                             <input type="text" class="form-control" name="txtestado2" value="1" id="txtestado2" disabled
                                 id="txtencuestasRealizadas2" data-toggle="tooltip" title="Ingrese sólo números"
-                                data-placement="right">
+                                data-placement="right" style="text-align: center;">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="pwd4">ID Cargo:</label>
-                            <input type="text" class="ferValid2 form-control" name="txtidCargo2"
-                                placeholder="Enter creditos" id="txtidCargo2">
+                            <!-- <select id="contenidoCargosList4" class="form-control" name="txtidCargo2"
+                                onchange="ShowSelected();" style="text-align: center;"></select> -->
+                            <!-- <input type="text" class="ferValid2 form-control" name="txtidCargo2"
+                                placeholder="Enter creditos" id="txtidCargo2"> -->
                         </div>
                         <button type="submit" id="btnEnviarI" class="btn btn-primary" class="close"
                             data-dismiss="modal">Registrar Administrador</button>
@@ -201,7 +204,7 @@
         </div>
     </nav>
 
-    <main class="mainTrabajadores">
+    <main class="mainTrabajadores" style="background: #4F6CB6;">
         <h3>REGISTRO DE ADMINISTRADORES</h3>
         <div class="adicional">
             <div class="input-group">
@@ -212,9 +215,19 @@
                     style="z-index: 0;">
             </div>
 
-            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores">Nuevo</a>
+            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores">AGREGAR
+                EMPLEADO&nbsp;&nbsp;<i class="gg-user-list" style="display: inline-block;"
+                id="AgregarEmpleadoBtn" onclick="cargosCombo()"></i></a>
             <!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Cargo">Cargos</a> -->
         </div>
+        <select id="contenidoCargosList" class="form-control" name="txtidCargo2" onchange="ShowSelected();"
+            style="text-align: center;"></select>
+        <select id="contenidoCargosList2" class="form-control" name="txtidCargo2" onchange="ShowSelected();"
+            style="text-align: center;"></select>
+        <select id="contenidoCargosList3" class="form-control" name="txtidCargo2" onchange="ShowSelected();"
+            style="text-align: center;"></select>
+        <select id="contenidoCargosList5" class="form-control" name="txtidCargo2" onchange="ShowSelected();"
+            style="text-align: center;"></select>
 
         <!-- a partir de aqui cambiar -->
         <div class="tabla table-responsive">
@@ -243,7 +256,7 @@
                     </tr>
                 </thead>
                 <!-- <tbody id="tablaTrabajadores"> -->
-                <tbody id="contenido2"></tbody>
+                <tbody id="contenido2" style="background: #E89A6B;"></tbody>
                 <!-- </tbody> -->
             </table>
         </div>
@@ -309,17 +322,22 @@
             </div>
         </div>
     </main>
+    <!-- <script src="../js/mainCargos.js"></script> -->
     <script src="https://kit.fontawesome.com/f78c574cc2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="../js/efectoAnimacion.js"></script>
     <!-- archivos nuevos -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script async src="../js/mainEmpl.js"></script>
     <script src="../js/validaciones.js"></script>
+
+
+
     <!-- <script src="../js/mainCargos.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->

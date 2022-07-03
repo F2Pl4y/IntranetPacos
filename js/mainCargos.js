@@ -10,8 +10,9 @@ window.addEventListener('load', (e) => {
             $('#myModal2X').modal('hide');
             $('#myModal3X').modal('show');
         }
-        if (url === "/pages/cuentasadmin.html") {
+        if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
             console.log("la url dentro del pages es:", url);
+            cargosCombo();
         }
     });
     if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
@@ -63,9 +64,11 @@ function CargoUpdateEmp() {
         success: function (data) {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
                 AdminSelect();
+                cargosCombo();
             }
             if (url === "/pages/trabajadores.html") {
                 empSelect();
+                cargosCombo();
             }
             // crearMensaje(data["mensaje"]);
         }
@@ -83,14 +86,15 @@ function cargosCombo() {
             var tabla = '';
             $.each(data["resultado"], function (llave, valor) {
                 if (document.getElementById("AgregarEmpleadoBtn").value == 1) {
-                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"];
+                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
                     template += '</option>';
                     // template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')></a>';
                     // template += '<option>' + valor["idCargo"] + '</option></div>';
                     tabla += template;
                 } else {
                     // console.log("el cargo es: " + valor["idCargo"]);
-                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"];
+                    // var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"];
+                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
                     template += '</option>';
                     // template +='<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')></a>';
                     tabla += template;
@@ -101,8 +105,9 @@ function cargosCombo() {
             $('#contenidoCargosList2').html(tabla);
             $('#contenidoCargosList3').html(tabla);
             $('#contenidoCargosList4').html(tabla);
+            $('#contenidoCargosList5').html(tabla);
             // var cod = document.getElementById("micargonuevo").value;
-            // var cod = document.getElementById("contenidoCargosList").value;
+            // var cod = document.getElementById("contenido Cargos List").value;
             // console.log("codigo es:" + cod);
         }
     });

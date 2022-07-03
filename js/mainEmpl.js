@@ -174,19 +174,19 @@ function empEliminar(id) {
                 ocultar4();
                 empSelect();
             }
-            crearMensaje(data["resultado"]);
+            // crearMensaje(data["resultado"]);
         }
     });
     return false;
 }
-function crearMensaje(mensaje) {
-    const elementoMensaje = document.getElementById('mensaje');
-    elementoMensaje.classList.add("visible");
-    elementoMensaje.removeChild(elementoMensaje.lastChild);
-    const parrafo = document.createElement("P");
-    parrafo.appendChild(document.createTextNode(mensaje));
-    elementoMensaje.appendChild(parrafo);
-}
+// function crearMensaje(mensaje) {
+//     const elementoMensaje = document.getElementById('mensaje');
+//     elementoMensaje.classList.add("visible");
+//     elementoMensaje.removeChild(elementoMensaje.lastChild);
+//     const parrafo = document.createElement("P");
+//     parrafo.appendChild(document.createTextNode(mensaje));
+//     elementoMensaje.appendChild(parrafo);
+// }
 function empInsert() {
     var registrosEmpl = new FormData();
     registrosEmpl.append("txtnombreEmpleado2", $('#txtnombreEmpleado2').val());
@@ -266,7 +266,7 @@ function cursoUpdate() {
             if (url === "/pages/trabajadores.html") {
                 empSelect();
             }
-            crearMensaje(data["mensaje"]);
+            // crearMensaje(data["mensaje"]);
         }
     });
     // limpiar contraseña

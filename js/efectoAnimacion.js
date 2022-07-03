@@ -1,7 +1,7 @@
 window.addEventListener('load', (e) => {
     menuResponsive();
     filtroTablaTrabajadores();
-    filtroTablaTrabajadores2();
+    // filtroTablaTrabajadores2();
 });
 
 function menuResponsive() {

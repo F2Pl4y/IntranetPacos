@@ -2,21 +2,21 @@
 <html lang="en">
 
 <head>
-    <!-- INICIO DE VALIDADOR -->
-    <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/bootstrapValidator/css/bootstrapValidator.min.css" rel="stylesheet">
-    <!-- FIN DE VALIDADOR -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"> -->
     <title>Document</title>
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'> -->
     <link rel="stylesheet" href="../css/styleadmin.css">
     <!-- nuevos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/style.css">
+    <!-- mis iconos -->
+    <link href='https://unpkg.com/css.gg/icons/all.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -59,9 +59,9 @@
     </div>
     <div class="modal fade modalCrear" id="crearTrabajadores">
         <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content" style="background: #698FED;">
                 <div class="modal-header">
-                    <h4 class="modal-title">
+                    <h4 class="modal-title w-100 text-center">
                         REGISTRAR TRABAJADOR
                     </h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -73,78 +73,70 @@
                     <!-- <form action="#" class="formulario" method="POST" enctype="multipart/form-data" id="formulario" > -->
                     <form action="#" class="formulario" method="POST" enctype="multipart/form-data" id="formulario">
                         <input type="hidden" name="txtidEmpleado" id="txtidEmpleado">
-                        <div class="form-group">
+                        <div class="form-group col-5">
+                            <!-- <div class="form-group"> -->
                             <label for="email">Nombre:</label>
                             <input type="text" class="ferValid form-control" name="txtnombreEmpleado2"
                                 placeholder="Ingrese su nombre" id="txtnombreEmpleado2" data-toggle="tooltip"
                                 title="Su nombre debe ser igual o mayor a 3 dígitos" data-placement="right">
+                            <!-- </div> -->
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="pwd">Correo:</label>
+                            <!-- <div class="input-group"> -->
+                            <!-- <div class="input-group-prepend"> -->
                             <input type="text" class="form-control" name="txtcorreoEmpleado2"
                                 placeholder="example@gmail.com" id="txtcorreoEmpleado2">
+                            <!-- </div> -->
+                            <!-- </div> -->
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="email2">Contraseña:</label>
-                            <!-- <input type="password" class="form-control" name="txtpasswordEmpleado2"
-                                id="txtpasswordEmpleado2" placeholder="***********" data-toggle="tooltip" title="min: 3"
-                                data-placement="right">
-                            <div class="input-group-append" style="display: flexbox !important;">
-                                <button id="show_password" class="btn btn-primary" type="button"
-                                    onclick="mostrarPassword()">
-                                    <span class="fa fa-eye-slash icon"></span>
-                                </button>
-                            </div> -->
                             <div class="input-group" id="show_hide_password">
                                 <input class="form-control" type="password" name="txtpasswordEmpleado2"
                                     placeholder="∗∗∗∗∗∗∗∗∗∗" id="txtpasswordEmpleado2" data-toggle="tooltip"
                                     title="min: 3" data-placement="right">
-                                <a id="show_password" class="btn btn-primary" type="button" onclick="mostrarPassword()"
-                                    style="position: absolute; right: calc(-23%);">
-                                    <i class="fa fa-eye-slash icon"></i>
-                                </a>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="show_password" type="button"
+                                        onclick="mostrarPassword()">
+                                        <i class="fa fa-eye-slash icon"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="email3">Encuestas Realizadas:</label>
                             <input type="text" class="ferValid2 form-control" name="txtencuestasRealizadas2"
                                 id="txtencuestasRealizadas2" data-toggle="tooltip" title="Ingrese sólo números"
                                 data-placement="right">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="pwd3">Estado:</label>
-                            <input type="text" class="form-control" name="txtestado2" value="1" id="txtestado2"
-                                disabled>
+                            <input type="text" class="form-control" name="txtestado2" value="1" id="txtestado2" disabled
+                                style="text-align: center;">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-5">
                             <label for="pwd4">ID Cargo:</label>
                             <input type="text" class="ferValid2 form-control" name="txtidCargo2" id="txtidCargo2"
                                 data-toggle="tooltip" title="ingrese solo números" data-placement="right">
                         </div>
                         <div class="form-group">
-                            <button type="submit" id="btnEnviarI" class="btn btn-primary" class="close"
-                                data-dismiss="modal">Añadir trabajador</button>
+                            <button type="submit" id="btnEnviarI" class="btn btn-success" class="close"
+                                data-dismiss="modal">AÑADIR TRABAJADOR&nbsp;&nbsp;<i class="gg-user-add"
+                                    style="display: inline-block;"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- </div> -->
-
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1X">
-        ABRE EL MODAL 1
-    </button> -->
-
-    <!-- The Modal -->
     <div class="modal fade" id="myModal1X">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="background: #2BB8AF;">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">
-                        Cargos activos
+                    <h4 class="modal-title w-100 text-center">
+                        CARGOS ACTIVOS
                     </h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -157,17 +149,18 @@
                                 <input type="text" class="form-control" id="txtnombreCargo" name="txtnombreCargo"
                                     placeholder="Nombre del cargo">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <button type="button" class="btn btn-success" onclick=cargoInsert()
-                                    id="limpiarAgregar">Agregar</button>
+                                    id="limpiarAgregar">AGREGAR CARGO&nbsp;&nbsp;<i class="gg-play-list-add"
+                                        style="display: inline-block;top: -4px;"></i></button>
                             </div>
                             <table class="table table-bordered" style="text-align: center;">
                                 <thead>
                                     <tr>
-                                        <th>IDs</th>
-                                        <th>Cargo</th>
-                                        <th>Estado</th>
-                                        <th>Acciones</th>
+                                        <th>ID's</th>
+                                        <th>CARGO</th>
+                                        <th>ESTADO</th>
+                                        <th>ACCIONESkk</th>
                                     </tr>
                                 </thead>
                                 <tbody id="contenido3">
@@ -176,37 +169,68 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Modal footer -->
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div> -->
-
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal3X">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content" style="background: #0F97F5;">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="position: fixed;">
+                        CAMBIE LOS EMPLEADOS DE CARGO:
+                    </h3>
+                    <h3 id="modal33x" class="modal-title w-100 text-center"></h3>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <div class="tablaResponsive">
+                            <table class="table table-bordered" style="text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>NOMBRE</th>
+                                        <th>CORREO</th>
+                                        <th>CANTIDAD DE ENCUESTAS</th>
+                                        <th>ESTADO</th>
+                                        <th>ID DEL CARGO</th>
+                                        <th>ACCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contenido4">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="ocultar()">CERRAR</button>
+                </div>
             </div>
         </div>
     </div>
 
 
     <!-- The Modal -->
-    <div class="modal fade" id="myModal2X">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
+    <div class="modal fade" id="myModal2X" style="left: -15px;">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background: #5AC176;">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="tituloModalcargo"></h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title" style="position: fixed;">Actualizando el cargo:</h3>
+                    <h3 class="modal-title w-100 text-center" id="tituloModalcargo"></h3>
+                    <button type="button" class="close" data-dismiss="modal"
+                        style="position: absolute;left: 92%;">&times;</button>
                 </div>
                 <div class="modal-body" id="modal-body">
                     <form action="#" class="formulario3" method="POST" enctype="multipart/form-data" id="formulario2">
                         <input type="hidden" name="txtidCargo2" id="txtidCargo2">
                         <div class="form-group">
-                            <label for="email">Nombre del cargo:</label>
+                            <label for="email">NOMBRE</label>
                             <input type="text" class="form-control" name="txtnombreCargo2" id="txtnombreCargo2">
                         </div>
                         <div class="form-group" style="align-content: center;text-align: center;">
                             <button type="submit" id="btnEnviarCI" class="btn btn-primary" class="close"
-                                data-dismiss="modal">Actualizar</button>
+                                data-dismiss="modal">ACTUALIZAR&nbsp;&nbsp;<i class="gg-arrow-up-r"
+                                    style="display: inline-block;top: 3px;"></i></button>
                         </div>
                     </form>
                 </div>
@@ -214,7 +238,33 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="myModal4X" style="left: -15px;">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="background: #5AC176;">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="position: fixed;">Actualizando el ID del cargo:</h3>
+                    <h3 class="modal-title w-100 text-center" id="tituloModalcargo2"></h3>
+                    <button type="button" class="close" data-dismiss="modal"
+                        style="position: absolute;left: 92%;">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <form action="#" class="formulario3" method="POST" enctype="multipart/form-data" id="formulario2">
+                        <input type="text" name="txtidEmpleado4" id="txtidEmpleado4">
+                        <div class="form-group">
+                            <label for="email">ID</label>
+                            <input type="text" class="form-control" name="txtidCargo4" id="txtidCargo4">
+                        </div>
+                        <div class="form-group" style="align-content: center;text-align: center;">
+                            <button type="submit" id="btnEnviarE2" class="btn btn-primary" class="close"
+                                data-dismiss="modal">ACTUALIZAR&nbsp;&nbsp;<i class="gg-arrow-up-r"
+                                    style="display: inline-block;top: 3px;"></i></button>
+                        </div>
+                    </form>
+                </div>
 
+            </div>
+        </div>
+    </div>
     <!-- <div class="modal fade modalCrud" id="Cargo"> -->
 
     <header>
@@ -269,11 +319,11 @@
                 <li>
                     <a href="moduloEncuesta.html">
                         <i class="fa fa-check-square-o"></i>Modulo de
-                        encuestas
+                        Encuestas
                     </a>
                 </li>
                 <li>
-                    <a href="cuentasAdmin.html">
+                    <a href="cuentasadmin.html">
                         <i class="fa fa-lock-open"></i>Cuentas Admin
                     </a>
                     <!-- <a href="https://www.pacosbill.cf/pages/cuentasadmin.html">
@@ -283,94 +333,57 @@
             </ul>
         </div>
     </nav>
-    <main class="mainTrabajadores">
+    <main class="mainTrabajadores" style="background: #4F6CB6;">
         <h3>REGISTRO DE EMPLEADOS</h3>
-        <!--  -->
-        <!--  -->
-        <div class="adicional">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Nombre</span>
-                </div>
-                <input type="text" class="form-control" id="inputTrabajador" placeholder="Buscar por nombre"
-                    style="z-index: 0;">
+        <div class="input-group col-11">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="gg-search"></i>
+                </span>
             </div>
-            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores">Nuevo</a>
-            <!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Cargo">Cargos</a> -->
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1X">
-                ABRE EL MODAL 1
-            </button> -->
-            <A href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal1X">
-                Cargo
-            </A>
+            <input type="text" class="form-control" id="inputTrabajador" style="z-index: 0;"
+                placeholder="Buscar empleado">
         </div>
-        <!-- a partir de aqui cambiar -->
+        <!-- <input type="text" class="form-control" id="inputTrabajador" style="z-index: 0;"> -->
+        <div class="form-group">
+            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores">
+                AGREGAR EMPLEADO&nbsp;&nbsp;<i class="gg-user-list" style="display: inline-block;"></i>
+            </a>&nbsp;
+            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal1X">
+                CARGOS&nbsp;&nbsp;<i class="gg-list" style="display: inline-block;top: 3px;"></i></a>
+        </div>
         <div class="tabla table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
-                    <tr>
+                    <tr style="color: black;">
                         <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Cant. Encuestas</th>
-                        <th>Estado</th>
-                        <th>ID CARGO</th>
-                        <th>Accionessss</th>
+                        <th>NOMBRE</th>
+                        <th>CORREO</th>
+                        <th>CANTIDAD DE ENCUESTAS</th>
+                        <th>ESTADO</th>
+                        <th>ID DEL CARGO</th>
+                        <th>ACCIONES</th>
                     </tr>
                 </thead>
                 <!-- <tbody id="tablaTrabajadores"> -->
                 <!-- <tbody id="contenido2"> -->
-                <tbody id="contenido2">
+                <tbody id="contenido2" style="background: #E89A6B;">
                     <!-- <div id="contenido2"></div> -->
                 </tbody>
                 <!-- </tbody> -->
             </table>
         </div>
-        <!-- <div class="tabla table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Cant. Encuestas</th>
-                        <th>Estado</th>
-                        <th>ID CARGO</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaTrabajadores">
-                    <tr>
-                        <td>1</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                        <td>10</td>
-                        <td>Mesero</td>
-                        <td>
-                            <img src="../img/trabajadores/Goku.jpg" alt="">
-                        </td>
-                        <td class="grupoBotones">
-                            <div class="btn-group">
-                                <button class="btn btn-primary">
-                                    <i class='bx bx-up-arrow-alt'></i>
-                                </button>
-                                <button class="btn btn-danger">
-                                    <i class='bx bx-trash'></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> -->
         <div class="modal fade" id="myModal2">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="tituloModal"></h4>
-                        <button type="button" class="close" data-dismiss="modal">
-                            <i class='bx bx-x'></i>
-                        </button>
+                        <h4 class="modal-title" style="position: fixed;">Datos del empleado:</h4>
+                        <h4 class="modal-title w-100 text-center" id="tituloModal"></h4>
+                        <!-- <button type="button" class="close" data-dismiss="modal" style="position: absolute;left: 92%;"> -->
+                        <!-- <i class='bx bx-x'></i> -->
+                        <!-- </button> -->
+                        <button type="button" class="close" data-dismiss="modal"
+                            style="position: absolute;left: 90%;">&times;</button>
                     </div>
                     <div class="modal-body">
                         <form action="#" class="formulario2" method="POST" enctype="multipart/form-data"
@@ -389,13 +402,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="email2">Contraseña:</label>
-                                <!-- <input type="password" class="form-control" name="txtpasswordEmpleado"
+                                <input type="password" class="form-control" name="txtpasswordEmpleado"
                                     placeholder="Ingrese su contraseña" id="txtpasswordEmpleado" data-toggle="tooltip"
                                     title="min: 3" data-placement="right">
                                 <button id="show_password" class="btn btn-primary" type="button"
                                     onclick="mostrarPassword()">
                                     <span class="fa fa-eye-slash icon"></span>
-                                </button> -->
+                                </button>
                                 <div class="input-group" id="show_hide_password">
                                     <input class="form-control" type="password" name="txtpasswordEmpleado"
                                         placeholder="∗∗∗∗∗∗∗∗∗∗" id="txtpasswordEmpleado" data-toggle="tooltip"
@@ -414,7 +427,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd3">Estado:</label>
-                                <input type="text" class="form-control" name="txtestado" id="txtestado" disabled>
+                                <input type="text" class="form-control" name="txtestado" id="txtestado" disabled
+                                    style="text-align: center;">
                             </div>
                             <div class="form-group">
                                 <label for="pwd4">ID Cargo:</label>
@@ -431,16 +445,18 @@
     </main>
     <script src="https://kit.fontawesome.com/f78c574cc2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="../js/efectoAnimacion.js"></script>
     <!-- archivos nuevos -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> el de aqui es nuevo-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/mainEmpl.js"></script>
     <script src="../js/validaciones.js"></script>
     <script src="../js/mainCargos.js"></script>
+    <!-- mis iconos -->
 </body>
 
 </html>

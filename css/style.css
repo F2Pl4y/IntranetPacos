@@ -63,9 +63,6 @@ main {
 }
 .table td,
 .table th {
-  /* padding: .75rem; */
+  /* centrar verticalmente */
   vertical-align: middle;
-  /* border-top: 1px solid #dee2e6; */
 }
-/* .crearExcel {
-} */

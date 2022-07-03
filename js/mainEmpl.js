@@ -37,8 +37,8 @@ window.addEventListener('load', (e) => {
 function empSelect() {
     $.ajax({
         type: "GET",
-        // url: "http://127.0.0.1:5000/empleados/select/",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/select/",
+        url: "http://127.0.0.1:5000/empleados/select/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -53,10 +53,10 @@ function empSelect() {
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
                 template += '<button class="btn">';
-                template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2" onclick=empGet(' + valor["idEmpleado"] + ')><i class="bx bx-info-circle"></i></a>';
+                template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2" onclick=empGet(' + valor["idEmpleado"] + ')><i class="gg-info"></i></a>';
                 template += '</button>';
                 template += '<button class="btn">';
-                template += '<a href="#" class="btn btn-danger" onclick="return empEliminar(' + valor["idEmpleado"] + ')"><i class="bx bxs-trash-alt"></i></a>';
+                template += '<a href="#" class="btn btn-danger" onclick="return empEliminar(' + valor["idEmpleado"] + ')"><i class="gg-trash"></i></a>';
                 template += '</button>';
                 template += '</div>';
                 template += '</td>';
@@ -70,8 +70,8 @@ function empSelect() {
 function AdminSelect() {
     $.ajax({
         type: "GET",
-        // url: "http://127.0.0.1:5000/admins/select/",
-        url: "https://f3rn4nd021py.pythonanywhere.com/admins/select/",
+        url: "http://127.0.0.1:5000/admins/select/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/admins/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -86,10 +86,10 @@ function AdminSelect() {
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
                 template += '<button class="btn">';
-                template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2" onclick=empGet(' + valor["idEmpleado"] + ')><i class="bx bx-info-circle"></i></a>';
+                template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2" onclick=empGet(' + valor["idEmpleado"] + ')><i class="gg-info"></i></a>';
                 template += '</button>';
                 template += '<button class="btn">';
-                template += '<a href="#" class="btn btn-danger" onclick="return empEliminar(' + valor["idEmpleado"] + ')"><i class="bx bxs-trash-alt"></i></a>';
+                template += '<a href="#" class="btn btn-danger" onclick="return empEliminar(' + valor["idEmpleado"] + ')"><i class="gg-trash"></i></a>';
                 template += '</button>';
                 template += '</div>';
                 template += '</td>';
@@ -104,8 +104,8 @@ function AdminSelect() {
 function empGet(id) {
     $.ajax({
         type: "GET",
-        // url: "http://127.0.0.1:5000/empleados/get/" + id + "/",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/get/" + id + "/",
+        url: "http://127.0.0.1:5000/empleados/get/" + id + "/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/get/" + id + "/",
         dataType: "json",
         success: function (data) {
             $('#txtidEmpleado').val(data["resultado"]["idEmpleado"]);
@@ -114,17 +114,19 @@ function empGet(id) {
             $('#txtencuestasRealizadas').val(data["resultado"]["encuestasRealizadas"]);
             $('#txtestado').val(data["resultado"]["estado"]);
             $('#txtidCargo').val(data["resultado"]["idCargo"]);
-            $('#tituloModal').html("Actualizando datos del empleado: <br>" + data["resultado"]["nombreEmpleado"]);
+            // $('#tituloModal').html("Actualizando datos del empleado: <br>" + data["resultado"]["nombreEmpleado"]);
+            $('#tituloModal').html("<br>''" + data["resultado"]["nombreEmpleado"] + "''");
         }
     });
+    formulario2.reset();
 }
 
 function empEliminar(id) {
     const url = window.location.pathname;
     $.ajax({
         type: "DELETE",
-        // url: "http://127.0.0.1:5000/empleados/delete/" + id + "/",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/delete/" + id + "/",
+        url: "http://127.0.0.1:5000/empleados/delete/" + id + "/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/delete/" + id + "/",
         dataType: "json",
         success: function (data) {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
@@ -155,8 +157,8 @@ function empInsert() {
     registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     $.ajax({
         type: "POST",
-        // url: "http://127.0.0.1:5000/empleados/create/",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
+        url: "http://127.0.0.1:5000/empleados/create/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -180,8 +182,8 @@ function AdminInsert() {
     registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     $.ajax({
         type: "POST",
-        // url: "http://127.0.0.1:5000/empleados/create/",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
+        url: "http://127.0.0.1:5000/empleados/create/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -208,8 +210,8 @@ function cursoUpdate() {
     registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     $.ajax({
         type: "PUT",
-        // url: "http://127.0.0.1:5000/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        url: "http://127.0.0.1:5000/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,

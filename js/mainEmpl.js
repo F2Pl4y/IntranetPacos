@@ -1,3 +1,4 @@
+const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');

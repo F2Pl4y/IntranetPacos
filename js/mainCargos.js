@@ -5,6 +5,7 @@ window.addEventListener('load', (e) => {
     boton.addEventListener('click', (e) => {
         e.preventDefault();
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+            console.log("actualizando el cargo")
             cargoUpdate();
         }
         if (url === "/pages/cuentasadmin.html") {
@@ -20,31 +21,66 @@ window.addEventListener('load', (e) => {
     const boton1 = document.getElementById('btnEnviarE2');
     boton1.addEventListener('click', (e) => {
         e.preventDefault();
-        if (url === "/pages/trabajadores.html") {
+        if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
             CargoUpdateEmp();
+            // $('#myModal4X').modal('hide');
+            // $('#myModal4X').modal('show');
+            // $('#myModal3X').modal('hide');
+            // $('#myModal3X').modal('show');
         }
         // if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
         //     cursoUpdate();
         // }
     });
-    // if (url === "/pages/cuentasadmin.html") {
-    //     AdminSelect();
-    // }
-    // if (url === "/pages/cuentasadmin") {
-    //     AdminSelect();
-    // }
-    if (url === "/pages/trabajadores.html") {
+    // const boton2 = document.getElementById('btnEnviarActualizarCargoDes');
+    // boton2.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     if (url === "/pages/trabajadores.html") {
+    //         CargoUpdateEmp();
+    //     }
+    // });
+    if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
         empSelect();
     }
 });
+// function CargoUpdateDes() {
+//     const url = window.location.pathname;
+//     var registrosEmpl = new FormData();
+//     // registrosEmpl.append("txtidEmpleado", $('#txtidEmpleado').val());
+//     registrosEmpl.append("txtidCargo4", $('#txtidCargo4').val());
+//     $.ajax({
+//         type: "PUT",
+//         url: "http://127.0.0.1:5000/empleados/update2/" + registrosEmpl.get("txtidEmpleado4") + "/",
+//         // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+//         data: registrosEmpl,
+//         dataType: 'json',
+//         contentType: false,
+//         enctype: 'multipart/form-data',
+//         processData: false,
+//         success: function (data) {
+//             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+//                 AdminSelect();
+//             }
+//             if (url === "/pages/trabajadores.html") {
+//                 empSelect();
+//             }
+//             crearMensaje(data["mensaje"]);
+//         }
+//     });
+//     // limpiar contraseña
+//     formulario3.reset();
+// }
 function CargoUpdateEmp() {
     const url = window.location.pathname;
     var registrosEmpl = new FormData();
     // registrosEmpl.append("txtidEmpleado", $('#txtidEmpleado').val());
-    registrosEmpl.append("txtidCargo4", $('#txtidCargo4').val());
+    console.log("mi nombre: " + $('#tituloModalCargoDes').val()) /* ejemplo: vale 53 */
+    registrosEmpl.append("miidnuevo", $('#miidnuevo').val());
+    registrosEmpl.append("micargonuevo", $('#micargonuevo').val());
+    registrosEmpl.append("tituloModalCargoDes", $('#tituloModalCargoDes').val());
     $.ajax({
         type: "PUT",
-        url: "http://127.0.0.1:5000/empleados/update2/" + registrosEmpl.get("txtidEmpleado4") + "/",
+        url: "http://127.0.0.1:5000/empleados/update2/" + registrosEmpl.get("miidnuevo") + "/",
         // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
         data: registrosEmpl,
         dataType: 'json',
@@ -62,7 +98,7 @@ function CargoUpdateEmp() {
         }
     });
     // limpiar contraseña
-    formulario2.reset();
+    formulario3.reset();
 }
 function cargosSelect() {
     $.ajax({
@@ -99,7 +135,7 @@ function cargosSelect() {
                     template += '</button>';
                     template += '<button class="btn">';
                     // template += '<a href="#" class="btn btn-danger" onclick="return deshabilitar(' + valor["idCargo"] + ')"><i class="bx bxs-trash-alt"></i></a>';
-                    template += '<a href="#" class="btn btn-danger" onclick="return deshabilitar(' + valor["idCargo"] + ')"><i class="gg-unavailable"></i></a>';
+                    template += '<a href="#" class="btn btn-danger" onclick="deshabilitar(' + valor["idCargo"] + ')"><i class="gg-unavailable"></i></a>';
                     template += '</button>';
                     template += '</div>';
                     template += '</td>';
@@ -107,9 +143,33 @@ function cargosSelect() {
                     tabla += template;
                 }
             });
+            // tercer paso
             $('#contenido3').html(tabla);
         }
     });
+}
+function empGetCargos(id) {
+    console.log("id dentro de empGetCargos: " + id)
+    $.ajax({
+        type: "GET",
+        url: "http://127.0.0.1:5000/empleadosXcargo/get/" + id + "/",
+        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/get/" + id + "/",
+        dataType: "json",
+        success: function (data) {
+            $('#miidnuevo').val(data["resultado"]["idEmpleado"]);
+            // $('#txtnombreEmpleado').val(data["resultado"]["nombreEmpleado"]);
+            // $('#txtcorreoEmpleado').val(data["resultado"]["correoEmpleado"]);
+            // $('#txtencuestasRealizadas').val(data["resultado"]["encuestasRealizadas"]);
+            // $('#txtestado').val(data["resultado"]["estado"]);
+            $('#micargonuevo').val(data["resultado"]["idCargo"]);
+            $('#tituloModalCargoDes').val(data["resultado"]["nombreEmpleado"]);
+            // console.log("esto es:" + data["resultado"]["idEmpleado"])
+            // $('#tituloModal').html("Actualizando datos del empleado: <br>" + data["resultado"]["nombreEmpleado"]);
+            $('#tituloModalCargoDes').html("<br>''" + data["resultado"]["nombreEmpleado"] + "''");
+            $('#micargonuevo').html("<br>''" + data["resultado"]["idCargo"] + "''");
+        }
+    });
+    formulario2.reset();
 }
 function cargoGet(id) {
     console.log("el id es:", id);
@@ -119,11 +179,13 @@ function cargoGet(id) {
         // url: "https://f3rn4nd021py.pythonanywhere.com/cargos/get/" + id + "/",
         dataType: "json",
         success: function (data) {
-            $('#txtidCargo2').val(data["resultado"]["idCargo2"]);
+            $('#txtidCargoModal2x').val(data["resultado"]["idCargo2"]);
             $('#txtnombreCargo2').val(data["resultado"]["nombreCargo2"]);
             // $('#tituloModalcargo').html("Actualizando el cargo: <br>" + data["resultado"]["nombreCargo2"]);
+
             $('#tituloModalcargo1').html("<br>''" + data["resultado"]["nombreCargo2"] + "''");
             $('#tituloModalcargo2').html("<br>''" + data["resultado"]["nombreCargo2"] + "''");
+            $('#nombreEmpleadoCargo').html("<br>''" + data["resultado"]["nombreCargo2"] + "''");
         }
     });
 }
@@ -157,11 +219,13 @@ function cerrarModal() {
 function cargoUpdate() {
     const url = window.location.pathname;
     var registrosEmpl = new FormData();
-    registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
-    registrosEmpl.append("txtnombreCargo4", $('#txtnombreCargo4').val());
+    // registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
+    // registrosEmpl.append("txtnombreCargo4", $('#txtnombreCargo4').val());
+    registrosEmpl.append("txtidCargoModal2x", $('#txtidCargoModal2x').val());
+    registrosEmpl.append("txtnombreCargo2", $('#txtnombreCargo2').val());
     $.ajax({
         type: "PUT",
-        url: "http://127.0.0.1:5000/cargos/update/" + registrosEmpl.get("txtidCargo2") + "/",
+        url: "http://127.0.0.1:5000/cargos/update/" + registrosEmpl.get("txtidCargoModal2x") + "/",
         // url: "https://f3rn4nd021py.pythonanywhere.com/cargos/update/" + registrosEmpl.get("txtidCargo2") + "/",
         data: registrosEmpl,
         dataType: 'json',
@@ -172,7 +236,7 @@ function cargoUpdate() {
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
                 cargosSelect();
             }
-            // crearMensaje(data["mensaje"]);
+            crearMensaje(data["mensaje"]);
             // crearMensaje(data["exito"]);
         }
     });
@@ -181,7 +245,6 @@ function cargoUpdate() {
 }
 function deshabilitar(id) {
     const url = window.location.pathname;
-    // console.log("la data es:" + $.ajax({data}))
     console.log("la data es:")
     $.ajax({
         type: "PUT",
@@ -193,14 +256,17 @@ function deshabilitar(id) {
                 cargosSelect();
                 // console.log("la data es:" + data.length)
                 // console.log(data["resultado"]);
-                console.log("tamaño data:" + data.resultado.length)
+                console.log("tamaño data: " + data.resultado.length)
                 if (data.resultado.length > 0) {
                     var tabla = '';
                     console.log("hay gente");
-                    console.log(data["resultado"][0][0]);
                     $('#myModal3X').modal('show');
                     $('#myModal1X').modal('hide');
+                    myModal4X
+                    // cuarto paso
+                    // creacion de un foreach en caso de que halla empleados enlazados con el cargo a inhabilitar
                     $.each(data["resultado"], function (llave, valor) {
+                        console.log("el id de update 2 es:" + valor["idCargo"])
                         if (valor["idCargo"] == 1) {
                             var template = '<tr>';
                             template += '<td>' + valor["idEmpleado"] + '</td>';
@@ -219,6 +285,7 @@ function deshabilitar(id) {
                             template += '</tr>';
                             tabla += template;
                         } else {
+                            // console.log("el valor de idcargo dentro de contenido4 es: " + valor["idEmpleado"])
                             var template = '<tr>';
                             template += '<td>' + valor["idEmpleado"] + '</td>';
                             template += '<td>' + valor["nombreEmpleado"] + '</td>';
@@ -229,11 +296,11 @@ function deshabilitar(id) {
                             template += '<td class="grupoBotones">';
                             template += '<div class="btn-group">';
                             template += '<button class="btn">';
-                            template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
+                            // quinto paso
+                            template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=empGetCargos(' + valor["idEmpleado"] + ')><i class="gg-info"></i></a>';
                             template += '</button>';
                             template += '<button class="btn">';
-                            // template += '<a href="#" class="btn btn-danger" onclick="return deshabilitar(' + valor["idCargo"] + ')"><i class="bx bxs-trash-alt"></i></a>';
-                            template += '<a href="#" class="btn btn-danger" onclick="return deshabilitar(' + valor["idCargo"] + ')"><i class="gg-unavailable"></i></a>';
+                            template += '<a href="#" class="btn btn-danger" onclick="empEliminar(' + valor["idEmpleado"] + ')"><i class="gg-trash"></i></a>';
                             template += '</button>';
                             template += '</div>';
                             template += '</td>';
@@ -256,4 +323,8 @@ function deshabilitar(id) {
 function ocultar() {
     $('#myModal1X').modal('show');
     $('#myModal3X').modal('hide');
+}
+function ocultar2() {
+    // $('#myModal1X').modal('show');
+    $('#myModal4X').modal('hide');
 }

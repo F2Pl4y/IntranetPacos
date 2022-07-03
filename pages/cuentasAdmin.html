@@ -127,8 +127,8 @@
                         </div>
                         <div class="form-group col-5">
                             <label for="pwd4">ID Cargo:</label>
-                            <!-- <select id="contenidoCargosList4" class="form-control" name="txtidCargo2"
-                                onchange="ShowSelected();" style="text-align: center;"></select> -->
+                            <select id="contenidoCargosList" class="form-control" name="txtidCargo2"
+                                onchange="ShowSelected();" style="text-align: center;"></select>
                             <!-- <input type="text" class="ferValid2 form-control" name="txtidCargo2"
                                 placeholder="Enter creditos" id="txtidCargo2"> -->
                         </div>
@@ -206,30 +206,14 @@
 
     <main class="mainTrabajadores" style="background: #4F6CB6;">
         <h3>REGISTRO DE ADMINISTRADORES</h3>
-        <div class="adicional">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Nombre</span>
-                </div>
-                <input type="text" class="form-control" id="inputTrabajador" placeholder="Buscar por nombre"
-                    style="z-index: 0;">
-            </div>
-
-            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores">AGREGAR
-                EMPLEADO&nbsp;&nbsp;<i class="gg-user-list" style="display: inline-block;"
-                id="AgregarEmpleadoBtn" onclick="cargosCombo()"></i></a>
-            <!-- <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Cargo">Cargos</a> -->
+        <div class="input-group col-11">
         </div>
-        <select id="contenidoCargosList" class="form-control" name="txtidCargo2" onchange="ShowSelected();"
-            style="text-align: center;"></select>
-        <select id="contenidoCargosList2" class="form-control" name="txtidCargo2" onchange="ShowSelected();"
-            style="text-align: center;"></select>
-        <select id="contenidoCargosList3" class="form-control" name="txtidCargo2" onchange="ShowSelected();"
-            style="text-align: center;"></select>
-        <select id="contenidoCargosList5" class="form-control" name="txtidCargo2" onchange="ShowSelected();"
-            style="text-align: center;"></select>
-
-        <!-- a partir de aqui cambiar -->
+        <div class="form-group">
+            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores" value="1"
+                id="AgregarEmpleadoBtn" onclick="cargosCombo()">
+                AGREGAR EMPLEADO&nbsp;&nbsp;<i class="gg-user-list" style="display: inline-block;"></i>
+            </a>
+        </div>
         <div class="tabla table-responsive">
             <style>
                 #contenido2 {
@@ -238,9 +222,7 @@
 
                 .table td,
                 .table th {
-                    /* padding: .75rem; */
                     vertical-align: middle;
-                    /* border-top: 1px solid #dee2e6; */
                 }
             </style>
             <table class="table table-bordered table-hover">
@@ -262,7 +244,7 @@
         </div>
         <div class="modal fade" id="myModal2">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
+                <div class="modal-content" style="background: #698FED;">
                     <div class="modal-header">
                         <h4 class="modal-title" style="position: fixed;">Datos del administrador:</h4>
                         <h4 class="modal-title w-100 text-center" id="tituloModal"></h4>
@@ -290,7 +272,7 @@
                                     <label for="email2">Contraseña:</label>
                                     <div class="input-group" id="show_hide_password">
                                         <input class="form-control" type="password" name="txtpasswordEmpleado"
-                                            placeholder="Ingrese su contraseña" id="txtpasswordEmpleado"
+                                            placeholder="∗∗∗∗∗∗∗∗∗∗" id="txtpasswordEmpleado"
                                             data-toggle="tooltip" title="min: 3" data-placement="right">
                                         <a id="show_password" class="btn btn-primary" type="button"
                                             onclick="mostrarPassword()" style="position: absolute; right: calc(-23%);">
@@ -311,8 +293,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd4">ID Cargo:</label>
-                                <input type="text" class="ferValid2 form-control" name="txtidCargo" id="txtidCargo"
-                                    data-toggle="tooltip" title="ingrese solo números" data-placement="right">
+                                <select id="contenidoCargosList3" class="form-control" name="txtidCargo2"
+                                    onchange="ShowSelected();" style="text-align: center;"></select>
+                                <!-- <input type="text" class="ferValid2 form-control" name="txtidCargo" id="txtidCargo"
+                                    data-toggle="tooltip" title="ingrese solo números" data-placement="right"> -->
                             </div>
                             <button type="submit" id="btnEnviarE" class="btn btn-primary" class="close"
                                 data-dismiss="modal">Actualizar administrador</button>

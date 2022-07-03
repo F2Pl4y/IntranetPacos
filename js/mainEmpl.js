@@ -218,7 +218,8 @@ function AdminInsert() {
     registrosEmpl.append("txtcorreoEmpleado2", $('#txtcorreoEmpleado2').val());
     registrosEmpl.append("txtpasswordEmpleado2", $('#txtpasswordEmpleado2').val());
     registrosEmpl.append("txtencuestasRealizadas2", $('#txtencuestasRealizadas2').val());
-    registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
+    registrosEmpl.append("txtidCargo2", $('#contenidoCargosList').val());
+    // registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     $.ajax({
         type: "POST",
         url: "http://127.0.0.1:5000/empleados/create/",

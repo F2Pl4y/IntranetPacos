@@ -70,25 +70,18 @@
                 <!-- Modal body -->
                 <!-- el problema esta aqui, quitarlo o modificarlo bien -->
                 <div class="modal-body">
-                    <!-- <form action="#" class="formulario" method="POST" enctype="multipart/form-data" id="formulario" > -->
                     <form action="#" class="formulario" method="POST" enctype="multipart/form-data" id="formulario">
                         <input type="hidden" name="txtidEmpleado" id="txtidEmpleado">
                         <div class="form-group col-5">
-                            <!-- <div class="form-group"> -->
                             <label for="email">Nombre:</label>
                             <input type="text" class="ferValid form-control" name="txtnombreEmpleado2"
                                 placeholder="Ingrese su nombre" id="txtnombreEmpleado2" data-toggle="tooltip"
                                 title="Su nombre debe ser igual o mayor a 3 dígitos" data-placement="right">
-                            <!-- </div> -->
                         </div>
                         <div class="form-group col-5">
                             <label for="pwd">Correo:</label>
-                            <!-- <div class="input-group"> -->
-                            <!-- <div class="input-group-prepend"> -->
                             <input type="text" class="form-control" name="txtcorreoEmpleado2"
                                 placeholder="example@gmail.com" id="txtcorreoEmpleado2">
-                            <!-- </div> -->
-                            <!-- </div> -->
                         </div>
                         <div class="form-group col-5">
                             <label for="email2">Contraseña:</label>
@@ -117,8 +110,10 @@
                         </div>
                         <div class="form-group col-5">
                             <label for="pwd4">ID Cargo:</label>
-                            <input type="text" class="ferValid2 form-control" name="txtidCargo2" id="txtidCargo2"
-                                data-toggle="tooltip" title="ingrese solo números" data-placement="right">
+                            <select id="contenidoCargosList2" class="form-control" name="txtidCargo2"
+                                onchange="ShowSelected();" style="text-align: center;"></select>
+                            <!-- <input type="text" class="ferValid2 form-control" name="txtidCargo2" id="txtidCargo2"
+                                data-toggle="tooltip" title="ingrese solo números" data-placement="right"> -->
                         </div>
                         <div class="form-group">
                             <button type="submit" id="btnEnviarI" class="btn btn-success" class="close"
@@ -136,7 +131,7 @@
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title w-100 text-center">
-                        CARGOS ACTIVOS
+                        CARGOS ACTIVOS1X
                     </h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -172,26 +167,24 @@
             </div>
         </div>
     </div>
+    <style>
+        #thead-tr th,
+        #thead-tr tr {
+            vertical-align: middle !important;
+        }
+    </style>
     <div class="modal fade" id="myModal3X">
         <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content" style="background: #0F97F5;">
                 <div class="modal-header">
                     <h3 class="modal-title" style="position: fixed;">
-                        CAMBIE LOS EMPLEADOS DE ID CARGO:
+                        CAMBIE LOS EMPLEADOS DE ID CARGO:3X
                     </h3>
-                    <h3 id="modal33x" class="modal-title w-100 text-center"></h3>
+                    <h3 id="modal3x" class="modal-title w-100 text-center"></h3>
                 </div>
                 <div class="modal-body">
                     <div class="modal-body">
                         <div class="tablaResponsive">
-                            <style>
-                                #thead-tr th,
-                                #thead-tr tr {
-                                    /* centrar verticalmente */
-                                    vertical-align: middle !important;
-                                    /* font-size: 90px !important; */
-                                }
-                            </style>
                             <table class="table table-bordered" style="text-align: center;">
                                 <thead id="thead-tr">
                                     <tr>
@@ -206,6 +199,8 @@
                                 </thead>
                                 <tbody id="contenido4">
                                 </tbody>
+                                <!-- <tbody id="contenido5">
+                                </tbody> -->
                             </table>
                         </div>
                     </div>
@@ -223,13 +218,14 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content" style="background: #5AC176;left: 15px;">
                 <div class="modal-header">
-                    <h3 class="modal-title" style="position: fixed;">Actualizando el cargo:</h3>
+                    <h3 class="modal-title" style="position: fixed;">Actualizando el cargo:2X</h3>
                     <h3 class="modal-title w-100 text-center" id="tituloModalcargo1"></h3>
                     <button type="button" class="close" data-dismiss="modal"
                         style="position: absolute;left: 92%;">&times;</button>
+
                 </div>
                 <div class="modal-body" id="modal-body">
-                    <form action="#" class="formulario3" method="POST" enctype="multipart/form-data" id="formulario2">
+                    <form action="#" class="formulario3" method="POST" enctype="multipart/form-data" id="formulario3">
                         <input type="hidden" name="txtidCargoModal2x" id="txtidCargoModal2x">
                         <div class="form-group">
                             <label for="email">NOMBRE</label>
@@ -250,22 +246,24 @@
         <div class="modal-dialog modal-sm modal-dialog-centered">
             <div class="modal-content" style="background: #5AC176;">
                 <div class="modal-header" style="display: inline;">
-                    <!-- <h3 class="modal-title" style="position: fixed;">NOMBRE DEL EMPLEADO:</h3> -->
-                    <h3 class="modal-title" style="text-align: center;">NOMBRE DEL EMPLEADO</h3>
+                    <h3 class="modal-title" style="text-align: center;">NOMBRE DEL EMPLEADO4X</h3>
                     <h3 class="modal-title w-100 text-center" id="tituloModalCargoDes" style="padding-top: -40px;"></h3>
                     <!-- <button type="button" class="close" data-dismiss="modal"
                         style="position: absolute;left: 92%;">&times;</button> -->
                 </div>
                 <div class="modal-body" id="modal-body">
-                    <form action="#" class="formulario3" method="POST" enctype="multipart/form-data" id="formulario2">
+                    <form action="#" class="formulario3" method="POST" enctype="multipart/form-data" id="formulario3">
                         <input type="hidden" name="miidnuevo" id="miidnuevo">
                         <input type="hidden" name="tituloModalCargoDes" id="tituloModalCargoDes">
+                        <input type="hidden" id="valorActualizar">
                         <div class="form-group">
-                            <label for="email">ID</label>
-                            <input type="text" class="form-control" name="micargonuevo" id="micargonuevo">
+                            <label for="email">ID</label><br>
+                            <select id="contenidoCargosList" class="form-control" name="micargonuevo"
+                                onchange="ShowSelected();">
+                            </select>
+                            <!-- <input type="text" class="form-control" name="micargonuevo" id="micargonuevo"> -->
                         </div>
                         <div class="form-group" style="align-content: center;text-align: center;">
-                            <!-- <button type="submit" id="btnEnviarActualizarCargoDes" class="btn btn-primary" class="close" -->
                             <button type="submit" id="btnEnviarE2" class="btn btn-primary" class="close"
                                 data-dismiss="modal">ACTUALIZAR CARGO&nbsp;&nbsp;<i class="gg-arrow-up-r"
                                     style="display: inline-block;top: 3px;"></i></button>
@@ -273,13 +271,11 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" onclick="ocultar2()">CERRAR</button>
+                    <button type="button" class="btn btn-default" onclick="ocultar2()">CERRAR4X</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <div class="modal fade modalCrud" id="Cargo"> -->
-
     <header>
         <div class="nav_barraLateral">
             <div id="sidenav-header">
@@ -359,7 +355,8 @@
         </div>
         <!-- <input type="text" class="form-control" id="inputTrabajador" style="z-index: 0;"> -->
         <div class="form-group">
-            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores">
+            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearTrabajadores" value="1"
+                id="AgregarEmpleadoBtn">
                 AGREGAR EMPLEADO&nbsp;&nbsp;<i class="gg-user-list" style="display: inline-block;"></i>
             </a>&nbsp;
             <!-- Primer paso -->
@@ -379,12 +376,10 @@
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
-                <!-- <tbody id="tablaTrabajadores"> -->
-                <!-- <tbody id="contenido2"> -->
                 <tbody id="contenido2" style="background: #E89A6B;">
-                    <!-- <div id="contenido2"></div> -->
                 </tbody>
-                <!-- </tbody> -->
+                <!-- <section  style="background: #E89A6B;"> -->
+                <!-- </section> -->
             </table>
         </div>
         <div class="modal fade" id="myModal2">
@@ -441,8 +436,10 @@
                             </div>
                             <div class="form-group col-5">
                                 <label for="pwd4">ID Cargo:</label>
-                                <input type="text" class="ferValid2 form-control" name="txtidCargo" id="txtidCargo"
-                                    data-toggle="tooltip" title="ingrese solo números" data-placement="right">
+                                <select id="contenidoCargosList3" class="form-control" name="txtidCargo"
+                                    onchange="ShowSelected();" style="text-align: center;"></select>
+                                <!-- <input type="text" class="ferValid2 form-control" name="txtidCargo" id="txtidCargo"
+                                    data-toggle="tooltip" title="ingrese solo números" data-placement="right"> -->
                             </div>
                             <button type="submit" id="btnEnviarE" class="btn btn-primary" class="close"
                                 data-dismiss="modal">ACTUALIZAR EMPLEADO</button>

@@ -29,6 +29,7 @@ window.addEventListener('load', (e) => {
             AdminInsert();
         }
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+            console.log("entramos a trabajarrr")
             empInsert();
         }
     });
@@ -133,6 +134,7 @@ function empEliminar(id) {
                 AdminSelect();
             }
             if (url === "/pages/trabajadores.html") {
+                ocultar2();
                 empSelect();
             }
             crearMensaje(data["resultado"]);
@@ -154,7 +156,8 @@ function empInsert() {
     registrosEmpl.append("txtcorreoEmpleado2", $('#txtcorreoEmpleado2').val());
     registrosEmpl.append("txtpasswordEmpleado2", $('#txtpasswordEmpleado2').val());
     registrosEmpl.append("txtencuestasRealizadas2", $('#txtencuestasRealizadas2').val());
-    registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
+    // registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
+    registrosEmpl.append("txtidCargo2", $('#contenidoCargosList2').val());
     $.ajax({
         type: "POST",
         url: "http://127.0.0.1:5000/empleados/create/",
@@ -207,7 +210,8 @@ function cursoUpdate() {
     registrosEmpl.append("txtcorreoEmpleado", $('#txtcorreoEmpleado').val());
     registrosEmpl.append("txtpasswordEmpleado", $('#txtpasswordEmpleado').val());
     registrosEmpl.append("txtencuestasRealizadas", $('#txtencuestasRealizadas').val());
-    registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
+    registrosEmpl.append("txtidCargo", $('#contenidoCargosList3').val());
+    // registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     $.ajax({
         type: "PUT",
         url: "http://127.0.0.1:5000/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",

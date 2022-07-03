@@ -134,7 +134,7 @@ function empEliminar(id) {
                 AdminSelect();
             }
             if (url === "/pages/trabajadores.html") {
-                ocultar2();
+                ocultar4();
                 empSelect();
             }
             crearMensaje(data["resultado"]);

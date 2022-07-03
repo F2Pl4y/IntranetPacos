@@ -100,6 +100,7 @@ function cargosCombo() {
             $('#contenidoCargosList').html(tabla);
             $('#contenidoCargosList2').html(tabla);
             $('#contenidoCargosList3').html(tabla);
+            $('#contenidoCargosList4').html(tabla);
             // var cod = document.getElementById("micargonuevo").value;
             // var cod = document.getElementById("contenidoCargosList").value;
             // console.log("codigo es:" + cod);
@@ -385,11 +386,16 @@ function ocultar() {
     $('#myModal3X').modal('hide');
     $('#myModal1X').modal('show');
 }
-function ocultar2() {
+function ocultar3() {
     $('#myModal4X').modal('hide');
     $('#myModal3X').modal('show');
 }
 function ocultar2() {
     $('#myModal4X').modal('hide');
+    $('#myModal1X').modal('show');
+}
+function ocultar4() {
+    $('#myModal4X').modal('hide');
+    $('#myModal3X').modal('hide');
     $('#myModal1X').modal('show');
 }

@@ -1,5 +1,5 @@
 const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
-// const d ominio = "http://127.0.0.1:5000/";
+// const dominio2 = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');
@@ -40,8 +40,8 @@ window.addEventListener('load', (e) => {
 function cargosCombo2() {
     $.ajax({
         type: "GET",
-        url: dominio + "cargos/select/",
-        // url: dominio+ "cargos/select/",
+        url: dominio2 + "cargos/select/",
+        // url: dominio2+ "cargos/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -74,11 +74,11 @@ function cargosCombo2() {
     });
 }
 function empSelect() {
-    console.log("el dominio es: " + dominio);
+    console.log("el dominio2 es: " + dominio2);
     $.ajax({
         type: "GET",
-        url: dominio + "empleados/select/",
-        // url: dominio+ "empleados/select/",
+        url: dominio2 + "empleados/select/",
+        // url: dominio2+ "empleados/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -110,8 +110,8 @@ function empSelect() {
 function AdminSelect() {
     $.ajax({
         type: "GET",
-        url: dominio + "admins/select/",
-        // url: dominio+ "admins/select/",
+        url: dominio2 + "admins/select/",
+        // url: dominio2+ "admins/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -144,8 +144,8 @@ function AdminSelect() {
 function empGet(id) {
     $.ajax({
         type: "GET",
-        url: dominio + "empleados/get/" + id + "/",
-        // url: dominio+ "empleados/get/" + id + "/",
+        url: dominio2 + "empleados/get/" + id + "/",
+        // url: dominio2+ "empleados/get/" + id + "/",
         dataType: "json",
         success: function (data) {
             $('#txtidEmpleado').val(data["resultado"]["idEmpleado"]);
@@ -165,8 +165,8 @@ function empEliminar(id) {
     const url = window.location.pathname;
     $.ajax({
         type: "DELETE",
-        url: dominio + "empleados/delete/" + id + "/",
-        // url: dominio+ "empleados/delete/" + id + "/",
+        url: dominio2 + "empleados/delete/" + id + "/",
+        // url: dominio2+ "empleados/delete/" + id + "/",
         dataType: "json",
         success: function (data) {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
@@ -199,8 +199,8 @@ function empInsert() {
     registrosEmpl.append("txtidCargo2", $('#contenidoCargosList2').val());
     $.ajax({
         type: "POST",
-        url: dominio + "empleados/create/",
-        // url: dominio+ "empleados/create/",
+        url: dominio2 + "empleados/create/",
+        // url: dominio2+ "empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -225,8 +225,8 @@ function AdminInsert() {
     // registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     $.ajax({
         type: "POST",
-        url: dominio + "empleados/create/",
-        // url: dominio+ "empleados/create/",
+        url: dominio2 + "empleados/create/",
+        // url: dominio2+ "empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -254,8 +254,8 @@ function cursoUpdate() {
     // registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     $.ajax({
         type: "PUT",
-        url: dominio + "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
-        // url: dominio+ "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        url: dominio2 + "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        // url: dominio2+ "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,

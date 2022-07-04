@@ -1,5 +1,5 @@
 const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
-// const d ominio = "http://127.0.0.1:5000/";
+// const dominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     console.log("la url es:", url);
@@ -44,9 +44,42 @@ window.addEventListener('load', (e) => {
         }
     });
     if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-        empSelect();
+        empSelectCargos();
     }
 });
+function empSelectCargos() {
+    console.log("el dominio es: " + dominio);
+    $.ajax({
+        type: "GET",
+        url: dominio + "empleados/select/",
+        dataType: "json",
+        success: function (data) {
+            var tabla = '';
+            $.each(data["resultado"], function (llave, valor) {
+                var template = '<tr>';
+                template += '<td>' + valor["idEmpleado"] + '</td>';
+                template += '<td>' + valor["nombreEmpleado"] + '</td>';
+                template += '<td>' + valor["correoEmpleado"] + '</td>';
+                template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                template += '<td>' + valor["estado"] + '</td>';
+                template += '<td>' + valor["idCargo"] + '</td>';
+                template += '<td class="grupoBotones">';
+                template += '<div class="btn-group">';
+                template += '<button class="btn">';
+                template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2" onclick=empGet(' + valor["idEmpleado"] + ')><i class="gg-info"></i></a>';
+                template += '</button>';
+                template += '<button class="btn">';
+                template += '<a href="#" class="btn btn-danger" onclick="return empEliminar(' + valor["idEmpleado"] + ')"><i class="gg-trash"></i></a>';
+                template += '</button>';
+                template += '</div>';
+                template += '</td>';
+                template += '</tr>';
+                tabla += template;
+            });
+            $('#contenido2').html(tabla);
+        }
+    });
+}
 function CargoUpdateEmp() {
     const url = window.location.pathname;
     var registrosEmpl = new FormData();
@@ -57,7 +90,7 @@ function CargoUpdateEmp() {
     $.ajax({
         type: "PUT",
         url: dominio + "empleados/update2/" + registrosEmpl.get("miidnuevo") + "/",
-        // url: dominio+ "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        // url: dominio + "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -69,10 +102,9 @@ function CargoUpdateEmp() {
                 cargosCombo();
             }
             if (url === "/pages/trabajadores.html") {
-                empSelect();
+                empSelectCargos();
                 cargosCombo();
             }
-            // crearMensaje(data["mensaje"]);
         }
     });
     // limpiar contraseña
@@ -244,8 +276,6 @@ function cargoUpdate() {
                 cargosCombo();
                 cargosSelect();
             }
-            // crearMensaje(data["mensaje"]);
-            // crearMensaje(data["exito"]);
         }
     });
     // limpiar contraseña
@@ -317,7 +347,6 @@ function deshabilitar(id) {
                     console.log("vacio");
                 }
             }
-            // crearMensaje(data["resultado"]);
         }
     });
 }

@@ -10,7 +10,7 @@ window.addEventListener('load', (e) => {
             console.log("actualizando el cargo");
             cargoUpdate(); cargosCombo();
             $('#myModal2X').modal('hide');
-            $('#myModal3X').modal('show');
+            $('#myModal1X').modal('show');
         }
         if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
             console.log("la url dentro del pages es:", url);

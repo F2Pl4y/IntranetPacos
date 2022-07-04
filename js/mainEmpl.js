@@ -1,5 +1,5 @@
-// const dominio2 = "http://f3rn4nd021py.pythonanywhere.com/";
-const dominio2 = "http://127.0.0.1:5000/";
+const dominio2 = "http://f3rn4nd021py.pythonanywhere.com/";
+// const dominio2 = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');

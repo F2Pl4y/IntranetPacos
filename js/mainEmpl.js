@@ -1,5 +1,5 @@
 const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominio = "http://127.0.0.1:5000/";
+// const d ominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');
@@ -74,7 +74,7 @@ function cargosCombo2() {
     });
 }
 function empSelect() {
-    console.log("el dominio es: "+dominio);
+    console.log("el dominio es: " + dominio);
     $.ajax({
         type: "GET",
         url: dominio + "empleados/select/",
@@ -275,22 +275,19 @@ function cursoUpdate() {
     formulario2.reset();
 }
 // ocultar contraseña con ojito
-$("#imgContrasena").click(function () {
+// $("#imgContrasena").click(function (){
+//     var control = $(this);
+//     var estatus = control.data('activo');
 
-    var control = $(this);
-    var estatus = control.data('activo');
-
-    var icon = control.find('span');
-    if (estatus == false) {
-
-        control.data('activo', true);
-        $(icon).removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close');
-        $("#txtPassword").attr('type', 'text');
-    }
-    else {
-
-        control.data('activo', false);
-        $(icon).removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open');
-        $("#txtPassword").attr('type', 'password');
-    }
-});
+//     var icon = control.find('span');
+//     if (estatus == false) {
+//         control.data('activo', true);
+//         $(icon).removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close');
+//         $("#txtPassword").attr('type', 'text');
+//     }
+//     else {
+//         control.data('activo', false);
+//         $(icon).removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open');
+//         $("#txtPassword").attr('type', 'password');
+//     }
+// });

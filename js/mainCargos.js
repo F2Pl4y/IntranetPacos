@@ -110,7 +110,6 @@ function cargosCombo() {
     $.ajax({
         type: "GET",
         url: dominio + "cargos/select/",
-        // url: dominio+ "cargos/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -195,7 +194,6 @@ function empGetCargos(id) {
     $.ajax({
         type: "GET",
         url: dominio + "empleadosXcargo/get/" + id + "/",
-        // url: dominio+ "empleados/get/" + id + "/",
         dataType: "json",
         success: function (data) {
             $('#tituloModalCargoDes').html("<br>''" + data["resultado"]["nombreEmpleado"] + "''");
@@ -215,7 +213,6 @@ function cargoGet(id) {
     $.ajax({
         type: "GET",
         url: dominio + "cargos/get/" + id + "/",
-        // url: dominio+ "cargos/get/" + id + "/",
         dataType: "json",
         success: function (data) {
             $('#txtidCargoModal2x').val(data["resultado"]["idCargo2"]);
@@ -227,12 +224,12 @@ function cargoGet(id) {
     });
 }
 function cargoInsert() {
+    console.log("entre a insert")
     var registrosEmpl = new FormData();
     registrosEmpl.append("txtnombreCargo", $('#txtnombreCargo').val());
     $.ajax({
         type: "POST",
         url: dominio + "cargos/create/",
-        // url: dominio+ "cargos/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -297,7 +294,6 @@ function deshabilitar(id) {
     $.ajax({
         type: "PUT",
         url: dominio + "cargos/update2/" + id + "/",
-        // url: dominio+ "cargos/update2/" + id + "/",
         dataType: "json",
         success: function (data) {
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {

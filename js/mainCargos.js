@@ -3,8 +3,8 @@ const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     console.log("la url es:", url);
-    const boton = document.getElementById('btnEnviarCI');
-    boton.addEventListener('click', (e) => {
+    const botonCargos = document.getElementById('btnEnviarCI');
+    botonCargos.addEventListener('click', (e) => {
         e.preventDefault();
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
             console.log("actualizando el cargo");
@@ -24,10 +24,10 @@ window.addEventListener('load', (e) => {
 });
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
-    const boton1 = document.getElementById('btnEnviarE2');
-    boton1.addEventListener('click', (e) => {
+    const botonCargos2 = document.getElementById('btnEnviarE2');
+    botonCargos2.addEventListener('click', (e) => {
         e.preventDefault();
-        const id = document.getElementById("valorActualizar").value;
+        // const id = document.getElementById("valorActualizar").value;
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
             // alert("estamos en trabajadores");
             ocultar2();

@@ -77,7 +77,6 @@ function empSelect() {
     $.ajax({
         type: "GET",
         url: dominio2 + "empleados/select/",
-        // url: dominio2+ "empleados/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -150,7 +149,8 @@ function empGet(id) {
             $('#txtcorreoEmpleado').val(data["resultado"]["correoEmpleado"]);
             $('#txtencuestasRealizadas').val(data["resultado"]["encuestasRealizadas"]);
             $('#txtestado').val(data["resultado"]["estado"]);
-            $('#txtidCargo').val(data["resultado"]["idCargo"]);
+            $('#contenidoCargosList3').val(data["resultado"]["idCargo"]);
+            // $('#txtidCargo').val(data["resultado"]["idCargo"]);
             // $('#tituloModal').html("Actualizando datos del empleado: <br>" + data["resultado"]["nombreEmpleado"]);
             $('#tituloModal').html("<br>''" + data["resultado"]["nombreEmpleado"] + "''");
         }

@@ -107,7 +107,8 @@ function CargoUpdateEmp() {
         }
     });
     // limpiar contraseña
-    formulario3.reset();
+    // formulario3.reset();
+    reset();
 }
 function cargosCombo() {
     $.ajax({
@@ -212,6 +213,7 @@ function empGetCargos(id) {
         }
     });
     // formulario2.reset();
+    reset();
 }
 function cargoGet(id) {
     console.log("el id es:", id);
@@ -249,7 +251,8 @@ function cargoInsert() {
         }
     });
     // este "formulario" es un id, con la funcion reset limpiamos todo el formulario
-    formulario.reset();
+    // formulario.reset();
+    reset();
 }
 function cerrarModal() {
     $('#myModal3').modal('hide');
@@ -278,7 +281,20 @@ function cargoUpdate() {
         }
     });
     // limpiar contraseña
-    formulario3.reset();
+    // formulario3.reset();
+    reset();
+}
+function reset() {
+    $("#myModal2").find("input,textarea,select").val("");
+    $("#myModal2 input[type='checkbox']").prop('checked', false).change();
+    $("#myModal1X").find("input,textarea,select").val("");
+    $("#myModal1X input[type='checkbox']").prop('checked', false).change();
+    $("#myModal2X").find("input,textarea,select").val("");
+    $("#myModal2X input[type='checkbox']").prop('checked', false).change();
+    $("#myModal3X").find("input,textarea,select").val("");
+    $("#myModal3X input[type='checkbox']").prop('checked', false).change();
+    $("#myModal4X").find("input,textarea,select").val("");
+    $("#myModal4X input[type='checkbox']").prop('checked', false).change();
 }
 function deshabilitar(id) {
     const url = window.location.pathname;

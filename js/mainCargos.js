@@ -360,7 +360,6 @@ function Recargardeshabilitar(id) {
     $.ajax({
         type: "PUT",
         url: dominio + "EmpleadosXcargo/select/" + id + "/",
-        // url: dominio+ "cargos/update2/" + id + "/",
         dataType: "json",
         success: function (data) {
             console.log("el id de Recargar deshabilitar es: " + id);

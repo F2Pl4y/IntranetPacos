@@ -1,4 +1,4 @@
-const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominio = "https://f3rn4nd021py.pythonan ywhere .com/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');
@@ -39,8 +39,8 @@ window.addEventListener('load', (e) => {
 function cargosCombo2() {
     $.ajax({
         type: "GET",
-        url: "https://f3rn4nd021py.pythonanywhere.com/cargos/select/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/cargos/select/",
+        url: dominio + "cargos/select/",
+        // url: dominio+ "cargos/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -75,8 +75,8 @@ function cargosCombo2() {
 function empSelect() {
     $.ajax({
         type: "GET",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/select/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/select/",
+        url: dominio + "empleados/select/",
+        // url: dominio+ "empleados/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -108,8 +108,8 @@ function empSelect() {
 function AdminSelect() {
     $.ajax({
         type: "GET",
-        url: "https://f3rn4nd021py.pythonanywhere.com/admins/select/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/admins/select/",
+        url: dominio + "admins/select/",
+        // url: dominio+ "admins/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -142,8 +142,8 @@ function AdminSelect() {
 function empGet(id) {
     $.ajax({
         type: "GET",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/get/" + id + "/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/get/" + id + "/",
+        url: dominio + "empleados/get/" + id + "/",
+        // url: dominio+ "empleados/get/" + id + "/",
         dataType: "json",
         success: function (data) {
             $('#txtidEmpleado').val(data["resultado"]["idEmpleado"]);
@@ -163,8 +163,8 @@ function empEliminar(id) {
     const url = window.location.pathname;
     $.ajax({
         type: "DELETE",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/delete/" + id + "/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/delete/" + id + "/",
+        url: dominio + "empleados/delete/" + id + "/",
+        // url: dominio+ "empleados/delete/" + id + "/",
         dataType: "json",
         success: function (data) {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
@@ -197,8 +197,8 @@ function empInsert() {
     registrosEmpl.append("txtidCargo2", $('#contenidoCargosList2').val());
     $.ajax({
         type: "POST",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
+        url: dominio + "empleados/create/",
+        // url: dominio+ "empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -223,8 +223,8 @@ function AdminInsert() {
     // registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     $.ajax({
         type: "POST",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/create/",
+        url: dominio + "empleados/create/",
+        // url: dominio+ "empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -252,8 +252,8 @@ function cursoUpdate() {
     // registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     $.ajax({
         type: "PUT",
-        url: "https://f3rn4nd021py.pythonanywhere.com/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
-        // url: "https://f3rn4nd021py.pythonanywhere.com/empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        url: dominio + "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        // url: dominio+ "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,

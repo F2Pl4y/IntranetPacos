@@ -1,4 +1,4 @@
-const dominio2 = "http://f3rn4nd021py.pythonanywhere.com/";
+const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
 // const dominio2 = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
@@ -110,7 +110,6 @@ function AdminSelect() {
     $.ajax({
         type: "GET",
         url: dominio2 + "admins/select/",
-        // url: dominio2+ "admins/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -144,7 +143,6 @@ function empGet(id) {
     $.ajax({
         type: "GET",
         url: dominio2 + "empleados/get/" + id + "/",
-        // url: dominio2+ "empleados/get/" + id + "/",
         dataType: "json",
         success: function (data) {
             $('#txtidEmpleado').val(data["resultado"]["idEmpleado"]);
@@ -165,7 +163,6 @@ function empEliminar(id) {
     $.ajax({
         type: "DELETE",
         url: dominio2 + "empleados/delete/" + id + "/",
-        // url: dominio2+ "empleados/delete/" + id + "/",
         dataType: "json",
         success: function (data) {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
@@ -199,7 +196,6 @@ function empInsert() {
     $.ajax({
         type: "POST",
         url: dominio2 + "empleados/create/",
-        // url: dominio2+ "empleados/create/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,
@@ -273,20 +269,3 @@ function cursoUpdate() {
     // limpiar contraseña
     formulario2.reset();
 }
-// ocultar contraseña con ojito
-// $("#imgContrasena").click(function (){
-//     var control = $(this);
-//     var estatus = control.data('activo');
-
-//     var icon = control.find('span');
-//     if (estatus == false) {
-//         control.data('activo', true);
-//         $(icon).removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close');
-//         $("#txtPassword").attr('type', 'text');
-//     }
-//     else {
-//         control.data('activo', false);
-//         $(icon).removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open');
-//         $("#txtPassword").attr('type', 'password');
-//     }
-// });

@@ -32,15 +32,11 @@ window.addEventListener('load', (e) => {
             // alert("estamos en trabajadores");
             ocultar2();
             // $('#myModal4X').modal('show');
-            // console.log("valor de contenido inicial: " + contenido)
             CargoUpdateEmp();
             // Recargardeshabilitar(id);
             // Recargardeshabilitar(contenido);
             // deshabilitar(contenido);
             // aqui va el actulizar la lista de modal3x
-            // console.log("valor de contenido inicial: " + contenido)
-            // console.log("valor de contenido final: " + contenido)
-            console.log("final de valorActualizar: " + contenido)
         }
     });
     if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
@@ -126,7 +122,6 @@ function cargosCombo() {
                     // template += '<option>' + valor["idCargo"] + '</option></div>';
                     tabla += template;
                 } else {
-                    // console.log("el cargo es: " + valor["idCargo"]);
                     // var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"];
                     var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
                     template += '</option>';
@@ -307,7 +302,6 @@ function deshabilitar(id) {
         success: function (data) {
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
                 cargosSelect();
-                // console.log("tamaño data: " + data.resultado.length);
                 if (data.resultado.length > 0) {
                     var tabla = '';
                     console.log("hay gente");
@@ -366,7 +360,6 @@ function deshabilitar(id) {
     });
 }
 function Recargardeshabilitar(id) {
-    console.log("el id de Recargar deshabilitar es: " + id);
     const url = window.location.pathname;
     $.ajax({
         type: "PUT",

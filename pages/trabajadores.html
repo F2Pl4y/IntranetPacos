@@ -74,9 +74,9 @@
                         <input type="hidden" name="txtidEmpleado" id="txtidEmpleado">
                         <div class="form-group col-5">
                             <label for="email">Nombre:</label>
-                            <input type="text" class="campoNumeros form-control" name="txtnombreEmpleado2"
+                            <input type="text" class="form-control" name="txtnombreEmpleado2"
                                 placeholder="Ingrese su nombre" id="txtnombreEmpleado2" data-toggle="tooltip"
-                                title="Su nombre debe ser igual o mayor a 3 dígitos" data-placement="right">
+                                title="Su nombre debe ser igual o mayor a 3 dígitos" data-placement="right" onkeypress="return SoloLetras(event);">
                         </div>
                         <div class="form-group col-5">
                             <label for="pwd">Correo:</label>
@@ -101,7 +101,7 @@
                             <label for="email3">Encuestas Realizadas:</label>
                             <input type="text" class="campoLetras form-control" name="txtencuestasRealizadas2"
                                 id="txtencuestasRealizadas2" data-toggle="tooltip" title="Ingrese sólo números"
-                                data-placement="right">
+                                data-placement="right" onkeypress="return SoloNumeros(event);">
                         </div>
                         <div class="form-group col-5">
                             <label for="pwd3">Estado:</label>
@@ -396,9 +396,10 @@
                             <input type="hidden" name="txtidEmpleado" id="txtidEmpleado">
                             <div class="form-group col-5">
                                 <label for="email">Nombre del empleado:</label>
-                                <input type="text" class="campoNumeros form-control" name="txtnombreEmpleado"
+                                <input type="text" class="form-control" name="txtnombreEmpleado"
                                     placeholder="Ingrese su nombre" id="txtnombreEmpleado" data-toggle="tooltip"
-                                    title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom">
+                                    title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom"
+                                    onkeypress="return SoloLetras(event);">
                             </div>
                             <div class="form-group col-5">
                                 <label for="pwd">Correo:</label>
@@ -423,7 +424,7 @@
                                 <label for="email3">Encuestas Realizadas:</label>
                                 <input type="text" class="campoLetras form-control" name="txtencuestasRealizadas"
                                     id="txtencuestasRealizadas" data-toggle="tooltip" title="Ingrese sólo números"
-                                    data-placement="right">
+                                    data-placement="right" onkeypress="return SoloNumeros(event);">
                             </div>
                             <div class="form-group col-5">
                                 <label for="pwd3">Estado:</label>
@@ -440,12 +441,37 @@
                             </div>
                             <button type="submit" id="btnEnviarE" class="btn btn-primary" class="close"
                                 data-dismiss="modal">ACTUALIZAR EMPLEADO</button>
+                            <!-- <h2>Escribe sólo teclas permitidas</h2>
+                            Mi Campo 1 <input type="text" id="" onkeypress="return SoloLetras(event);"> <br>
+                            Mi Campo 2 <input type="text" id="miCampo2"> -->
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <script async>
+        // function SoloLetras(e) {
+        //     key = e.keyCode || e.which;
+        //     tecla = String.fromCharCode(key).toString();
+        //     letras = "ABCDEFGHIJKLMNNÑOPORSTUVWKYZAEIÓUabcdefghijklmnñopqrstuvwxyzáéióú";
+        //     especiales = [8, 13, 32];
+        //     tecla_especial = false;
+        //     for (var i in especiales) {
+        //         if (key == especiales[i]) {
+        //             tecla_especial = true;
+        //             break;
+        //         }
+        //     }
+        //     if (letras.indexOf(tecla) == -1 & !tecla_especial) {
+        //         // alert("solo letras");
+        //         return false;
+        //     }
+        // }
+    </script>
+
+
+
     <script src="https://kit.fontawesome.com/f78c574cc2.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -456,8 +482,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://rawcdn.githack.com/franz1628/validacionKeyCampo/bce0e442ee71a4cf8e5954c27b44bc88ff0a8eeb/validCampoFranz.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <!-- <script async src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <script async src="../js/mainEmpl.js"></script>
     <script async src="../js/mainCargos.js"></script>
     <script async src="../js/validaciones.js"></script>

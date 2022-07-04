@@ -82,9 +82,10 @@
                         <input type="hidden" name="txtidEmpleado" id="txtidEmpleado">
                         <div class="form-group col-5">
                             <label for="email">Nombre</label>
-                            <input type="text" class="ferValid form-control" name="txtnombreEmpleado2"
+                            <input type="text" class="form-control" name="txtnombreEmpleado2"
                                 placeholder="Ingrese su nombre" id="txtnombreEmpleado2" data-toggle="tooltip"
-                                title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom">
+                                title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom"
+                                onkeypress="return SoloLetras(event);">
                         </div>
 
                         <div class="form-group col-5">
@@ -115,9 +116,9 @@
                         </div>
                         <div class="form-group col-5">
                             <label for="email3">Encuestas Realizadas:</label>
-                            <input type="text" class="ferValid2 form-control" name="txtencuestasRealizadas2"
+                            <input type="text" class="form-control" name="txtencuestasRealizadas2"
                                 id="txtencuestasRealizadas2" data-toggle="tooltip" title="Ingrese sólo números"
-                                data-placement="right">
+                                data-placement="right" onkeypress="return SoloNumeros(event);">
                         </div>
                         <div class="form-group col-5">
                             <label for="pwd3">Estado:</label>
@@ -258,9 +259,10 @@
                             <input type="hidden" name="txtidEmpleado" id="txtidEmpleado">
                             <div class="form-group col-5">
                                 <label for="email">Nombre del administrador:</label>
-                                <input type="text" class="ferValid form-control" name="txtnombreEmpleado"
+                                <input type="text" class="form-control" name="txtnombreEmpleado"
                                     placeholder="Ingrese su nombre" id="txtnombreEmpleado" data-toggle="tooltip"
-                                    title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom">
+                                    title="su nombre debe ser igual o mayor a 3 dígitos" data-placement="bottom"
+                                    onkeypress="return SoloLetras(event);">
                             </div>
                             <div class="form-group col-5">
                                 <label for="pwd">Correo:</label>
@@ -287,7 +289,7 @@
                                 <label for="email3">Encuestas Realizadas:</label>
                                 <input type="text" class="ferValid2 form-control" name="txtencuestasRealizadas"
                                     id="txtencuestasRealizadas" data-toggle="tooltip" title="Ingrese sólo números"
-                                    data-placement="right">
+                                    data-placement="right" onkeypress="return SoloNumeros(event);">
                             </div>
                             <div class="form-group col-5">
                                 <label for="pwd3">Estado:</label>

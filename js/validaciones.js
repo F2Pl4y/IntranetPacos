@@ -1,6 +1,7 @@
 // validar SOLO letras
 $("input.ferValid").bind('keypress', function (event) {
-    var regex = new RegExp("^[a-zA-Z ]+$");
+    let regex = new RegExp("^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$");
+    // var regex = new RegExp("^[a-zA-Z ]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
         event.preventDefault();
@@ -38,5 +39,14 @@ $('#limpiarAgregar').click(function () {
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
-// faltaria validar estos datos con python
+// faltaria validar estos datos con python´
+
+// validar letras y números
+
+$(function () {
+    //Para escribir solo letras
+    $('#campoNumeros').validCampoFranz('abcdefghijklmnñopqrstuvwxyzáéiou');
+    //Para escribir solo numeros    
+    $('#campoLetras').validCampoFranz('0123456789');
+});
 

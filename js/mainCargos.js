@@ -1,5 +1,5 @@
-// const dominio = "ht tps://f3rn4nd021py.pythonanywhere.com/";
-// const dominio = "ht tp://127.0.0.1:5000/";
+const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
+// const dominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     console.log("la url es:", url);

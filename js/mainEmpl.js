@@ -1,5 +1,5 @@
-// const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
-const dominio = "http://127.0.0.1:5000/";
+const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
+// const dominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');
@@ -19,7 +19,7 @@ window.addEventListener('load', (e) => {
     if (url === "/pages/cuentasadmin") {
         AdminSelect();
     }
-    if (url === "/pages/trabajadores.html") {
+    if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
         empSelect();
     }
 });
@@ -74,6 +74,7 @@ function cargosCombo2() {
     });
 }
 function empSelect() {
+    console.log("el dominio es: "+dominio);
     $.ajax({
         type: "GET",
         url: dominio + "empleados/select/",

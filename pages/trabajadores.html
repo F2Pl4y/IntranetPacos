@@ -78,7 +78,8 @@
                             <label for="email">Nombre:</label>
                             <input type="text" class="form-control" name="txtnombreEmpleado2"
                                 placeholder="Ingrese su nombre" id="txtnombreEmpleado2" data-toggle="tooltip"
-                                title="Su nombre debe ser igual o mayor a 3 dígitos" data-placement="right" onkeypress="return SoloLetras(event);">
+                                title="Su nombre debe ser igual o mayor a 3 dígitos" data-placement="right"
+                                onkeypress="return SoloLetras(event);">
                         </div>
                         <div class="form-group col-5">
                             <label for="pwd">Correo:</label>
@@ -150,19 +151,21 @@
                                     id="limpiarAgregar">AGREGAR CARGO&nbsp;&nbsp;<i class="gg-play-list-add"
                                         style="display: inline-block;top: -4px;"></i></button>
                             </div>
-                            <table class="table table-bordered" style="text-align: center;">
-                                <thead>
-                                    <tr>
-                                        <th>ID's</th>
-                                        <th>CARGO</th>
-                                        <th>ESTADO</th>
-                                        <th>ACCIONESkk</th>
-                                    </tr>
-                                </thead>
-                                <!-- Segundo paso -->
-                                <tbody id="contenido3">
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" style="text-align: center;">
+                                    <thead>
+                                        <tr>
+                                            <th>ID's</th>
+                                            <th>CARGO</th>
+                                            <th>ESTADO</th>
+                                            <th>ACCIONESkk</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- Segundo paso -->
+                                    <tbody id="contenido3">
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

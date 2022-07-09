@@ -182,14 +182,11 @@ function cargosSelect() {
                     tabla += template;
                 }
             });
-            // tercer paso
             $('#contenido3').html(tabla);
         }
     });
 }
 function empGetCargos(id) {
-    // sexto paso
-    // console.log("id dentro de empGetCargos: " + id);
     $('#myModal3X').modal('hide');
     $.ajax({
         type: "GET",
@@ -198,7 +195,6 @@ function empGetCargos(id) {
         success: function (data) {
             $('#tituloModalCargoDes').html("<br>''" + data["resultado"]["nombreEmpleado"] + "''");
             $('#miidnuevo').val(data["resultado"]["idEmpleado"]);
-            // utilizamos valorActualizar para poder "actualizar el modal 3x"
             $('#valorActualizar').val(data["resultado"]["idCargo"]);
             $('#micargonuevo').val(data["resultado"]["idCargo"]);
             $('#tituloModalCargoDes').val(data["resultado"]["nombreEmpleado"]);
@@ -345,7 +341,6 @@ function deshabilitar(id) {
                         }
                     });
                     $('#contenido4').html(tabla);
-                    // $('#myModal3X').modal('show');
                     $('#modal3x').html("<br>''" + data["cargo"] + "''");
                 }
                 else {
@@ -364,13 +359,7 @@ function Recargardeshabilitar(id) {
         success: function (data) {
             console.log("el id de Recargar deshabilitar es: " + id);
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-                // cargosSelect();
-                // console.log("la data es:" + data.length);
-                // console.log(data["resultado"]);
-                // console.log("tamaño data: " + data.resultado.length);
-                // if (data.resultado.length > 0) {
                 var tabla = '';
-                // $('#myModal1X').modal('hide');
                 $('#myModal3X').modal('show');
                 $.each(data["resultado"], function (llave, valor) {
                     if (valor["idCargo"] == 1) {
@@ -391,7 +380,6 @@ function Recargardeshabilitar(id) {
                         template += '</tr>';
                         tabla += template;
                     } else {
-                        // $('#myModal3X').modal('hide');
                         var template = '<tr>';
                         template += '<td>' + valor["idEmpleado"] + '</td>';
                         template += '<td>' + valor["nombreEmpleado"] + '</td>';
@@ -414,9 +402,7 @@ function Recargardeshabilitar(id) {
                         tabla += template;
                     }
                 });
-                // $('#contenido5').html(tabla);
                 $('#contenido4').html(tabla);
-                // $('#modal3x').html("<br>''" + data["cargo"] + "''");
             }
         }
     });

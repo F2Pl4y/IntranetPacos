@@ -46,8 +46,6 @@ function validarOperaciones(idCargo) {
     let cadena = "";
     if (idCargo === 1) {
         cadena = '<li>' +
-
-
             '<a href="trabajadores.html">' +
             '<i class="fa fa-user-tie"></i>Trabajadores' +
             '</a>' +
@@ -202,9 +200,6 @@ function login() {
 //     }
 // }
 window.addEventListener('load', (e) => {
-    // const url = window.location.pathname;
-    // console.log("la url aqui es de -> " + url);
-    // const boton2 = document.getElementById('btnPerfil');
     modalDatosLogin();
 
 });
@@ -216,7 +211,6 @@ function modalDatosLogin() {
             url: dominioSesion + "empleados/loginget/" + id + "/",
             dataType: "json",
             success: function (data) {
-
                 $('#fertitulo').html("sss");
                 let carta = `<div>Correo: ${data["resultado"]["correoEmpleado"]}</div>`
                 carta += `<div>Nombre: ${data["resultado"]["nombreEmpleado"]}
@@ -226,49 +220,8 @@ function modalDatosLogin() {
                 carta += `<div>Cargo: ${data["resultado"]["nombreCargo"]}
                     </div>`
                 $('#llenarperfil').html(carta);
-
-                // $('#correoGroup').val(data["resultado"]["correoEmpleado"]);
-                // $('#nombreGroup').val(data["resultado"]["nombreEmpleado"]);
-                // $('#IDGroup').val(data["resultado"]["idCargo"]);
-                // $('#IDEMPLGroup').val(data["resultado"]["idEmpleado"]);
-                // $('#encuestasGroup').val(data["resultado"]["encuestasRealizadas"]);
             }
 
         });
     }
 }
-// function modalDatosLogin2() {
-//     const id = sessionStorage.getItem("idEmpleado");
-//     $.ajax({
-//         type: "GET",
-//         // url: dominioSesion + "empleados/select/",
-//         url: dominioSesion + "empleados/get/" + id + "/",
-//         // url: "http://127.0.0.1:5000/empleados/get/18",
-//         dataType: "json",
-//         success: function (data) {
-//             console.log("->" + data["resultado"]["idCargo"]);
-//             $('#correoGroup').val(data["resultado"]["correoEmpleado"]);
-//             $('#nombreGroup').val(data["resultado"]["nombreEmpleado"]);
-//             $('#IDGroup').val(data["resultado"]["idCargo"]);
-//             $('#IDEMPLGroup').val(data["resultado"]["idEmpleado"]);
-//             $('#encuestasGroup').val(data["resultado"]["encuestasRealizadas"]);
-//             var template = '<tr>';
-//             template += '<td>' + valor["idEmpleado"] + '</td>';
-//             template += '<td>' + valor["nombreEmpleado"] + '</td>';
-//             template += '<td>' + valor["correoEmpleado"] + '</td>';
-//             template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-//             template += '<td>' + valor["estado"] + '</td>';
-//             template += '<td>' + valor["idCargo"] + '</td>';
-//             template += '</tr>';
-//             tabla += template;
-//             $('#prueba2').html(tabla);
-//             if (data["resultado"]["idCargo"] == 1) {
-//                 $('#CargoGroup').html("Cuenta Administrador");
-//             }
-//             else {
-//                 $('#CargoGroup').html("Cuenta Trabajador");
-//             }
-//         }
-
-//     });
-// }

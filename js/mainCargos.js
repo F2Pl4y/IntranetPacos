@@ -2,18 +2,15 @@
 const dominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
-    console.log("la url es:", url);
     const botonCargos = document.getElementById('btnEnviarCI');
     botonCargos.addEventListener('click', (e) => {
         e.preventDefault();
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-            console.log("actualizando el cargo");
             cargoUpdate(); cargosCombo();
             $('#myModal2X').modal('hide');
             $('#myModal1X').modal('show');
         }
         if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
-            console.log("la url dentro del pages es:", url);
             cargosCombo();
         }
     });
@@ -136,7 +133,6 @@ function cargosCombo() {
             $('#contenidoCargosList5').html(tabla);
             // var cod = document.getElementById("micargonuevo").value;
             // var cod = document.getElementById("contenido Cargos List").value;
-            // console.log("codigo es:" + cod);
         }
     });
 }
@@ -205,7 +201,6 @@ function empGetCargos(id) {
     reset();
 }
 function cargoGet(id) {
-    console.log("el id es:", id);
     $.ajax({
         type: "GET",
         url: dominio + "cargos/get/" + id + "/",
@@ -220,7 +215,6 @@ function cargoGet(id) {
     });
 }
 function cargoInsert() {
-    console.log("entre a insert")
     var registrosEmpl = new FormData();
     registrosEmpl.append("txtnombreCargo", $('#txtnombreCargo').val());
     $.ajax({
@@ -286,7 +280,6 @@ function reset() {
 }
 function deshabilitar(id) {
     const url = window.location.pathname;
-    console.log("id es deshabilitar (): " + id);
     $.ajax({
         type: "PUT",
         url: dominio + "cargos/update2/" + id + "/",
@@ -296,11 +289,9 @@ function deshabilitar(id) {
                 cargosSelect();
                 if (data.resultado.length > 0) {
                     var tabla = '';
-                    console.log("hay gente");
                     $('#myModal1X').modal('hide');
                     $('#myModal3X').modal('show');
                     $.each(data["resultado"], function (llave, valor) {
-                        console.log("el idcargo de update 2 es:" + valor["idCargo"]);
                         if (valor["idCargo"] == 1) {
                             var template = '<tr>';
                             template += '<td>' + valor["idEmpleado"] + '</td>';
@@ -357,7 +348,6 @@ function Recargardeshabilitar(id) {
         url: dominio + "EmpleadosXcargo/select/" + id + "/",
         dataType: "json",
         success: function (data) {
-            console.log("el id de Recargar deshabilitar es: " + id);
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
                 var tabla = '';
                 $('#myModal3X').modal('show');

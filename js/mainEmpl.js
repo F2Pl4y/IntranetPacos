@@ -32,7 +32,6 @@ window.addEventListener('load', (e) => {
             AdminInsert();
         }
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-            console.log("entramos a trabajarrr")
             empInsert();
         }
     });
@@ -53,7 +52,6 @@ function cargosCombo2() {
                     // template += '<option>' + valor["idCargo"] + '</option></div>';
                     tabla += template;
                 } else {
-                    // console.log("el cargo es: " + valor["idCargo"]);
                     // var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"];
                     var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
                     template += '</option>';
@@ -69,7 +67,6 @@ function cargosCombo2() {
             $('#contenidoCargosList5').html(tabla);
             // var cod = document.getElementById("micargonuevo").value;
             // var cod = document.getElementById("contenido Cargos List").value;
-            // console.log("codigo es:" + cod);
         }
     });
 }

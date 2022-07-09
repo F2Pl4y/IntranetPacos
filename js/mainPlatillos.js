@@ -51,7 +51,6 @@ function registrarPlatillo(){
         registrosPlatillo.append("imagenPlatillo", $('#imagenPlatillo')[0].files[0]);
         registrosPlatillo.append("txtDescripcion", $('#descripPlatillo').val());
         registrosPlatillo.append("txtIdCategoria", $('#categoriaSelectRegisterPlatillo').val());
-        console.log($('#categoriaSelectRegisterPlatillo').val());
         $.ajax({
             type: "POST",
             url: `${dominio2}/platillos/create/`,
@@ -61,7 +60,6 @@ function registrarPlatillo(){
             enctype: 'multipart/form-data',
             processData: false,
             success: function (data) {
-                console.log(data);
                 platillosSelect();
                 $('#nombrePlatillo').val('');
                 $('#precioPlatillo').val('');

@@ -2,9 +2,6 @@ const dominioSesion = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
 
-    // if (url === "/index.html" || url === "/") {
-    var valor = true;
-
     if (url === "/index.html" || url === "/") {
         operacionLoguear();
         login();
@@ -17,8 +14,8 @@ window.addEventListener('load', (e) => {
 });
 
 function redireccionDefecto(idCargo) {
-    if (idCargo === 1) window.location.href = "/pages/cuentasadmin.html";
-    else window.location.href = "/pages/moduloEncuesta.html";
+    if (idCargo === 1) { window.location.href = "/pages/cuentasadmin.html"; }
+    else { window.location.href = "/pages/moduloEncuesta.html"; }
 }
 
 function cerrarSesion() {
@@ -67,7 +64,13 @@ function validarOperaciones(idCargo) {
             '<a href="cuentasadmin.html">' +
             '<i class="fa fa-lock-open"></i>Cuentas Admin' +
             '</a>' +
-            '</li>';
+            '</li>'
+            // + '<hr style="height: 10px;background-color: white;"><li>' +
+            // '<a href="cuentasadmin.html">' +
+            // '<i class="fa fa-lock-open"></i>Modulo de encuestas' +
+            // '</a>' +
+            // '</li>'
+            ;
     } else {
         cadena = '<li>' +
             '<a href="pedidos.html">' +
@@ -176,10 +179,10 @@ function login() {
 //     }
 // }
 window.addEventListener('load', (e) => {
-    const url = window.location.pathname;
-    console.log("la url aqui es de -> " + url);
-    const boton2 = document.getElementById('btnPerfil');
-        modalDatosLogin();
+    // const url = window.location.pathname;
+    // console.log("la url aqui es de -> " + url);
+    // const boton2 = document.getElementById('btnPerfil');
+    modalDatosLogin();
 
 });
 function modalDatosLogin() {

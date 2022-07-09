@@ -21,6 +21,8 @@ function cerrarSesion() {
     const btnCerrarSesion = document.getElementById('btnCerrarSesion');
     btnCerrarSesion.addEventListener('click', (e) => {
         sessionStorage.setItem("idEmpleado", null);
+        // con esto limpiamos la sesion (en este caso solo el id)
+        localStorage.clear();
         window.location.href = "/";
     });
 }
@@ -60,7 +62,7 @@ function validarOperaciones(idCargo) {
             '</a>' +
             '</li>' +
             '<li>' +
-            '<a href="cuentasAdmin.html">' +
+            '<a href="cuentasadmin.html">' +
             '<i class="fa fa-lock-open"></i>Cuentas Admin' +
             '</a>' +
             '</li>';
@@ -91,7 +93,7 @@ function validarSesssion() {
     } else {
         $.ajax({
             type: "GET",
-            url: dominioSesion+"empleados/get/" + idEmpleado + "/",
+            url: dominioSesion + "empleados/get/" + idEmpleado + "/",
             dataType: "json",
             success: function (data) {
                 validarOperaciones(data["resultado"]["idCargo"]);
@@ -106,7 +108,7 @@ function operacionLoguear() {
     if (idEmpleado !== null) {
         $.ajax({
             type: "GET",
-            url: dominioSesion+"empleados/get/" + idEmpleado + "/",
+            url: dominioSesion + "empleados/get/" + idEmpleado + "/",
             dataType: "json",
             success: function (data) {
                 if (data["exito"] === true) {
@@ -131,7 +133,7 @@ function login() {
         registro.append("txtPassword", txtPassword.value);
         $.ajax({
             type: "POST",
-            url: dominioSesion+"empleados/login/",
+            url: dominioSesion + "empleados/login/",
             data: registro,
             contentType: false,
             dataType: "json",
@@ -154,7 +156,7 @@ function llenarPerfil() {
     if (idEmpleado !== null) {
         $.ajax({
             type: "GET",
-            url: dominioSesion+"empleados/loginget/" + idEmpleado + "/",
+            url: dominioSesion + "empleados/loginget/" + idEmpleado + "/",
             dataType: "json",
             success: function (data) {
                 if (data["exito"] === true) {
@@ -172,3 +174,78 @@ function llenarPerfil() {
     }
 }
 // intento de hacer un include con header.html
+window.addEventListener('load', (e) => {
+    const url = window.location.pathname;
+    console.log("la url aqui es de -> " + url);
+    const boton2 = document.getElementById('btnPerfil');
+    // function MyNumberType(n) {
+    //     this.number = n;
+    // }
+    if (url === "/pages/trabajadores.html") {
+        modalDatosLogin();
+    }
+    // boton2.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+    //     }
+    //     if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+    //         llamarCargo();
+    //         console.log("entramos a trabajarrr");
+    //     }
+    // });
+
+});
+function modalDatosLogin() {
+    // var miID = sessionStorage.getItem("idEmpleado");
+    // const idConstante = 0;
+    // console.log("valor de miID: " + miID);
+    // console.log(typeof miID);
+    // miID = Number.parseInt("iID", 10);
+    // console.log("aqui es:" + miID);
+    // Number.parseInt
+    // console.log(typeof miID);
+    // console.log(miID);
+    // console.log(dominioSesion + "empleados/get/" + miID + "/");
+    // const object1 = new MyNumberType(18);
+    let id = sessionStorage.getItem("idEmpleado");
+    // console.log("->" + object1);
+    // console.log(id)
+    // 
+    $.ajax({
+        type: "GET",
+        // url: dominioSesion + "empleados/select/",
+        url: dominioSesion + "empleados/get/" + id + "/",
+        // url: "http://127.0.0.1:5000/empleados/get/18",
+        dataType: "json",
+        success: function (data) {
+            console.log("->" + data["resultado"]["idCargo"]);
+            $('#correoGroup').val(data["resultado"]["correoEmpleado"]);
+            $('#nombreGroup').val(data["resultado"]["nombreEmpleado"]);
+            $('#IDGroup').val(data["resultado"]["idCargo"]);
+            $('#IDEMPLGroup').val(data["resultado"]["idEmpleado"]);
+            $('#encuestasGroup').val(data["resultado"]["encuestasRealizadas"]);
+            if (data["resultado"]["idCargo"] == 1) {
+                $('#CargoGroup').html("Cuenta Administrador");
+            }
+            else {
+                $('#CargoGroup').html("Cuenta Trabajador");
+            }
+        }
+
+    });
+}
+function llamarCargo() {
+    const micargo = $("#IDGroup").val();
+    // console.log(micargo);
+    $.ajax({
+        type: "GET",
+        // url: dominioSesion + "empleados/select/",
+        // url: dominioSesion + "cargos/get/" + micargo + "/",
+        // url: "http://127.0.0.1:5000/cargos/get/" + "1" + "/",
+        url: "http://127.0.0.1:5000/cargos/get/1/",
+        dataType: "json",
+        success: function (data) {
+            // $('#CargoGroup').val(data["resultado"]["nombreCargo"]);
+        }
+    });
+}

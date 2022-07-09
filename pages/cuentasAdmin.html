@@ -29,28 +29,54 @@
 </head>
 
 <body>
+
     <div class="modal fade" id="cuenta">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        Cuenta Administrador
+                        Cuenta <span class=""></span> Administrador
                     </h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <input type="hidden" name="codCuenta" id="codCuenta"
-                        value="<?= $administrador->getCodTrabajador() ?>">
-                    <div>Correo: administrador@gmail.com
+                    <div class="form-group">
+                        <div class="form-group">
+                            Correo:
+                            <input id="correoGroup" name="headerAll2" disabled style="background-color: white;"></input>
+                        </div>
+                        <div class="form-group">
+                            Nombre:
+                            <input id="nombreGroup" name="headerAll2" disabled style="background-color: white;"></input>
+                        </div>
+                        <div class="form-group">
+                            ID CARGO:
+                            <input id="IDGroup" name="IDGroup" disabled
+                                style="background-color: white;text-align: center;"></input>
+                        </div>
+                        <div class="form-group">
+                            ID EMPLEADO:
+                            <input id="IDEMPLGroup" name="IDEMPLGroup" disabled
+                                style="background-color: white;text-align: center;"></input>
+                        </div>
+                        <div class="form-group">
+                            Total de encuestas:
+                            <input id="encuestasGroup" name="encuestasGroup" disabled
+                                style="background-color: white;text-align: center;"></input>
+                        </div>
                     </div>
-                    <div>Nombre: Administrador
+                    <!-- <input type="hidden" name="codCuenta" id="codCuenta"
+                        value="<?= $administrador->getCodTrabajador() ?>"> -->
+                    <!-- <div id="PanelFID" name="PanelID">ss</div> -->
+
+                    <!-- <div>Nombre: Administrador
                     </div>
                     <div>DNI: 12345678
                     </div>
                     <div>Teléfono: 123456789
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <div class="propiedades">
@@ -69,7 +95,6 @@
             </div>
         </div>
     </div>
-    {% include 'header.html' %}
     <div class="modal fade modalCrear" id="crearTrabajadores">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content" style="background: #698FED;">
@@ -156,7 +181,7 @@
                 <div class="btn-group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="modal"
                         data-target="#cuenta">
-                        <span class="etiquetaPerfil">Perfil</span>
+                        <span class="etiquetaPerfil" onclick="modalDatosLogin()">Perfil</span>
                         <span class="caret"></span>
                     </button>
                 </div>

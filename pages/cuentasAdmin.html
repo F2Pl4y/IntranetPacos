@@ -54,16 +54,22 @@
                 </div>
                 <div class="modal-footer">
                     <div class="propiedades">
-                        <button type="button" class="btn btn-danger btnCerrarSesion">
+                        <!-- <button type="button" class="btn btn-danger btnCerrarSesion">
                             <a style="color: white;" href="../controller/CCTrabajador.php?accion=Close">
                                 Cerrar
                             </a>
-                        </button>
+                        </button> -->
+                        <div class="form-group">
+                            <a href="#" class="btn btn-danger" id="btnCerrarSesion" onclick="cerrarSesion()">
+                                cerrar&nbsp;&nbsp;<i class="gg-log-out" style="display: inline-block;"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% include 'header.html' %}
     <div class="modal fade modalCrear" id="crearTrabajadores">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content" style="background: #698FED;">
@@ -216,6 +222,7 @@
                 AGREGAR EMPLEADO&nbsp;&nbsp;<i class="gg-user-list" style="display: inline-block;"></i>
             </a>
         </div>
+
         <div class="tabla table-responsive">
             <style>
                 #contenido2 {
@@ -327,7 +334,8 @@
     <!-- <script src="../js/mainCargos.js"></script> -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
-
+    <!-- para salir del logeo -->
+    <script src="../js/validacionSesion.js"></script>
 </body>
 
 </html>

@@ -1,1 +1,440 @@
-const dominio = "https://f3rn4nd021py.pythonanywhere.com/"; function empSelectCargos() { $.ajax({ type: "GET", url: dominio + "empleados/select/", dataType: "json", success: function (a) { var b = ""; $.each(a.resultado, function (d, c) { var a = "<tr>"; a += "<td>" + c.idEmpleado + "</td>", a += "<td>" + c.nombreEmpleado + "</td>", a += "<td>" + c.correoEmpleado + "</td>", a += "<td>" + c.encuestasRealizadas + "</td>", a += "<td>" + c.estado + "</td>", a += "<td>" + c.idCargo + "</td>", a += '<td class="grupoBotones">', a += '<div class="btn-group">', a += '<button class="btn">', a += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2" onclick=empGet(' + c.idEmpleado + ')><i class="gg-info"></i></a>', a += "</button>", a += '<button class="btn">', a += '<a href="#" class="btn btn-danger" onclick="return empEliminar(' + c.idEmpleado + ')"><i class="gg-trash"></i></a>', a += "</button>", a += "</div>", a += "</td>", a += "</tr>", b += a }), $("#contenido2").html(b) } }) } function CargoUpdateEmp() { let b = window.location.pathname; var a = new FormData; a.append("miidnuevo", $("#miidnuevo").val()), a.append("micargonuevo", $("#contenidoCargosList").val()), a.append("tituloModalCargoDes", $("#tituloModalCargoDes").val()), $.ajax({ type: "PUT", url: dominio + "empleados/update2/" + a.get("miidnuevo") + "/", data: a, dataType: "json", contentType: !1, enctype: "multipart/form-data", processData: !1, success: function (a) { ("/pages/cuentasadmin.html" === b || "/pages/cuentasadmin" === b) && (AdminSelect(), cargosCombo()), "/pages/trabajadores.html" === b && (empSelectCargos(), cargosCombo()) } }), reset() } function cargosCombo() { $.ajax({ type: "GET", url: dominio + "cargos/select/", dataType: "json", success: function (b) { var a = ""; $.each(b.resultado, function (d, b) { if (1 == document.getElementById("AgregarEmpleadoBtn").value) { var c = '<option value="' + b.idCargo + '">' + b.idCargo + "&nbsp;:&nbsp;" + b.nombreCargo; c += "</option>", a += c } else { var c = '<option value="' + b.idCargo + '">' + b.idCargo + "&nbsp;:&nbsp;" + b.nombreCargo; c += "</option>", a += c } }), $("#contenidoCargosList").html(a), $("#contenidoCargosList2").html(a), $("#contenidoCargosList3").html(a), $("#contenidoCargosList4").html(a), $("#contenidoCargosList5").html(a) } }) } function cargosSelect() { $.ajax({ type: "GET", url: dominio + "cargos/select/", dataType: "json", success: function (a) { var b = ""; $.each(a.resultado, function (d, c) { if (1 == c.idCargo) { var a = "<tr>"; a += "<td>" + c.idCargo + "</td>", a += "<td>" + c.nombreCargo + "</td>", a += "<td>" + c.estado + "</td>", a += '<td class="grupoBotones">', a += '<div class="btn-group">', a += '<button class="btn">', a += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2X" onclick=cargoGet(' + c.idCargo + ')><i class="gg-info"></i></a>', a += "</button>", a += "</div>", a += "</td>", a += "</tr>", b += a } else { var a = "<tr>"; a += "<td>" + c.idCargo + "</td>", a += "<td>" + c.nombreCargo + "</td>", a += "<td>" + c.estado + "</td>", a += '<td class="grupoBotones">', a += '<div class="btn-group">', a += '<button class="btn">', a += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2X" onclick=cargoGet(' + c.idCargo + ')><i class="gg-info"></i></a>', a += "</button>", a += '<button class="btn">', a += '<a href="#" class="btn btn-danger" onclick="deshabilitar(' + c.idCargo + ')"><i class="gg-unavailable"></i></a>', a += "</button>", a += "</div>", a += "</td>", a += "</tr>", b += a } }), $("#contenido3").html(b) } }) } function empGetCargos(a) { $("#myModal3X").modal("hide"), $.ajax({ type: "GET", url: dominio + "empleadosXcargo/get/" + a + "/", dataType: "json", success: function (a) { $("#tituloModalCargoDes").html("<br>''" + a.resultado.nombreEmpleado + "''"), $("#miidnuevo").val(a.resultado.idEmpleado), $("#valorActualizar").val(a.resultado.idCargo), $("#micargonuevo").val(a.resultado.idCargo), $("#tituloModalCargoDes").val(a.resultado.nombreEmpleado), $("#micargonuevo").html("<br>''" + a.resultado.idCargo + "''") } }), reset() } function cargoGet(a) { console.log("el id es:", a), $.ajax({ type: "GET", url: dominio + "cargos/get/" + a + "/", dataType: "json", success: function (a) { $("#txtidCargoModal2x").val(a.resultado.idCargo2), $("#txtnombreCargo2").val(a.resultado.nombreCargo2), $("#tituloModalcargo1").html("<br>''" + a.resultado.nombreCargo2 + "''"), $("#tituloModalcargo2").html("<br>''" + a.resultado.nombreCargo2 + "''"), $("#nombreEmpleadoCargo").html("<br>''" + a.resultado.nombreCargo2 + "''") } }) } function cargoInsert() { console.log("entre a insert"); var a = new FormData; a.append("txtnombreCargo", $("#txtnombreCargo").val()), $.ajax({ type: "POST", url: dominio + "cargos/create/", data: a, dataType: "json", contentType: !1, enctype: "multipart/form-data", processData: !1, success: function (a) { cargosSelect(), cargosCombo() } }), reset() } function cerrarModal() { $("#myModal3").modal("hide") } function cargoUpdate() { let b = window.location.pathname; var a = new FormData; a.append("txtidCargoModal2x", $("#txtidCargoModal2x").val()), a.append("txtnombreCargo2", $("#txtnombreCargo2").val()), $.ajax({ type: "PUT", url: dominio + "cargos/update/" + a.get("txtidCargoModal2x") + "/", data: a, dataType: "json", contentType: !1, enctype: "multipart/form-data", processData: !1, success: function (a) { ("/pages/trabajadores.html" === b || "/pages/trabajadores" === b) && (cargosCombo(), cargosSelect()) } }), reset() } function reset() { $("#myModal2").find("input,textarea,select").val(""), $("#myModal2 input[type='checkbox']").prop("checked", !1).change(), $("#myModal1X").find("input,textarea,select").val(""), $("#myModal1X input[type='checkbox']").prop("checked", !1).change(), $("#myModal2X").find("input,textarea,select").val(""), $("#myModal2X input[type='checkbox']").prop("checked", !1).change(), $("#myModal3X").find("input,textarea,select").val(""), $("#myModal3X input[type='checkbox']").prop("checked", !1).change(), $("#myModal4X").find("input,textarea,select").val(""), $("#myModal4X input[type='checkbox']").prop("checked", !1).change() } function deshabilitar(a) { let b = window.location.pathname; console.log("id es deshabilitar (): " + a), $.ajax({ type: "PUT", url: dominio + "cargos/update2/" + a + "/", dataType: "json", success: function (a) { if ("/pages/trabajadores.html" === b || "/pages/trabajadores" === b) { if (cargosSelect(), a.resultado.length > 0) { var c = ""; console.log("hay gente"), $("#myModal1X").modal("hide"), $("#myModal3X").modal("show"), $.each(a.resultado, function (d, b) { if (console.log("el idcargo de update 2 es:" + b.idCargo), 1 == b.idCargo) { var a = "<tr>"; a += "<td>" + b.idEmpleado + "</td>", a += "<td>" + b.nombreEmpleado + "</td>", a += "<td>" + b.correoEmpleado + "</td>", a += "<td>" + b.encuestasRealizadas + "</td>", a += "<td>" + b.estado + "</td>", a += "<td>" + b.idCargo + "</td>", a += '<td class="grupoBotones">', a += '<div class="btn-group">', a += '<button class="btn">', a += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + b.idCargo + ')><i class="gg-info"></i></a>', a += "</button>", a += "</div>", a += "</td>", a += "</tr>", c += a } else { var a = "<tr>"; a += "<td>" + b.idEmpleado + "</td>", a += "<td>" + b.nombreEmpleado + "</td>", a += "<td>" + b.correoEmpleado + "</td>", a += "<td>" + b.encuestasRealizadas + "</td>", a += "<td>" + b.estado + "</td>", a += "<td>" + b.idCargo + "</td>", a += '<td class="grupoBotones">', a += '<div class="btn-group">', a += '<button class="btn">', a += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=empGetCargos(' + b.idEmpleado + ')><i class="gg-info"></i></a>', a += "</button>", a += '<button class="btn">', a += '<a href="#" class="btn btn-danger" onclick="empEliminar(' + b.idEmpleado + ')"><i class="gg-trash"></i></a>', a += "</button>", a += "</div>", a += "</td>", a += "</tr>", c += a } }), $("#contenido4").html(c), $("#modal3x").html("<br>''" + a.cargo + "''") } else console.log("vacio") } } }) } function Recargardeshabilitar(a) { let b = window.location.pathname; $.ajax({ type: "PUT", url: dominio + "EmpleadosXcargo/select/" + a + "/", dataType: "json", success: function (c) { if (console.log("el id de Recargar deshabilitar es: " + a), "/pages/trabajadores.html" === b || "/pages/trabajadores" === b) { var d = ""; $("#myModal3X").modal("show"), $.each(c.resultado, function (c, b) { if (1 == b.idCargo) { var a = "<tr>"; a += "<td>" + b.idEmpleado + "</td>", a += "<td>" + b.nombreEmpleado + "</td>", a += "<td>" + b.correoEmpleado + "</td>", a += "<td>" + b.encuestasRealizadas + "</td>", a += "<td>" + b.estado + "</td>", a += "<td>" + b.idCargo + "</td>", a += '<td class="grupoBotones">', a += '<div class="btn-group">', a += '<button class="btn">', a += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + b.idCargo + ')><i class="gg-info"></i></a>', a += "</button>", a += "</div>", a += "</td>", a += "</tr>", d += a } else { var a = "<tr>"; a += "<td>" + b.idEmpleado + "</td>", a += "<td>" + b.nombreEmpleado + "</td>", a += "<td>" + b.correoEmpleado + "</td>", a += "<td>" + b.encuestasRealizadas + "</td>", a += "<td>" + b.estado + "</td>", a += "<td>" + b.idCargo + "</td>", a += '<td class="grupoBotones">', a += '<div class="btn-group">', a += '<button class="btn">', a += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=empGetCargos(' + b.idEmpleado + ')><i class="gg-info"></i></a>', a += "</button>", a += '<button class="btn">', a += '<a href="#" class="btn btn-danger" onclick="empEliminar(' + b.idEmpleado + ')"><i class="gg-trash"></i></a>', a += "</button>", a += "</div>", a += "</td>", a += "</tr>", d += a } }), $("#contenido4").html(d) } } }) } function ocultar() { $("#myModal3X").modal("hide"), $("#myModal1X").modal("show") } function ocultar3() { $("#myModal4X").modal("hide"), $("#myModal3X").modal("show") } function ocultar2() { $("#myModal4X").modal("hide"), $("#myModal1X").modal("show") } function ocultar4() { $("#myModal4X").modal("hide"), $("#myModal3X").modal("hide"), $("#myModal1X").modal("show") } window.addEventListener("load", c => { let a = window.location.pathname; console.log("la url es:", a); let b = document.getElementById("btnEnviarCI"); b.addEventListener("click", b => { b.preventDefault(), ("/pages/trabajadores.html" === a || "/pages/trabajadores" === a) && (console.log("actualizando el cargo"), cargoUpdate(), cargosCombo(), $("#myModal2X").modal("hide"), $("#myModal1X").modal("show")), ("/pages/cuentasadmin.html" === a || "/pages/cuentasadmin" === a) && (console.log("la url dentro del pages es:", a), cargosCombo()) }), ("/pages/trabajadores.html" === a || "/pages/trabajadores" === a) && cargosSelect(), cargosCombo() }), window.addEventListener("load", c => { let a = window.location.pathname, b = document.getElementById("btnEnviarE2"); b.addEventListener("click", b => { b.preventDefault(), ("/pages/trabajadores.html" === a || "/pages/trabajadores" === a) && (ocultar2(), CargoUpdateEmp()) }), ("/pages/trabajadores.html" === a || "/pages/trabajadores" === a) && empSelectCargos() })
+// const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominio = "http://127.0.0.1:5000/";
+window.addEventListener('load', (e) => {
+    const url = window.location.pathname;
+    console.log("la url es:", url);
+    const botonCargos = document.getElementById('btnEnviarCI');
+    botonCargos.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+            console.log("actualizando el cargo");
+            cargoUpdate(); cargosCombo();
+            $('#myModal2X').modal('hide');
+            $('#myModal1X').modal('show');
+        }
+        if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+            console.log("la url dentro del pages es:", url);
+            cargosCombo();
+        }
+    });
+    if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+        cargosSelect();
+    }
+    cargosCombo();
+});
+window.addEventListener('load', (e) => {
+    const url = window.location.pathname;
+    const botonCargos2 = document.getElementById('btnEnviarE2');
+    botonCargos2.addEventListener('click', (e) => {
+        e.preventDefault();
+        // const id = document.getElementById("valorActualizar").value;
+        if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+            // alert("estamos en trabajadores");
+            ocultar2();
+            // $('#myModal4X').modal('show');
+            CargoUpdateEmp();
+            // Recargardeshabilitar(id);
+            // Recargardeshabilitar(contenido);
+            // deshabilitar(contenido);
+            // aqui va el actulizar la lista de modal3x
+        }
+    });
+    if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+        empSelectCargos();
+    }
+});
+function empSelectCargos() {
+    $.ajax({
+        type: "GET",
+        url: dominio + "empleados/select/",
+        dataType: "json",
+        success: function (data) {
+            var tabla = '';
+            $.each(data["resultado"], function (llave, valor) {
+                var template = '<tr>';
+                template += '<td>' + valor["idEmpleado"] + '</td>';
+                template += '<td>' + valor["nombreEmpleado"] + '</td>';
+                template += '<td>' + valor["correoEmpleado"] + '</td>';
+                template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                template += '<td>' + valor["estado"] + '</td>';
+                template += '<td>' + valor["idCargo"] + '</td>';
+                template += '<td class="grupoBotones">';
+                template += '<div class="btn-group">';
+                template += '<button class="btn">';
+                template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2" onclick=empGet(' + valor["idEmpleado"] + ')><i class="gg-info"></i></a>';
+                template += '</button>';
+                template += '<button class="btn">';
+                template += '<a href="#" class="btn btn-danger" onclick="return empEliminar(' + valor["idEmpleado"] + ')"><i class="gg-trash"></i></a>';
+                template += '</button>';
+                template += '</div>';
+                template += '</td>';
+                template += '</tr>';
+                tabla += template;
+            });
+            $('#contenido2').html(tabla);
+        }
+    });
+}
+function CargoUpdateEmp() {
+    const url = window.location.pathname;
+    var registrosEmpl = new FormData();
+    registrosEmpl.append("miidnuevo", $('#miidnuevo').val());
+    // registrosEmpl.append("micargonuevo", $('#micargonuevo').val());
+    registrosEmpl.append("micargonuevo", $('#contenidoCargosList').val());
+    registrosEmpl.append("tituloModalCargoDes", $('#tituloModalCargoDes').val());
+    $.ajax({
+        type: "PUT",
+        url: dominio + "empleados/update2/" + registrosEmpl.get("miidnuevo") + "/",
+        // url: dominio + "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
+        data: registrosEmpl,
+        dataType: 'json',
+        contentType: false,
+        enctype: 'multipart/form-data',
+        processData: false,
+        success: function (data) {
+            if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+                AdminSelect();
+                cargosCombo();
+            }
+            if (url === "/pages/trabajadores.html") {
+                empSelectCargos();
+                cargosCombo();
+            }
+        }
+    });
+    // limpiar contraseña
+    // formulario3.reset();
+    reset();
+}
+function cargosCombo() {
+    $.ajax({
+        type: "GET",
+        url: dominio + "cargos/select/",
+        dataType: "json",
+        success: function (data) {
+            var tabla = '';
+            $.each(data["resultado"], function (llave, valor) {
+                if (document.getElementById("AgregarEmpleadoBtn").value == 1) {
+                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
+                    template += '</option>';
+                    // template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')></a>';
+                    // template += '<option>' + valor["idCargo"] + '</option></div>';
+                    tabla += template;
+                } else {
+                    // var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"];
+                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
+                    template += '</option>';
+                    // template +='<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')></a>';
+                    tabla += template;
+                }
+            });
+            // tercer paso
+            $('#contenidoCargosList').html(tabla);
+            $('#contenidoCargosList2').html(tabla);
+            $('#contenidoCargosList3').html(tabla);
+            $('#contenidoCargosList4').html(tabla);
+            $('#contenidoCargosList5').html(tabla);
+            // var cod = document.getElementById("micargonuevo").value;
+            // var cod = document.getElementById("contenido Cargos List").value;
+            // console.log("codigo es:" + cod);
+        }
+    });
+}
+function cargosSelect() {
+    $.ajax({
+        type: "GET",
+        url: dominio + "cargos/select/",
+        // url: dominio+ "cargos/select/",
+        dataType: "json",
+        success: function (data) {
+            var tabla = '';
+            $.each(data["resultado"], function (llave, valor) {
+                if (valor["idCargo"] == 1) {
+                    var template = '<tr>';
+                    template += '<td>' + valor["idCargo"] + '</td>';
+                    template += '<td>' + valor["nombreCargo"] + '</td>';
+                    template += '<td>' + valor["estado"] + '</td>';
+                    template += '<td class="grupoBotones">';
+                    template += '<div class="btn-group">';
+                    template += '<button class="btn">';
+                    template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
+                    template += '</button>';
+                    template += '</div>';
+                    template += '</td>';
+                    template += '</tr>';
+                    tabla += template;
+                } else {
+                    var template = '<tr>';
+                    template += '<td>' + valor["idCargo"] + '</td>';
+                    template += '<td>' + valor["nombreCargo"] + '</td>';
+                    template += '<td>' + valor["estado"] + '</td>';
+                    template += '<td class="grupoBotones">';
+                    template += '<div class="btn-group">';
+                    template += '<button class="btn">';
+                    template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
+                    template += '</button>';
+                    template += '<button class="btn">';
+                    template += '<a href="#" class="btn btn-danger" onclick="deshabilitar(' + valor["idCargo"] + ')"><i class="gg-unavailable"></i></a>';
+                    template += '</button>';
+                    template += '</div>';
+                    template += '</td>';
+                    template += '</tr>';
+                    tabla += template;
+                }
+            });
+            // tercer paso
+            $('#contenido3').html(tabla);
+        }
+    });
+}
+function empGetCargos(id) {
+    // sexto paso
+    // console.log("id dentro de empGetCargos: " + id);
+    $('#myModal3X').modal('hide');
+    $.ajax({
+        type: "GET",
+        url: dominio + "empleadosXcargo/get/" + id + "/",
+        dataType: "json",
+        success: function (data) {
+            $('#tituloModalCargoDes').html("<br>''" + data["resultado"]["nombreEmpleado"] + "''");
+            $('#miidnuevo').val(data["resultado"]["idEmpleado"]);
+            // utilizamos valorActualizar para poder "actualizar el modal 3x"
+            $('#valorActualizar').val(data["resultado"]["idCargo"]);
+            $('#micargonuevo').val(data["resultado"]["idCargo"]);
+            $('#tituloModalCargoDes').val(data["resultado"]["nombreEmpleado"]);
+            $('#micargonuevo').html("<br>''" + data["resultado"]["idCargo"] + "''");
+        }
+    });
+    // formulario2.reset();
+    reset();
+}
+function cargoGet(id) {
+    console.log("el id es:", id);
+    $.ajax({
+        type: "GET",
+        url: dominio + "cargos/get/" + id + "/",
+        dataType: "json",
+        success: function (data) {
+            $('#txtidCargoModal2x').val(data["resultado"]["idCargo2"]);
+            $('#txtnombreCargo2').val(data["resultado"]["nombreCargo2"]);
+            $('#tituloModalcargo1').html("<br>''" + data["resultado"]["nombreCargo2"] + "''");
+            $('#tituloModalcargo2').html("<br>''" + data["resultado"]["nombreCargo2"] + "''");
+            $('#nombreEmpleadoCargo').html("<br>''" + data["resultado"]["nombreCargo2"] + "''");
+        }
+    });
+}
+function cargoInsert() {
+    console.log("entre a insert")
+    var registrosEmpl = new FormData();
+    registrosEmpl.append("txtnombreCargo", $('#txtnombreCargo').val());
+    $.ajax({
+        type: "POST",
+        url: dominio + "cargos/create/",
+        data: registrosEmpl,
+        dataType: 'json',
+        contentType: false,
+        enctype: 'multipart/form-data',
+        // con processData evitamos que datos enviados se conviertan en tipo texto en lugar json
+        processData: false,
+        success: function (data) {
+            // window.location.href = "/pages/trabajadores.html";
+            cargosSelect();
+            cargosCombo();
+        }
+    });
+    // este "formulario" es un id, con la funcion reset limpiamos todo el formulario
+    // formulario.reset();
+    reset();
+}
+function cerrarModal() {
+    $('#myModal3').modal('hide');
+}
+function cargoUpdate() {
+    const url = window.location.pathname;
+    var registrosEmpl = new FormData();
+    // registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
+    // registrosEmpl.append("txtnombreCargo4", $('#txtnombreCargo4').val());
+    registrosEmpl.append("txtidCargoModal2x", $('#txtidCargoModal2x').val());
+    registrosEmpl.append("txtnombreCargo2", $('#txtnombreCargo2').val());
+    $.ajax({
+        type: "PUT",
+        url: dominio + "cargos/update/" + registrosEmpl.get("txtidCargoModal2x") + "/",
+        // url: dominio+ "cargos/update/" + registrosEmpl.get("txtidCargo2") + "/",
+        data: registrosEmpl,
+        dataType: 'json',
+        contentType: false,
+        enctype: 'multipart/form-data',
+        processData: false,
+        success: function (data) {
+            if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+                cargosCombo();
+                cargosSelect();
+            }
+        }
+    });
+    // limpiar contraseña
+    // formulario3.reset();
+    reset();
+}
+function reset() {
+    $("#myModal2").find("input,textarea,select").val("");
+    $("#myModal2 input[type='checkbox']").prop('checked', false).change();
+    $("#myModal1X").find("input,textarea,select").val("");
+    $("#myModal1X input[type='checkbox']").prop('checked', false).change();
+    $("#myModal2X").find("input,textarea,select").val("");
+    $("#myModal2X input[type='checkbox']").prop('checked', false).change();
+    $("#myModal3X").find("input,textarea,select").val("");
+    $("#myModal3X input[type='checkbox']").prop('checked', false).change();
+    $("#myModal4X").find("input,textarea,select").val("");
+    $("#myModal4X input[type='checkbox']").prop('checked', false).change();
+}
+function deshabilitar(id) {
+    const url = window.location.pathname;
+    console.log("id es deshabilitar (): " + id);
+    $.ajax({
+        type: "PUT",
+        url: dominio + "cargos/update2/" + id + "/",
+        dataType: "json",
+        success: function (data) {
+            if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+                cargosSelect();
+                if (data.resultado.length > 0) {
+                    var tabla = '';
+                    console.log("hay gente");
+                    $('#myModal1X').modal('hide');
+                    $('#myModal3X').modal('show');
+                    $.each(data["resultado"], function (llave, valor) {
+                        console.log("el idcargo de update 2 es:" + valor["idCargo"]);
+                        if (valor["idCargo"] == 1) {
+                            var template = '<tr>';
+                            template += '<td>' + valor["idEmpleado"] + '</td>';
+                            template += '<td>' + valor["nombreEmpleado"] + '</td>';
+                            template += '<td>' + valor["correoEmpleado"] + '</td>';
+                            template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                            template += '<td>' + valor["estado"] + '</td>';
+                            template += '<td>' + valor["idCargo"] + '</td>';
+                            template += '<td class="grupoBotones">';
+                            template += '<div class="btn-group">';
+                            template += '<button class="btn">';
+                            template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
+                            template += '</button>';
+                            template += '</div>';
+                            template += '</td>';
+                            template += '</tr>';
+                            tabla += template;
+                        } else {
+                            var template = '<tr>';
+                            template += '<td>' + valor["idEmpleado"] + '</td>';
+                            template += '<td>' + valor["nombreEmpleado"] + '</td>';
+                            template += '<td>' + valor["correoEmpleado"] + '</td>';
+                            template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                            template += '<td>' + valor["estado"] + '</td>';
+                            template += '<td>' + valor["idCargo"] + '</td>';
+                            template += '<td class="grupoBotones">';
+                            template += '<div class="btn-group">';
+                            template += '<button class="btn">';
+                            template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=empGetCargos(' + valor["idEmpleado"] + ')><i class="gg-info"></i></a>';
+                            template += '</button>';
+                            template += '<button class="btn">';
+                            template += '<a href="#" class="btn btn-danger" onclick="empEliminar(' + valor["idEmpleado"] + ')"><i class="gg-trash"></i></a>';
+                            template += '</button>';
+                            template += '</div>';
+                            template += '</td>';
+                            template += '</tr>';
+                            tabla += template;
+                        }
+                    });
+                    $('#contenido4').html(tabla);
+                    // $('#myModal3X').modal('show');
+                    $('#modal3x').html("<br>''" + data["cargo"] + "''");
+                }
+                else {
+                    console.log("vacio");
+                }
+            }
+        }
+    });
+}
+function Recargardeshabilitar(id) {
+    const url = window.location.pathname;
+    $.ajax({
+        type: "PUT",
+        url: dominio + "EmpleadosXcargo/select/" + id + "/",
+        dataType: "json",
+        success: function (data) {
+            console.log("el id de Recargar deshabilitar es: " + id);
+            if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+                // cargosSelect();
+                // console.log("la data es:" + data.length);
+                // console.log(data["resultado"]);
+                // console.log("tamaño data: " + data.resultado.length);
+                // if (data.resultado.length > 0) {
+                var tabla = '';
+                // $('#myModal1X').modal('hide');
+                $('#myModal3X').modal('show');
+                $.each(data["resultado"], function (llave, valor) {
+                    if (valor["idCargo"] == 1) {
+                        var template = '<tr>';
+                        template += '<td>' + valor["idEmpleado"] + '</td>';
+                        template += '<td>' + valor["nombreEmpleado"] + '</td>';
+                        template += '<td>' + valor["correoEmpleado"] + '</td>';
+                        template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                        template += '<td>' + valor["estado"] + '</td>';
+                        template += '<td>' + valor["idCargo"] + '</td>';
+                        template += '<td class="grupoBotones">';
+                        template += '<div class="btn-group">';
+                        template += '<button class="btn">';
+                        template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
+                        template += '</button>';
+                        template += '</div>';
+                        template += '</td>';
+                        template += '</tr>';
+                        tabla += template;
+                    } else {
+                        // $('#myModal3X').modal('hide');
+                        var template = '<tr>';
+                        template += '<td>' + valor["idEmpleado"] + '</td>';
+                        template += '<td>' + valor["nombreEmpleado"] + '</td>';
+                        template += '<td>' + valor["correoEmpleado"] + '</td>';
+                        template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                        template += '<td>' + valor["estado"] + '</td>';
+                        template += '<td>' + valor["idCargo"] + '</td>';
+                        template += '<td class="grupoBotones">';
+                        template += '<div class="btn-group">';
+                        template += '<button class="btn">';
+                        // quinto paso
+                        template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=empGetCargos(' + valor["idEmpleado"] + ')><i class="gg-info"></i></a>';
+                        template += '</button>';
+                        template += '<button class="btn">';
+                        template += '<a href="#" class="btn btn-danger" onclick="empEliminar(' + valor["idEmpleado"] + ')"><i class="gg-trash"></i></a>';
+                        template += '</button>';
+                        template += '</div>';
+                        template += '</td>';
+                        template += '</tr>';
+                        tabla += template;
+                    }
+                });
+                // $('#contenido5').html(tabla);
+                $('#contenido4').html(tabla);
+                // $('#modal3x').html("<br>''" + data["cargo"] + "''");
+            }
+        }
+    });
+}
+function ocultar() {
+    $('#myModal3X').modal('hide');
+    $('#myModal1X').modal('show');
+}
+function ocultar3() {
+    $('#myModal4X').modal('hide');
+    $('#myModal3X').modal('show');
+}
+function ocultar2() {
+    $('#myModal4X').modal('hide');
+    $('#myModal1X').modal('show');
+}
+function ocultar4() {
+    $('#myModal4X').modal('hide');
+    $('#myModal3X').modal('hide');
+    $('#myModal1X').modal('show');
+}

@@ -71,12 +71,12 @@ function validarOperaciones(idCargo) {
             '<a href="ofertas.html">' +
             '<i class="fa fa-utensils"></i>Ofertas' +
             '</a>' +
-            '</li>'+
+            '</li>' +
             '<li>' +
             '<a href="pedidos.html">' +
             '<i class="fa fa-utensils"></i>Pedidos' +
             '</a>' +
-            '</li>'+
+            '</li>' +
             '<li>' +
             '<a href="carta.html">' +
             '<i class="fa fa-utensils"></i>Carta' +
@@ -202,7 +202,6 @@ function login() {
 // }
 window.addEventListener('load', (e) => {
     modalDatosLogin();
-
 });
 function modalDatosLogin() {
     const id = sessionStorage.getItem("idEmpleado");

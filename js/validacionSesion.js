@@ -11,7 +11,7 @@ window.addEventListener('load', (e) => {
         visualizarPassword();
     } else {
         validarSesssion();
-        // cerrarSesion();
+        cerrarSesion();
         llenarPerfil();
     }
 });
@@ -25,8 +25,6 @@ function cerrarSesion() {
     const btnCerrarSesion = document.getElementById('btnCerrarSesion');
     btnCerrarSesion.addEventListener('click', (e) => {
         sessionStorage.setItem("idEmpleado", null);
-        // con esto limpiamos la sesion (en este caso solo el id)
-        // localStorage.clear();
         window.location.href = "/";
     });
 }
@@ -155,106 +153,96 @@ function login() {
     });
 }
 
-function llenarPerfil() {
-    const idEmpleado = sessionStorage.getItem("idEmpleado");
-    if (idEmpleado !== null) {
-        $.ajax({
-            type: "GET",
-            url: dominioSesion + "empleados/loginget/" + idEmpleado + "/",
-            dataType: "json",
-            success: function (data) {
-                if (data["exito"] === true) {
-                    let carta = `<div>Correo: ${data["resultado"]["correoEmpleado"]}</div>`
-                    carta += `<div>Nombre: ${data["resultado"]["nombreEmpleado"]}
-                    </div>`
-                    carta += `<div>Encuestas realizadas: ${data["resultado"]["encuestasRealizadas"]}
-                    </div>`
-                    carta += `<div>Cargo: ${data["resultado"]["nombreCargo"]}
-                    </div>`
-                    $('#perfil').html(carta)
-                }
-            }
-        });
-    }
-}
-// intento de hacer un include con header.html
+// function llenarPerfil() {
+//     const idEmpleado = sessionStorage.getItem("idEmpleado");
+//     if (idEmpleado !== null) {
+//         $.ajax({
+//             type: "GET",
+//             url: dominioSesion + "empleados/loginget/" + idEmpleado + "/",
+//             dataType: "json",
+//             success: function (data) {
+//                 if (data["exito"] === true) {
+//                     let carta = `<div>Correo: ${data["resultado"]["correoEmpleado"]}</div>`
+//                     carta += `<div>Nombre: ${data["resultado"]["nombreEmpleado"]}
+//                     </div>`
+//                     carta += `<div>Encuestas realizadas: ${data["resultado"]["encuestasRealizadas"]}
+//                     </div>`
+//                     carta += `<div>Cargo: ${data["resultado"]["nombreCargo"]}
+//                     </div>`
+//                     $('#perfil123').html(carta)
+//                 }
+//             }
+//         });
+//     }
+// }
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     console.log("la url aqui es de -> " + url);
     const boton2 = document.getElementById('btnPerfil');
-    // function MyNumberType(n) {
-    //     this.number = n;
-    // }
-    if (url === "/pages/trabajadores.html") {
         modalDatosLogin();
-    }
-    // boton2.addEventListener('click', (e) => {
-    //     e.preventDefault();
-    //     if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
-    //     }
-    //     if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-    //         console.log("entramos a trabajarrr");
-    //     }
-    // });
 
 });
 function modalDatosLogin() {
     const id = sessionStorage.getItem("idEmpleado");
-    $.ajax({
-        type: "GET",
-        // url: dominioSesion + "empleados/select/",
-        url: dominioSesion + "empleados/get/" + id + "/",
-        // url: "http://127.0.0.1:5000/empleados/get/18",
-        dataType: "json",
-        success: function (data) {
-            console.log("->" + data["resultado"]["idCargo"]);
-            $('#correoGroup').val(data["resultado"]["correoEmpleado"]);
-            $('#nombreGroup').val(data["resultado"]["nombreEmpleado"]);
-            $('#IDGroup').val(data["resultado"]["idCargo"]);
-            $('#IDEMPLGroup').val(data["resultado"]["idEmpleado"]);
-            $('#encuestasGroup').val(data["resultado"]["encuestasRealizadas"]);
-            if (data["resultado"]["idCargo"] == 1) {
-                $('#CargoGroup').html("Cuenta Administrador");
-            }
-            else {
-                $('#CargoGroup').html("Cuenta Trabajador");
-            }
-        }
+    if (id !== null) {
+        $.ajax({
+            type: "GET",
+            url: dominioSesion + "empleados/loginget/" + id + "/",
+            dataType: "json",
+            success: function (data) {
 
-    });
-}
-function modalDatosLogin2() {
-    const id = sessionStorage.getItem("idEmpleado");
-    $.ajax({
-        type: "GET",
-        // url: dominioSesion + "empleados/select/",
-        url: dominioSesion + "empleados/get/" + id + "/",
-        // url: "http://127.0.0.1:5000/empleados/get/18",
-        dataType: "json",
-        success: function (data) {
-            console.log("->" + data["resultado"]["idCargo"]);
-            $('#correoGroup').val(data["resultado"]["correoEmpleado"]);
-            $('#nombreGroup').val(data["resultado"]["nombreEmpleado"]);
-            $('#IDGroup').val(data["resultado"]["idCargo"]);
-            $('#IDEMPLGroup').val(data["resultado"]["idEmpleado"]);
-            $('#encuestasGroup').val(data["resultado"]["encuestasRealizadas"]);
-            var template = '<tr>';
-            template += '<td>' + valor["idEmpleado"] + '</td>';
-            template += '<td>' + valor["nombreEmpleado"] + '</td>';
-            template += '<td>' + valor["correoEmpleado"] + '</td>';
-            template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-            template += '<td>' + valor["estado"] + '</td>';
-            template += '<td>' + valor["idCargo"] + '</td>';
-            template += '</tr>';
-            tabla += template;
-            $('#prueba2').html(tabla);
-            if (data["resultado"]["idCargo"] == 1) {
-                $('#CargoGroup').html("Cuenta Administrador");
-            }
-            else {
-                $('#CargoGroup').html("Cuenta Trabajador");
-            }
-        }
+                $('#fertitulo').html("sss");
+                let carta = `<div>Correo: ${data["resultado"]["correoEmpleado"]}</div>`
+                carta += `<div>Nombre: ${data["resultado"]["nombreEmpleado"]}
+                    </div>`
+                carta += `<div>Encuestas realizadas: ${data["resultado"]["encuestasRealizadas"]}
+                    </div>`
+                carta += `<div>Cargo: ${data["resultado"]["nombreCargo"]}
+                    </div>`
+                $('#llenarperfil').html(carta);
 
-    });
+                // $('#correoGroup').val(data["resultado"]["correoEmpleado"]);
+                // $('#nombreGroup').val(data["resultado"]["nombreEmpleado"]);
+                // $('#IDGroup').val(data["resultado"]["idCargo"]);
+                // $('#IDEMPLGroup').val(data["resultado"]["idEmpleado"]);
+                // $('#encuestasGroup').val(data["resultado"]["encuestasRealizadas"]);
+            }
+
+        });
+    }
 }
+// function modalDatosLogin2() {
+//     const id = sessionStorage.getItem("idEmpleado");
+//     $.ajax({
+//         type: "GET",
+//         // url: dominioSesion + "empleados/select/",
+//         url: dominioSesion + "empleados/get/" + id + "/",
+//         // url: "http://127.0.0.1:5000/empleados/get/18",
+//         dataType: "json",
+//         success: function (data) {
+//             console.log("->" + data["resultado"]["idCargo"]);
+//             $('#correoGroup').val(data["resultado"]["correoEmpleado"]);
+//             $('#nombreGroup').val(data["resultado"]["nombreEmpleado"]);
+//             $('#IDGroup').val(data["resultado"]["idCargo"]);
+//             $('#IDEMPLGroup').val(data["resultado"]["idEmpleado"]);
+//             $('#encuestasGroup').val(data["resultado"]["encuestasRealizadas"]);
+//             var template = '<tr>';
+//             template += '<td>' + valor["idEmpleado"] + '</td>';
+//             template += '<td>' + valor["nombreEmpleado"] + '</td>';
+//             template += '<td>' + valor["correoEmpleado"] + '</td>';
+//             template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+//             template += '<td>' + valor["estado"] + '</td>';
+//             template += '<td>' + valor["idCargo"] + '</td>';
+//             template += '</tr>';
+//             tabla += template;
+//             $('#prueba2').html(tabla);
+//             if (data["resultado"]["idCargo"] == 1) {
+//                 $('#CargoGroup').html("Cuenta Administrador");
+//             }
+//             else {
+//                 $('#CargoGroup').html("Cuenta Trabajador");
+//             }
+//         }
+
+//     });
+// }

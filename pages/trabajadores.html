@@ -26,15 +26,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="CargoGroup">
-                        Cuenta Trabajador
+                    <h4 class="modal-title">
+                        Tus datos
                     </h4>
-                    <!-- <input id="CargoGroup" style="background-color: white;text-align: center;"> -->
+                    <!-- <input id="CargoGroup45" style="background-color: white;text-align: center;"> -->
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <div class="form-group">
+                    <div id="llenarperfil"></div>
+                    <!-- <div class="form-group">
                         <div class="form-group">
                             Correo:
                             <input id="correoGroup" name="correoGroup" disabled
@@ -59,30 +60,18 @@
                             <input id="encuestasGroup" name="encuestasGroup" disabled
                                 style="background-color: white;text-align: center;"></input>
                         </div>
-                    </div>
-                    <!-- <input type="hidden" name="codCuenta" id="codCuenta"
-                        value="<?= $administrador->getCodTrabajador() ?>">
-                    <div>Correo: administrador@gmail.com
-                    </div>
-                    <div>Nombre: Administrador
-                    </div>
-                    <div>DNI: 12345678
-                    </div>
-                    <div>Teléfono: 123456789
                     </div> -->
+
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <div class="propiedades">
-                        <!-- <button type="button" class="btn btn-danger btnCerrarSesion">
-                            <a style="color: white;" href="../controller/CCTrabajador.php?accion=Close">
-                                Cerrar
-                            </a>
-                        </button> -->
+
                         <div class="form-group">
                             <a href="#" class="btn btn-danger" id="btnCerrarSesion" onclick="cerrarSesion()">
-                                cerrar&nbsp;&nbsp;<i class="gg-log-out" style="display: inline-block;"></i>
+                                <i class="gg-log-out"
+                                    style="display: inline-block;top: 3px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;cerrar
                             </a>
                         </div>
                     </div>
@@ -526,8 +515,7 @@
     <script async src="../js/mainCargos.js"></script>
     <script async src="../js/validaciones.js"></script>
     <!-- mis iconos -->
-
-    <script src="../js/validacionSesion.js"></script>
+    <script async src="../js/validacionSesion.js"></script>
 </body>
 
 </html>

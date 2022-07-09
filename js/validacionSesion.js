@@ -9,7 +9,7 @@ window.addEventListener('load', (e) => {
     } else {
         validarSesssion();
         cerrarSesion();
-        llenarPerfil();
+        // llenarPerfil();
     }
 });
 
@@ -46,11 +46,8 @@ function validarOperaciones(idCargo) {
     let cadena = "";
     if (idCargo === 1) {
         cadena = '<li>' +
-            '<a href="ofertas.html">' +
-            '<i class="fa fa-utensils"></i>Ofertas' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
+
+
             '<a href="trabajadores.html">' +
             '<i class="fa fa-user-tie"></i>Trabajadores' +
             '</a>' +
@@ -64,12 +61,28 @@ function validarOperaciones(idCargo) {
             '<a href="cuentasadmin.html">' +
             '<i class="fa fa-lock-open"></i>Cuentas Admin' +
             '</a>' +
+            '</li>' +
+            '<hr style="height: 10px;background-color: white;"></hr>' +
+            '<li style="display: contents;">' +
+            '<a href="moduloEncuesta.html">' +
+            '<i class="fa fa-list-alt"></i>Modulo de encuestas' +
+            '</a>' +
+            '</li>' +
+            '<li>' +
+            '<a href="ofertas.html">' +
+            '<i class="fa fa-utensils"></i>Ofertas' +
+            '</a>' +
+            '</li>'+
+            '<li>' +
+            '<a href="pedidos.html">' +
+            '<i class="fa fa-utensils"></i>Pedidos' +
+            '</a>' +
+            '</li>'+
+            '<li>' +
+            '<a href="carta.html">' +
+            '<i class="fa fa-utensils"></i>Carta' +
+            '</a>' +
             '</li>'
-            // + '<hr style="height: 10px;background-color: white;"><li>' +
-            // '<a href="cuentasadmin.html">' +
-            // '<i class="fa fa-lock-open"></i>Modulo de encuestas' +
-            // '</a>' +
-            // '</li>'
             ;
     } else {
         cadena = '<li>' +
@@ -83,8 +96,18 @@ function validarOperaciones(idCargo) {
             '</a>' +
             '</li>' +
             '<li>' +
+            '<a href="ofertas.html">' +
+            '<i class="fa fa-utensils"></i>Ofertas' +
+            '</a>' +
+            '</li>' +
+            '<li>' +
             '<a href="moduloEncuesta.html">' +
             '<i class="fa fa-check-square-o"></i>Modulo de encuestas' +
+            '</a>' +
+            '</li>' +
+            '<li>' +
+            '<a href="ofertas.html">' +
+            '<i class="fa fa-check-square-o"></i>Ofertas' +
             '</a>' +
             '</li>';
     }

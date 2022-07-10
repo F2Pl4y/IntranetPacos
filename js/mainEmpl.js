@@ -3,10 +3,10 @@ const dominio2 = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');
-    cargosCombo2();
+    // cargosCombo2();
     boton1.addEventListener('click', (e) => {
         e.preventDefault();
-        if (url === "/pages/trabajadores.html") {
+        if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
             cursoUpdate();
         }
         if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
@@ -113,7 +113,7 @@ function AdminSelect() {
                 template += '<td>' + valor["correoEmpleado"] + '</td>';
                 // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
                 // template += '<td>' + valor["estado"] + '</td>';
-                template += '<td>' + valor["idCargo"] + '</td>';
+                // template += '<td>' + valor["idCargo"] + '</td>';
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
                 template += '<button class="btn">';
@@ -163,10 +163,11 @@ function empEliminar(id) {
                 AdminSelect();
             }
             if (url === "/pages/trabajadores.html") {
-                ocultar4();
+                if ($('#myModal3X').is(':visible') == true) {
+                    ocultar4();
+                }
                 empSelect();
             }
-            // crearMensaje(data["resultado"]);
         }
     });
     return false;
@@ -230,13 +231,12 @@ function cursoUpdate() {
     registrosEmpl.append("txtnombreEmpleado", $('#txtnombreEmpleado').val());
     registrosEmpl.append("txtcorreoEmpleado", $('#txtcorreoEmpleado').val());
     registrosEmpl.append("txtpasswordEmpleado", $('#txtpasswordEmpleado').val());
-    registrosEmpl.append("txtencuestasRealizadas", $('#txtencuestasRealizadas').val());
+    // registrosEmpl.append("txtencuestasRealizadas", $('#txtencuestasRealizadas').val());
     registrosEmpl.append("txtidCargo", $('#contenidoCargosList3').val());
-    // registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
+    registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     $.ajax({
         type: "PUT",
         url: dominio2 + "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
-        // url: dominio2+ "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",
         data: registrosEmpl,
         dataType: 'json',
         contentType: false,

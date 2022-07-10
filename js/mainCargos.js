@@ -24,15 +24,9 @@ window.addEventListener('load', (e) => {
     const botonCargos2 = document.getElementById('btnEnviarE2');
     botonCargos2.addEventListener('click', (e) => {
         e.preventDefault();
-        // const id = document.getElementById("valorActualizar").value;
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-            // alert("estamos en trabajadores");
             ocultar2();
-            // $('#myModal4X').modal('show');
             CargoUpdateEmp();
-            // Recargardeshabilitar(id);
-            // Recargardeshabilitar(contenido);
-            // deshabilitar(contenido);
             // aqui va el actulizar la lista de modal3x
         }
     });
@@ -99,8 +93,6 @@ function CargoUpdateEmp() {
             }
         }
     });
-    // limpiar contraseña
-    // formulario3.reset();
     reset();
 }
 function cargosCombo() {
@@ -125,14 +117,11 @@ function cargosCombo() {
                     tabla += template;
                 }
             });
-            // tercer paso
             $('#contenidoCargosList').html(tabla);
             $('#contenidoCargosList2').html(tabla);
             $('#contenidoCargosList3').html(tabla);
             $('#contenidoCargosList4').html(tabla);
             $('#contenidoCargosList5').html(tabla);
-            // var cod = document.getElementById("micargonuevo").value;
-            // var cod = document.getElementById("contenido Cargos List").value;
         }
     });
 }
@@ -287,6 +276,7 @@ function deshabilitar(id) {
         success: function (data) {
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
                 cargosSelect();
+                console.log(data.resultado);
                 if (data.resultado.length > 0) {
                     var tabla = '';
                     $('#myModal1X').modal('hide');
@@ -341,73 +331,17 @@ function deshabilitar(id) {
         }
     });
 }
-function Recargardeshabilitar(id) {
-    const url = window.location.pathname;
-    $.ajax({
-        type: "PUT",
-        url: dominio + "EmpleadosXcargo/select/" + id + "/",
-        dataType: "json",
-        success: function (data) {
-            if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-                var tabla = '';
-                $('#myModal3X').modal('show');
-                $.each(data["resultado"], function (llave, valor) {
-                    if (valor["idCargo"] == 1) {
-                        var template = '<tr>';
-                        template += '<td>' + valor["idEmpleado"] + '</td>';
-                        template += '<td>' + valor["nombreEmpleado"] + '</td>';
-                        template += '<td>' + valor["correoEmpleado"] + '</td>';
-                        // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                        // template += '<td>' + valor["estado"] + '</td>';
-                        template += '<td>' + valor["idCargo"] + '</td>';
-                        template += '<td class="grupoBotones">';
-                        template += '<div class="btn-group">';
-                        template += '<button class="btn">';
-                        template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
-                        template += '</button>';
-                        template += '</div>';
-                        template += '</td>';
-                        template += '</tr>';
-                        tabla += template;
-                    } else {
-                        var template = '<tr>';
-                        template += '<td>' + valor["idEmpleado"] + '</td>';
-                        template += '<td>' + valor["nombreEmpleado"] + '</td>';
-                        template += '<td>' + valor["correoEmpleado"] + '</td>';
-                        // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                        // template += '<td>' + valor["estado"] + '</td>';
-                        template += '<td>' + valor["idCargo"] + '</td>';
-                        template += '<td class="grupoBotones">';
-                        template += '<div class="btn-group">';
-                        template += '<button class="btn">';
-                        // quinto paso
-                        template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=empGetCargos(' + valor["idEmpleado"] + ')><i class="gg-info"></i></a>';
-                        template += '</button>';
-                        template += '<button class="btn">';
-                        template += '<a href="#" class="btn btn-danger" onclick="empEliminar(' + valor["idEmpleado"] + ')"><i class="gg-trash"></i></a>';
-                        template += '</button>';
-                        template += '</div>';
-                        template += '</td>';
-                        template += '</tr>';
-                        tabla += template;
-                    }
-                });
-                $('#contenido4').html(tabla);
-            }
-        }
-    });
-}
 function ocultar() {
     $('#myModal3X').modal('hide');
+    $('#myModal1X').modal('show');
+}
+function ocultar2() {
+    $('#myModal4X').modal('hide');
     $('#myModal1X').modal('show');
 }
 function ocultar3() {
     $('#myModal4X').modal('hide');
     $('#myModal3X').modal('show');
-}
-function ocultar2() {
-    $('#myModal4X').modal('hide');
-    $('#myModal1X').modal('show');
 }
 function ocultar4() {
     $('#myModal4X').modal('hide');

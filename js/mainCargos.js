@@ -1,5 +1,5 @@
-const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominio = "http://127.0.0.1:5000/";
+// const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const botonCargos = document.getElementById('btnEnviarCI');
@@ -52,8 +52,8 @@ function empSelectCargos() {
                 template += '<td>' + valor["idEmpleado"] + '</td>';
                 template += '<td>' + valor["nombreEmpleado"] + '</td>';
                 template += '<td>' + valor["correoEmpleado"] + '</td>';
-                template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                template += '<td>' + valor["estado"] + '</td>';
+                // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                // template += '<td>' + valor["estado"] + '</td>';
                 template += '<td>' + valor["idCargo"] + '</td>';
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
@@ -149,7 +149,7 @@ function cargosSelect() {
                     var template = '<tr>';
                     template += '<td>' + valor["idCargo"] + '</td>';
                     template += '<td>' + valor["nombreCargo"] + '</td>';
-                    template += '<td>' + valor["estado"] + '</td>';
+                    // template += '<td>' + valor["estado"] + '</td>';
                     template += '<td class="grupoBotones">';
                     template += '<div class="btn-group">';
                     template += '<button class="btn">';
@@ -163,7 +163,7 @@ function cargosSelect() {
                     var template = '<tr>';
                     template += '<td>' + valor["idCargo"] + '</td>';
                     template += '<td>' + valor["nombreCargo"] + '</td>';
-                    template += '<td>' + valor["estado"] + '</td>';
+                    // template += '<td>' + valor["estado"] + '</td>';
                     template += '<td class="grupoBotones">';
                     template += '<div class="btn-group">';
                     template += '<button class="btn">';
@@ -297,8 +297,8 @@ function deshabilitar(id) {
                             template += '<td>' + valor["idEmpleado"] + '</td>';
                             template += '<td>' + valor["nombreEmpleado"] + '</td>';
                             template += '<td>' + valor["correoEmpleado"] + '</td>';
-                            template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                            template += '<td>' + valor["estado"] + '</td>';
+                            // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                            // template += '<td>' + valor["estado"] + '</td>';
                             template += '<td>' + valor["idCargo"] + '</td>';
                             template += '<td class="grupoBotones">';
                             template += '<div class="btn-group">';
@@ -314,8 +314,8 @@ function deshabilitar(id) {
                             template += '<td>' + valor["idEmpleado"] + '</td>';
                             template += '<td>' + valor["nombreEmpleado"] + '</td>';
                             template += '<td>' + valor["correoEmpleado"] + '</td>';
-                            template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                            template += '<td>' + valor["estado"] + '</td>';
+                            // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                            // template += '<td>' + valor["estado"] + '</td>';
                             template += '<td>' + valor["idCargo"] + '</td>';
                             template += '<td class="grupoBotones">';
                             template += '<div class="btn-group">';
@@ -357,8 +357,8 @@ function Recargardeshabilitar(id) {
                         template += '<td>' + valor["idEmpleado"] + '</td>';
                         template += '<td>' + valor["nombreEmpleado"] + '</td>';
                         template += '<td>' + valor["correoEmpleado"] + '</td>';
-                        template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                        template += '<td>' + valor["estado"] + '</td>';
+                        // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                        // template += '<td>' + valor["estado"] + '</td>';
                         template += '<td>' + valor["idCargo"] + '</td>';
                         template += '<td class="grupoBotones">';
                         template += '<div class="btn-group">';
@@ -374,8 +374,8 @@ function Recargardeshabilitar(id) {
                         template += '<td>' + valor["idEmpleado"] + '</td>';
                         template += '<td>' + valor["nombreEmpleado"] + '</td>';
                         template += '<td>' + valor["correoEmpleado"] + '</td>';
-                        template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                        template += '<td>' + valor["estado"] + '</td>';
+                        // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                        // template += '<td>' + valor["estado"] + '</td>';
                         template += '<td>' + valor["idCargo"] + '</td>';
                         template += '<td class="grupoBotones">';
                         template += '<div class="btn-group">';

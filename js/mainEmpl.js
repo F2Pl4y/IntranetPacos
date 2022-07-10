@@ -1,5 +1,5 @@
-const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominio2 = "http://127.0.0.1:5000/";
+// const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominio2 = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const boton1 = document.getElementById('btnEnviarE');
@@ -40,7 +40,6 @@ function cargosCombo2() {
     $.ajax({
         type: "GET",
         url: dominio2 + "cargos/select/",
-        // url: dominio2+ "cargos/select/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
@@ -65,8 +64,6 @@ function cargosCombo2() {
             $('#contenidoCargosList3').html(tabla);
             $('#contenidoCargosList4').html(tabla);
             $('#contenidoCargosList5').html(tabla);
-            // var cod = document.getElementById("micargonuevo").value;
-            // var cod = document.getElementById("contenido Cargos List").value;
         }
     });
 }
@@ -82,8 +79,8 @@ function empSelect() {
                 template += '<td>' + valor["idEmpleado"] + '</td>';
                 template += '<td>' + valor["nombreEmpleado"] + '</td>';
                 template += '<td>' + valor["correoEmpleado"] + '</td>';
-                template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                template += '<td>' + valor["estado"] + '</td>';
+                // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                // template += '<td>' + valor["estado"] + '</td>';
                 template += '<td>' + valor["idCargo"] + '</td>';
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
@@ -114,8 +111,8 @@ function AdminSelect() {
                 template += '<td>' + valor["idEmpleado"] + '</td>';
                 template += '<td>' + valor["nombreEmpleado"] + '</td>';
                 template += '<td>' + valor["correoEmpleado"] + '</td>';
-                template += '<td>' + valor["encuestasRealizadas"] + '</td>';
-                template += '<td>' + valor["estado"] + '</td>';
+                // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
+                // template += '<td>' + valor["estado"] + '</td>';
                 template += '<td>' + valor["idCargo"] + '</td>';
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
@@ -144,8 +141,8 @@ function empGet(id) {
             $('#txtidEmpleado').val(data["resultado"]["idEmpleado"]);
             $('#txtnombreEmpleado').val(data["resultado"]["nombreEmpleado"]);
             $('#txtcorreoEmpleado').val(data["resultado"]["correoEmpleado"]);
-            $('#txtencuestasRealizadas').val(data["resultado"]["encuestasRealizadas"]);
-            $('#txtestado').val(data["resultado"]["estado"]);
+            // $('#txtencuestasRealizadas').val(data["resultado"]["encuestasRealizadas"]);
+            // $('#txtestado').val(data["resultado"]["estado"]);
             $('#contenidoCargosList3').val(data["resultado"]["idCargo"]);
             // $('#txtidCargo').val(data["resultado"]["idCargo"]);
             // $('#tituloModal').html("Actualizando datos del empleado: <br>" + data["resultado"]["nombreEmpleado"]);
@@ -174,20 +171,12 @@ function empEliminar(id) {
     });
     return false;
 }
-// function crearMensaje(mensaje) {
-//     const elementoMensaje = document.getElementById('mensaje');
-//     elementoMensaje.classList.add("visible");
-//     elementoMensaje.removeChild(elementoMensaje.lastChild);
-//     const parrafo = document.createElement("P");
-//     parrafo.appendChild(document.createTextNode(mensaje));
-//     elementoMensaje.appendChild(parrafo);
-// }
 function empInsert() {
     var registrosEmpl = new FormData();
     registrosEmpl.append("txtnombreEmpleado2", $('#txtnombreEmpleado2').val());
     registrosEmpl.append("txtcorreoEmpleado2", $('#txtcorreoEmpleado2').val());
     registrosEmpl.append("txtpasswordEmpleado2", $('#txtpasswordEmpleado2').val());
-    registrosEmpl.append("txtencuestasRealizadas2", $('#txtencuestasRealizadas2').val());
+    // registrosEmpl.append("txtencuestasRealizadas2", $('#txtencuestasRealizadas2').val());
     // registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     registrosEmpl.append("txtidCargo2", $('#contenidoCargosList2').val());
     $.ajax({

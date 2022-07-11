@@ -1,5 +1,5 @@
-// const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
-const dominio2 = "http://127.0.0.1:5000/";
+const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
+// const dominio2 = "http://127.0.0.1:5000/";
 
 function cargosCombo2() {
     $.ajax({
@@ -195,11 +195,11 @@ function cursoUpdate() {
     registrosEmpl.append("txtnombreEmpleado", $('#txtnombreEmpleado').val());
     registrosEmpl.append("txtcorreoEmpleado", $('#txtcorreoEmpleado').val());
     registrosEmpl.append("txtpasswordEmpleado", $('#txtpasswordEmpleado').val());
+    registrosEmpl.append("txtidCargo", $('#contenidoCargosList3').val());
+    registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     // registrosEmpl.append("txtContraseñaAdmin", $('#txtContraseñaAdmin').val());
 
     // registrosEmpl.append("txtencuestasRealizadas", $('#txtencuestasRealizadas').val());
-    registrosEmpl.append("txtidCargo", $('#contenidoCargosList3').val());
-    registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     $.ajax({
         type: "PUT",
         url: dominio2 + "empleados/update/" + registrosEmpl.get("txtidEmpleado") + "/",

@@ -1,5 +1,5 @@
-// const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
-const dominio = "http://127.0.0.1:5000/";
+const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
+// const dominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const botonCargos = document.getElementById('btnEnviarCI');
@@ -137,7 +137,7 @@ function cargosSelect() {
         success: function (data) {
             var tabla = '';
             $.each(data["resultado"], function (llave, valor) {
-                if (valor["idCargo"] == 1) {
+                if (valor["idCargo"] == 2) {
                     var template = '<tr>';
                     template += '<td>' + valor["idCargo"] + '</td>';
                     template += '<td>' + valor["nombreCargo"] + '</td>';

@@ -135,7 +135,7 @@ function cargosSelect() {
                 if (valor["idCargo"] == 1) {
                     var template = '<tr>';
                     template += '<td>' + valor["idCargo"] + '</td>';
-                    template += '<td>' + valor["idCargo"] + '</td>';
+                    template += '<td>' + valor["nombreCargo"] + '</td>';
                     // template += '<td>' + valor["estado"] + '</td>';
                     template += '<td class="grupoBotones">';
                     template += '<div class="btn-group">';
@@ -149,7 +149,7 @@ function cargosSelect() {
                 } else {
                     var template = '<tr>';
                     template += '<td>' + valor["idCargo"] + '</td>';
-                    template += '<td>' + valor["idCargo"] + '</td>';
+                    template += '<td>' + valor["nombreCargo"] + '</td>';
                     // template += '<td>' + valor["estado"] + '</td>';
                     template += '<td class="grupoBotones">';
                     template += '<div class="btn-group">';

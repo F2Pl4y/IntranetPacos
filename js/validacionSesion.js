@@ -1,5 +1,5 @@
-const dominioSesion = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominioSesion = "http://127.0.0.1:5000/";
+// const dominioSesion = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominioSesion = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
 
@@ -15,7 +15,7 @@ window.addEventListener('load', (e) => {
 });
 
 function redireccionDefecto(idCargo) {
-    if (idCargo === 2) { window.location.href = "/pages/cuentasadmin.html"; }
+    if (idCargo === 1) { window.location.href = "/pages/cuentasadmin.html"; }
     else { window.location.href = "/pages/moduloEncuesta.html"; }
 }
 
@@ -45,7 +45,7 @@ function visualizarPassword() {
 
 function validarOperaciones(idCargo) {
     let cadena = "";
-    if (idCargo === 2) {
+    if (idCargo === 1) {
         cadena = '<li>' +
             '<a href="trabajadores.html">' +
             '<i class="fa fa-user-tie"></i>Trabajadores' +

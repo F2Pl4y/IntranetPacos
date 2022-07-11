@@ -1,41 +1,5 @@
 // const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
-const dominio2 = "http://127.0.0.1:5000/";
-window.addEventListener('load', (e) => {
-    const url = window.location.pathname;
-    const boton1 = document.getElementById('btnEnviarE');
-    // cargosCombo2();
-    boton1.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-            cursoUpdate();
-        }
-        if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
-            cursoUpdate();
-        }
-    });
-    if (url === "/pages/cuentasadmin.html") {
-        AdminSelect();
-    }
-    if (url === "/pages/cuentasadmin") {
-        AdminSelect();
-    }
-    if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-        empSelect();
-    }
-});
-window.addEventListener('load', (e) => {
-    const url = window.location.pathname;
-    const boton2 = document.getElementById('btnEnviarI');
-    boton2.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
-            AdminInsert();
-        }
-        if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-            empInsert();
-        }
-    });
-});
+
 function cargosCombo2() {
     $.ajax({
         type: "GET",
@@ -149,7 +113,7 @@ function empGet(id) {
             $('#tituloModal').html("<br>''" + data["resultado"]["nombreEmpleado"] + "''");
         }
     });
-    formulario2.reset();
+    document.getElementById("formulario2").reset();
 }
 
 function empEliminar(id) {
@@ -195,14 +159,14 @@ function empInsert() {
         }
     });
     // este "formulario" es un id, con la funcion reset limpiamos todo el formulario
-    formulario.reset();
+    document.getElementById("formulario").reset();
 }
 function AdminInsert() {
     var registrosEmpl = new FormData();
     registrosEmpl.append("txtnombreEmpleado2", $('#txtnombreEmpleado2').val());
     registrosEmpl.append("txtcorreoEmpleado2", $('#txtcorreoEmpleado2').val());
     registrosEmpl.append("txtpasswordEmpleado2", $('#txtpasswordEmpleado2').val());
-    registrosEmpl.append("txtencuestasRealizadas2", $('#txtencuestasRealizadas2').val());
+    // registrosEmpl.append("txtencuestasRealizadas2", $('#txtencuestasRealizadas2').val());
     registrosEmpl.append("txtidCargo2", $('#contenidoCargosList').val());
     // registrosEmpl.append("txtidCargo2", $('#txtidCargo2').val());
     $.ajax({
@@ -220,8 +184,7 @@ function AdminInsert() {
             AdminSelect();
         }
     });
-    // este "formulario" es un id, con la funcion reset limpiamos todo el formulario
-    formulario.reset();
+    document.getElementById("formulario").reset();
 }
 
 function cursoUpdate() {
@@ -231,6 +194,8 @@ function cursoUpdate() {
     registrosEmpl.append("txtnombreEmpleado", $('#txtnombreEmpleado').val());
     registrosEmpl.append("txtcorreoEmpleado", $('#txtcorreoEmpleado').val());
     registrosEmpl.append("txtpasswordEmpleado", $('#txtpasswordEmpleado').val());
+    registrosEmpl.append("txtContraseñaAdmin", $('#txtContraseñaAdmin').val());
+
     // registrosEmpl.append("txtencuestasRealizadas", $('#txtencuestasRealizadas').val());
     registrosEmpl.append("txtidCargo", $('#contenidoCargosList3').val());
     registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
@@ -246,12 +211,47 @@ function cursoUpdate() {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
                 AdminSelect();
             }
-            if (url === "/pages/trabajadores.html") {
+            if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
                 empSelect();
             }
             // crearMensaje(data["mensaje"]);
         }
     });
     // limpiar contraseña
-    formulario2.reset();
+    $('#txtContraseñaAdmin').val('');
 }
+const dominio2 = "http://127.0.0.1:5000/";
+window.addEventListener('load', (e) => {
+    const url = window.location.pathname;
+    const boton1 = document.getElementById('btnEnviarE');
+    // cargosCombo2();
+    boton1.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+            cursoUpdate();
+        }
+        if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+            cursoUpdate();
+        }
+    });
+
+    if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+        AdminSelect();
+    }
+    if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+        empSelect();
+    }
+});
+window.addEventListener('load', (e) => {
+    const url = window.location.pathname;
+    const boton2 = document.getElementById('btnEnviarI');
+    boton2.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+            AdminInsert();
+        }
+        if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+            empInsert();
+        }
+    });
+});

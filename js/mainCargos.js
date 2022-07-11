@@ -103,6 +103,9 @@ function cargosCombo() {
         success: function (data) {
             var tabla = '';
             $.each(data["resultado"], function (llave, valor) {
+                // console.log("el combo box id es:" + valor["idCargo"]);
+                // console.log(valor["idCargo"].value);
+                console.log(document.getElementById("AgregarEmpleadoBtn").value);
                 if (document.getElementById("AgregarEmpleadoBtn").value == 1) {
                     var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
                     template += '</option>';

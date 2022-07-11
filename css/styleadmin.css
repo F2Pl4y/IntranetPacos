@@ -1,35 +1,41 @@
-@import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900);
-*,
-body {
-  font-family: Rubik, sans-serif;
-}
-#main-nav li a .fa,
-#profile-picture {
-  left: 20px;
-  width: 60px;
-  position: absolute;
-}
-#sidenav,
-header {
-  z-index: 1;
-  position: fixed;
-}
+/*------------------------------------------------------------------
+    IMPORT FONTS
+-------------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900");
+
 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 ul li {
   list-style: none;
 }
+
+/*------------------------------------------------------------------
+    PANEL ADMIN
+-------------------------------------------------------------------*/
 * {
   box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
   margin: 0;
 }
+
 body {
   font-size: 15px;
+  font-family: "Rubik", sans-serif;
   line-height: 1.80857;
 }
+
+.form-group p {
+  color: #f00;
+  text-align: center;
+  font-size: 12px;
+  height: 22px;
+}
+
+/*VENTANA DE MENÚ DE ADMINISTRACIÓN*/
 .nav_barraLateral {
   width: 100%;
   background-color: #222;
@@ -39,17 +45,22 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
 .nav_barraLateral h1 {
-  color: #fff;
+  color: white;
   font-size: 30px;
   width: calc(100% - 310px);
   text-align: center;
 }
+
 #sidenav {
+  position: fixed;
   top: 100px;
   height: 100vh;
+  z-index: 1;
   width: 310px;
 }
+
 #sidenav-header {
   background-color: #ef7000;
   width: 310px;
@@ -59,35 +70,46 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 #menu {
   background-color: #222;
   height: 100%;
 }
+
 #profile-picture {
   height: 60px;
-  background-color: #fff;
+  width: 60px;
+  background-color: white;
   display: block;
+  position: absolute;
   top: 20px;
+  left: 20px;
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
 }
+
 #profile-picture img {
   width: 100%;
   height: 100%;
 }
+
+/*LISTA DE OPCIONES DEL PANEL ADMINISTRATIVO*/
 #main-nav {
+  font-size: 15px;
   list-style-type: none;
   padding: 0;
   margin: 0;
   width: 100%;
   top: 100%;
-  bottom: 0;
+  bottom: 0px;
 }
+
 #main-nav li {
   padding: 5px;
   margin: 0;
 }
+
 #main-nav li a {
   width: 100%;
   display: block;
@@ -99,90 +121,114 @@ body {
   font-weight: 200;
   line-height: 55px;
 }
-#main-nav li a:hover,
-main.moduloEncuesta .encuesta form {
-  color: #fff;
+
+#main-nav li a:hover {
+  color: white;
 }
+
 #main-nav li a:focus {
   background: rgba(0, 0, 0, 0.2);
-  color: #fff;
-  box-shadow: inset 5px 0 0 #fff;
+  color: white;
+  box-shadow: inset 5px 0 0 white;
 }
+
 #main-nav li a .fa {
   font-size: 30px;
+  position: absolute;
+  width: 60px;
   height: 65px;
   line-height: 65px;
   text-align: center;
+  left: 20px;
 }
+
 #main-nav li.active a .fa {
   color: #98cde6;
 }
+
 .tab-container {
-  padding: 100px 20px 20px;
+  padding: 20px;
+  padding-top: 100px;
 }
+
 .tab-container h1 {
   font-family: "Roboto Condensed", sans-serif;
 }
+
+/*-----------------------GENERAL--------------------------*/
 #btnMenu {
   color: #fff;
   font-size: 40px;
   display: none;
   cursor: pointer;
 }
+
 .modal-open {
   overflow: hidden;
   padding-right: 0 !important;
 }
+
 header {
   min-height: 100vh;
+  position: fixed;
+  z-index: 1;
 }
-main,
-main .primario {
-  min-height: calc(100vh - 100px);
-}
-.efectoCarta,
-main {
-  position: relative;
-}
+
 header nav {
   min-height: 100%;
 }
+
 #sidenav-header > div.btn-group > button > span.etiquetaPerfil {
-  color: #fff;
+  color: white;
   font-weight: 800;
   padding: 0 15px;
 }
+
 main {
+  min-height: calc(100vh - 100px);
   width: calc(100% - 310px);
+  position: relative;
   left: 310px;
   top: 100px;
   display: flex;
 }
+
 .menus li:hover {
   background-color: #ef7000;
 }
+
+/*-------------------GENERAL------------------------------*/
+
+/*-------------------OFERTAS------------------------------*/
+
 .modalCrud .modal-body .tablaResponsive {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 30px;
 }
+
 .modalCrud .modal-body .tablaResponsive .form-group {
   display: flex;
   column-gap: 10px;
   align-items: center;
 }
+
 main.mainOfertas {
   justify-content: start;
   align-items: stretch;
 }
+
 main .primario {
   width: 80%;
+  min-height: calc(100vh - 100px);
   text-align: center;
 }
+
 main .primario > h3 {
   margin-top: 30px;
 }
+
 main .primario .ofertas-content {
   padding: 30px;
   width: 100%;
@@ -192,6 +238,7 @@ main .primario .ofertas-content {
   justify-content: center;
   gap: 20px 50px;
 }
+
 main .adicional {
   width: 100%;
   margin: 0 auto;
@@ -202,13 +249,16 @@ main .adicional {
   justify-content: center;
   align-items: center;
 }
+
 main .adicional .input-group {
   width: 40%;
 }
+
 main .adicional select {
   width: 50%;
   display: none;
 }
+
 main .primario .ofertas-content .cardOfertas {
   width: 240px;
   height: 350px;
@@ -217,10 +267,13 @@ main .primario .ofertas-content .cardOfertas {
   overflow: hidden;
   position: relative;
 }
+
 .efectoCarta {
+  position: relative;
   width: 100%;
   overflow-x: hidden;
 }
+
 .efectoCarta > div {
   position: absolute;
   top: 0;
@@ -235,42 +288,39 @@ main .primario .ofertas-content .cardOfertas {
   -ms-transition: transform 1s;
   -o-transition: transform 1s;
 }
-.efectoCarta .front {
-  transform: perspective(500px) rotateY(0);
-  -webkit-transform: perspective(500px) rotateY(0);
-  -moz-transform: perspective(500px) rotateY(0);
-  -ms-transform: perspective(500px) rotateY(0);
-  -o-transform: perspective(500px) rotateY(0);
-}
-.efectoCarta.cambiar .front {
-  transform: perspective(500px) rotateY(180deg);
-  -webkit-transform: perspective(500px) rotateY(180deg);
-  -moz-transform: perspective(500px) rotateY(180deg);
-  -ms-transform: perspective(500px) rotateY(180deg);
-  -o-transform: perspective(500px) rotateY(180deg);
-}
-.efectoCarta .back {
-  transform: perspective(500px) rotateY(180deg);
-  -webkit-transform: perspective(500px) rotateY(180deg);
-  -moz-transform: perspective(500px) rotateY(180deg);
-  -ms-transform: perspective(500px) rotateY(180deg);
-  -o-transform: perspective(500px) rotateY(180deg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: justify;
-}
-.efectoCarta.cambiar .back {
-  transform: perspective(500px) rotateY(360deg);
-  -webkit-transform: perspective(500px) rotateY(360deg);
-  -moz-transform: perspective(500px) rotateY(360deg);
-  -ms-transform: perspective(500px) rotateY(360deg);
-  -o-transform: perspective(500px) rotateY(360deg);
-}
+
 main .primario .ofertas-content .cardOfertas .front .img {
   height: 200px;
   width: 100%;
+  position: relative;
+  overflow: hidden;
 }
+
+main .primario .ofertas-content .cardOfertas .front .img .back {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #ef7000aa;
+  color: #fff;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -ms-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+
+main .primario .ofertas-content .cardOfertas .front .img:hover .back {
+  top: 0%;
+}
+
+main .primario .ofertas-content .cardOfertas .front .img .back p {
+  overflow-wrap: break-word;
+  text-align: start;
+}
+
 main .primario .ofertas-content .cardOfertas .front .info {
   height: 120px;
   width: 100%;
@@ -279,15 +329,22 @@ main .primario .ofertas-content .cardOfertas .front .info {
   flex-direction: column;
   justify-content: center;
 }
+
 main .primario .ofertas-content .cardOfertas .info h3 {
   font-size: 16px;
   overflow: hidden;
 }
+
+main .primario .ofertas-content .cardOfertas .info .botones button {
+  margin: 5px;
+}
+
 main .secundario {
   width: 20%;
   background-color: #222;
   margin: 0;
 }
+
 main .secundario .selectorCategorias {
   color: #fff;
   text-align: center;
@@ -295,6 +352,7 @@ main .secundario .selectorCategorias {
   font-size: 18px;
   display: none;
 }
+
 main .secundario ul {
   padding: 30px 0;
   width: 100%;
@@ -303,33 +361,42 @@ main .secundario ul {
   align-items: center;
   row-gap: 30px;
 }
+
 main .secundario ul li {
   width: 90%;
 }
+
 main .secundario ul li .opcionesOfertas {
   background-color: #ef7000;
   color: #fff;
   width: 100%;
 }
+
 .modalCrear .modal-dialog .modal-content .modal-body form {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 15px;
 }
+
 .modalCrear .modal-dialog .modal-content .modal-body .tablaResponsive {
   margin-top: 20px;
   height: 300px;
   overflow-y: auto;
 }
+
+#crearOferta div div .modal-body form .contenido {
+  display: flex;
+  column-gap: 20px;
+}
+
+/*-------------------END OFERTAS------------------------------*/
+
+/*-------------------MODULO ENCUESTA------------------------------*/
 main.moduloEncuesta {
   justify-content: center;
 }
-main .EncuestaEntorno,
-main.moduloEncuesta .encuesta form .select {
-  display: flex;
-  flex-direction: column;
-}
+
 main.moduloEncuesta::before {
   content: "";
   position: fixed;
@@ -349,44 +416,71 @@ main.moduloEncuesta::before {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 main.moduloEncuesta .encuesta {
   max-width: 720px;
   padding: 30px;
 }
+
+main.moduloEncuesta .encuesta form {
+  color: #fff;
+}
+
 main.moduloEncuesta .encuesta form div .input-textarea {
   min-height: 120px;
   width: 100%;
   padding: 0.625rem;
   resize: vertical;
 }
+
 main.moduloEncuesta .encuesta form div button {
   width: 100%;
 }
+
+main.moduloEncuesta .encuesta form .select {
+  display: flex;
+  flex-direction: column;
+}
+
 main.moduloEncuesta .encuesta form .select label {
   display: flex;
   align-items: center;
 }
-.input-checkbox,
-.input-radio {
+
+.input-radio,
+.input-checkbox {
   display: inline-block;
   margin-right: 0.625rem;
   min-height: 1.25rem;
   min-width: 1.25rem;
 }
+
+/*-------------------END MODULO ENCUESTA------------------------------*/
+
+/*-------------------ENCUESTA------------------------------*/
+
 main .EncuestaEntorno {
   width: 90%;
   margin: auto;
+  display: flex;
   row-gap: 20px;
+  flex-direction: column;
   justify-content: center;
 }
+
 main .EncuestaEntorno .btnEncuesta {
   text-align: center;
   margin-top: 10px;
 }
+
+/*-------------------END ENCUESTA------------------------------*/
+
+/*-------------------TRABAJADOR------------------------------*/
 main.mainTrabajadores {
   flex-direction: column;
   row-gap: 20px;
 }
+
 main.mainTrabajadores h3 {
   width: 100%;
   padding-left: 30px;
@@ -394,53 +488,75 @@ main.mainTrabajadores h3 {
   font-size: 40px;
   text-align: center;
 }
+
 main.mainTrabajadores .tabla {
   width: 90%;
   margin: 0 auto;
 }
+
 main.mainTrabajadores .tabla thead {
   text-align: center;
   background-color: #ef7000;
   color: #fff;
 }
-.grupoBotones,
+
 main.mainTrabajadores .tabla tbody tr .botonesTable {
   text-align: center;
 }
+
+.grupoBotones {
+  text-align: center;
+}
+
 main.mainTrabajadores .tabla tbody tr td img {
   width: 80px;
   height: 80px;
   object-fit: cover;
 }
+
+/*-------------------END TRABAJADOR------------------------------*/
+
+/*---------RESPONSIVE -------------------------------*/
+
 @media screen and (max-width: 1300px) {
   #main-nav li a {
     padding: 0 20px 0 60px;
+    font-size: 14px;
   }
+
   #main-nav li a .fa {
     left: 0;
   }
+
   #sidenav,
   #sidenav-header {
     width: 250px;
   }
+
   main {
     left: 250px;
     width: calc(100% - 250px);
   }
+
   main .primario .ofertas-content {
     padding: 10px;
   }
+
   main .adicional .input-group {
     width: 50%;
   }
+
+  /*-----Trabajadores---------------*/
   main.mainTrabajadores .tabla {
     width: 97%;
   }
+
   main.mainTrabajadores .tabla tbody tr td img {
     width: 70px;
     height: 70px;
   }
 }
+
 @media screen and (max-width: 992px) {
   #sidenav {
     left: calc(100vw);
@@ -451,6 +567,7 @@ main.mainTrabajadores .tabla tbody tr td img {
     -ms-transition: transform 0.5s;
     -o-transition: transform 0.5s;
   }
+
   #sidenav.responsive {
     transform: translateX(-250px);
     -webkit-transform: translateX(-250px);
@@ -458,45 +575,63 @@ main.mainTrabajadores .tabla tbody tr td img {
     -ms-transform: translateX(-250px);
     -o-transform: translateX(-250px);
   }
+
   #sidenav-header > div.btn-group > button {
     left: 25px;
   }
+
   main {
     width: 100%;
     left: 0;
   }
+
   main.mainOfertas {
     flex-direction: row-reverse;
     position: relative;
   }
+
   .nav_barraLateral {
-    margin-left: 0;
+    margin-left: 0px;
   }
+
   .nav_barraLateral h1 {
     font-size: 24px;
     width: auto;
   }
+
   #btnMenu {
     display: block;
   }
+
   #sidenav-header {
     padding: 20px 50px;
     width: 23.6vw;
   }
+
   #profile-picture {
     left: 10px;
   }
+
+  main .secundario {
+    width: 75%;
+  }
+
   main .secundario {
     width: 25%;
   }
+
+  /*-----Trabajadores---------------*/
+
   main.mainTrabajadores .tabla {
     width: 96%;
   }
+
   main.mainTrabajadores .tabla tbody tr td img {
     width: 80px;
     height: 80px;
   }
 }
+
 @media screen and (max-width: 768px) {
   #sidenav-header {
     width: 18%;
@@ -507,67 +642,89 @@ main.mainTrabajadores .tabla tbody tr td img {
     flex-direction: column;
     padding: 0;
   }
+
   #sidenav-header > div.btn-group > button {
-    left: 0;
+    left: 0px;
   }
+
   .nav_barraLateral h1 {
     font-size: 20px;
   }
+
   main.mainOfertas {
     flex-direction: column-reverse;
   }
-  main.mainOfertas .primario,
-  main.mainTrabajadores .tabla {
+
+  main.mainOfertas .primario {
     width: 100%;
   }
+
   main.mainOfertas .primario .adicional {
     flex-wrap: wrap;
   }
+
   main .primario .adicional select {
     display: block;
   }
+
   main .primario .adicional .input-group {
     width: 60%;
   }
+
   #profile-picture {
     position: initial;
   }
+
   main .secundario {
     display: none;
   }
+
+  /*-----Trabajadores---------------*/
+
+  main.mainTrabajadores .tabla {
+    width: 100%;
+  }
+
   main.mainTrabajadores .tabla tbody tr td img {
     width: 60px;
     height: 60px;
   }
 }
+
 @media screen and (max-width: 576px) {
-  #sidenav,
-  main.mainOfertas {
-    top: 152.25px;
+  #crearOferta div div .modal-body form .contenido {
+    flex-direction: column;
   }
+
   .nav_barraLateral {
     flex-direction: row-reverse;
     flex-wrap: wrap;
     height: auto;
-    justify-content: space-around;
   }
+
   #btnMenu {
     font-size: 30px;
   }
-  #sidenav-header,
-  main .primario .adicional .input-group,
-  main .primario .adicional select,
-  main.mainTrabajadores .tabla {
+
+  #sidenav-header {
     width: 100%;
   }
+
   .nav_barraLateral h1 {
     font-size: 15px;
     width: 80%;
     text-align: center;
   }
+
+  .nav_barraLateral {
+    justify-content: space-around;
+  }
+
   #sidenav {
+    top: 152.25px;
     width: 100vw;
   }
+
   #sidenav.responsive {
     transform: translateX(-100vw);
     -webkit-transform: translateX(-100vw);
@@ -575,32 +732,57 @@ main.mainTrabajadores .tabla tbody tr td img {
     -ms-transform: translateX(-100vw);
     -o-transform: translateX(-100vw);
   }
-  main,
-  main .primario .ofertas-content {
+
+  main {
     padding: 10px;
   }
+
   main .primario > h3 {
     font-size: 25px;
   }
+
+  main.mainOfertas {
+    top: 152.25px;
+  }
+
+  main .primario .ofertas-content {
+    padding: 10px;
+  }
+
   main.mainOfertas .primario .adicional {
     flex-direction: row;
     height: auto;
     row-gap: 15px;
   }
+
+  main .primario .adicional .input-group,
+  main .primario .adicional select {
+    width: 100%;
+  }
+
+  /*-----Trabajadores---------------*/
   main.mainTrabajadores {
     padding: 0;
     top: 152.25px;
   }
+
   main.mainTrabajadores h3 {
     font-size: 25px;
     margin-top: 20px;
   }
+
+  main.mainTrabajadores .tabla {
+    width: 100%;
+  }
+
   main.mainTrabajadores .adicional {
     flex-wrap: wrap;
   }
+
   main.mainTrabajadores .adicional .input-group {
     width: 90%;
   }
+
   main.mainTrabajadores .tabla tbody tr td img {
     width: 60px;
     height: 60px;

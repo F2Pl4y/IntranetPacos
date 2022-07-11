@@ -48,7 +48,7 @@ function empSelectCargos() {
                 template += '<td>' + valor["correoEmpleado"] + '</td>';
                 // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
                 // template += '<td>' + valor["estado"] + '</td>';
-                template += '<td>' + valor["idCargo"] + '</td>';
+                template += '<td>' + valor["nombreCargo"] + '</td>';
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
                 template += '<button class="btn">';
@@ -98,27 +98,22 @@ function CargoUpdateEmp() {
 function cargosCombo() {
     $.ajax({
         type: "GET",
-        url: dominio + "cargos/select/",
+        url: dominio + "cargos/select2/",
         dataType: "json",
         success: function (data) {
             var tabla = '';
             $.each(data["resultado"], function (llave, valor) {
                 // console.log("el combo box id es:" + valor["idCargo"]);
                 // console.log(valor["idCargo"].value);
-                console.log(document.getElementById("AgregarEmpleadoBtn").value);
-                if (document.getElementById("AgregarEmpleadoBtn").value == 1) {
-                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
-                    template += '</option>';
-                    // template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')></a>';
-                    // template += '<option>' + valor["idCargo"] + '</option></div>';
-                    tabla += template;
-                } else {
-                    // var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"];
-                    var template = '<option value="' + valor["idCargo"] + '">' + valor["idCargo"] + '&nbsp;:&nbsp;' + valor["nombreCargo"];
-                    template += '</option>';
-                    // template +='<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal4X" onclick=cargoGet(' + valor["idCargo"] + ')></a>';
-                    tabla += template;
-                }
+                // if (document.getElementById("AgregarEmpleadoBtn").value == 1) {
+                //     var template = '<option value="' + valor["idCargo"] + '">' + '&Nombre del cargoc:&nbsp;' + valor["nombreCargo"];
+                //     template += '</option>';
+                //     tabla += template;
+                // } else {
+                var template = '<option value="' + valor["idCargo"] + '">' + valor["nombreCargo"];
+                template += '</option>';
+                tabla += template;
+                // }
             });
             $('#contenidoCargosList').html(tabla);
             $('#contenidoCargosList2').html(tabla);
@@ -286,13 +281,13 @@ function deshabilitar(id) {
                     $('#myModal3X').modal('show');
                     $.each(data["resultado"], function (llave, valor) {
                         if (valor["idCargo"] == 1) {
-                            var template = '<tr>';
+                            var template = '<tr style="vertical-align: middle !important;">';
                             template += '<td>' + valor["idEmpleado"] + '</td>';
                             template += '<td>' + valor["nombreEmpleado"] + '</td>';
                             template += '<td>' + valor["correoEmpleado"] + '</td>';
                             // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
                             // template += '<td>' + valor["estado"] + '</td>';
-                            template += '<td>' + valor["idCargo"] + '</td>';
+                            template += '<td>' + valor["nombreCargo"] + '</td>';
                             template += '<td class="grupoBotones">';
                             template += '<div class="btn-group">';
                             template += '<button class="btn">';
@@ -303,13 +298,13 @@ function deshabilitar(id) {
                             template += '</tr>';
                             tabla += template;
                         } else {
-                            var template = '<tr>';
+                            var template = '<tr style="vertical-align: middle !important;">';
                             template += '<td>' + valor["idEmpleado"] + '</td>';
                             template += '<td>' + valor["nombreEmpleado"] + '</td>';
                             template += '<td>' + valor["correoEmpleado"] + '</td>';
                             // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
                             // template += '<td>' + valor["estado"] + '</td>';
-                            template += '<td>' + valor["idCargo"] + '</td>';
+                            template += '<td>' + valor["nombreCargo"] + '</td>';
                             template += '<td class="grupoBotones">';
                             template += '<div class="btn-group">';
                             template += '<button class="btn">';

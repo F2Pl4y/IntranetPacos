@@ -1,12 +1,14 @@
-const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominio = "http://127.0.0.1:5000/";
+// const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const botonCargos = document.getElementById('btnEnviarCI');
     botonCargos.addEventListener('click', (e) => {
         e.preventDefault();
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-            cargoUpdate(); cargosCombo();
+            cargoUpdate();
+            cargosCombo();
+            // empSelect();
             $('#myModal2X').modal('hide');
             $('#myModal1X').modal('show');
         }
@@ -48,7 +50,7 @@ function empSelectCargos() {
                 template += '<td>' + valor["correoEmpleado"] + '</td>';
                 // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
                 // template += '<td>' + valor["estado"] + '</td>';
-                template += '<td>' + valor["idCargo"] + '</td>';
+                template += '<td>' + valor["nombreCargo"] + '</td>';
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
                 template += '<button class="btn">';
@@ -93,7 +95,6 @@ function CargoUpdateEmp() {
             }
         }
     });
-    reset();
 }
 function cargosCombo() {
     $.ajax({
@@ -132,38 +133,25 @@ function cargosSelect() {
         success: function (data) {
             var tabla = '';
             $.each(data["resultado"], function (llave, valor) {
-                if (valor["idCargo"] == 1) {
-                    var template = '<tr>';
-                    template += '<td>' + valor["idCargo"] + '</td>';
-                    template += '<td>' + valor["nombreCargo"] + '</td>';
-                    // template += '<td>' + valor["estado"] + '</td>';
-                    template += '<td class="grupoBotones">';
-                    template += '<div class="btn-group">';
-                    template += '<button class="btn">';
-                    template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
-                    template += '</button>';
-                    template += '</div>';
-                    template += '</td>';
-                    template += '</tr>';
-                    tabla += template;
-                } else {
-                    var template = '<tr>';
-                    template += '<td>' + valor["idCargo"] + '</td>';
-                    template += '<td>' + valor["nombreCargo"] + '</td>';
-                    // template += '<td>' + valor["estado"] + '</td>';
-                    template += '<td class="grupoBotones">';
-                    template += '<div class="btn-group">';
-                    template += '<button class="btn">';
-                    template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
-                    template += '</button>';
+                var template = '<tr>';
+                template += '<td>' + valor["idCargo"] + '</td>';
+                template += '<td>' + valor["nombreCargo"] + '</td>';
+                // template += '<td>' + valor["estado"] + '</td>';
+                template += '<td class="grupoBotones">';
+                template += '<div class="btn-group">';
+                template += '<button class="btn">';
+                template += '<a href="#" class="btn btn-warning" data-toggle="modal" data-target="#myModal2X" onclick=cargoGet(' + valor["idCargo"] + ')><i class="gg-info"></i></a>';
+                template += '</button>';
+                if (valor["idCargo"] != 1) {
                     template += '<button class="btn">';
                     template += '<a href="#" class="btn btn-danger" onclick="deshabilitar(' + valor["idCargo"] + ')"><i class="gg-unavailable"></i></a>';
                     template += '</button>';
-                    template += '</div>';
-                    template += '</td>';
-                    template += '</tr>';
-                    tabla += template;
                 }
+                template += '</div>';
+                template += '</td>';
+                template += '</tr>';
+                tabla += template;
+                // }
             });
             $('#contenido3').html(tabla);
         }
@@ -184,8 +172,6 @@ function empGetCargos(id) {
             $('#micargonuevo').html("<br>''" + data["resultado"]["idCargo"] + "''");
         }
     });
-    // formulario2.reset();
-    reset();
 }
 function cargoGet(id) {
     $.ajax({
@@ -219,9 +205,6 @@ function cargoInsert() {
             cargosCombo();
         }
     });
-    // este "formulario" es un id, con la funcion reset limpiamos todo el formulario
-    // formulario.reset();
-    reset();
 }
 function cerrarModal() {
     $('#myModal3').modal('hide');
@@ -245,13 +228,11 @@ function cargoUpdate() {
         success: function (data) {
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
                 cargosCombo();
+                empSelect();
                 cargosSelect();
             }
         }
     });
-    // limpiar contraseña
-    // formulario3.reset();
-    reset();
 }
 function reset() {
     $("#myModal2").find("input,textarea,select").val("");
@@ -274,7 +255,6 @@ function deshabilitar(id) {
         success: function (data) {
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
                 cargosSelect();
-                // console.log(data.resultado);
                 if (data.resultado.length > 0) {
                     var tabla = '';
                     $('#myModal1X').modal('hide');
@@ -322,9 +302,9 @@ function deshabilitar(id) {
                     $('#contenido4').html(tabla);
                     $('#modal3x').html("<br>''" + data["cargo"] + "''");
                 }
-                else {
-                    console.log("vacio");
-                }
+                // else {
+                //     console.log("vacio");
+                // }
             }
         }
     });

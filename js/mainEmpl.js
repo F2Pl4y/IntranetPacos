@@ -1,5 +1,5 @@
-const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominio2 = "http://127.0.0.1:5000/";
+// const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominio2 = "http://127.0.0.1:5000/";
 
 function cargosCombo2() {
     $.ajax({
@@ -46,7 +46,8 @@ function empSelect() {
                 template += '<td>' + valor["correoEmpleado"] + '</td>';
                 // template += '<td>' + valor["encuestasRealizadas"] + '</td>';
                 // template += '<td>' + valor["estado"] + '</td>';
-                template += '<td>' + valor["idCargo"] + '</td>';
+                // template += '<td>' + valor["idCargo"] + '</td>';
+                template += '<td>' + valor["nombreCargo"] + '</td>';
                 template += '<td class="grupoBotones">';
                 template += '<div class="btn-group">';
                 template += '<button class="btn">';

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 1170px;
+        margin: auto;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .input-hidden {
+        display: none;
+    }
+
+    .alert-btn {
+        color: #ffffff;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 16px;
+        display: inline-block;
+        margin: 20px 10px;
+    }
+
+    .alert-warning-btn {
+        background-color: #f2a53b;
+    }
+
+    .alert-error-btn {
+        background-color: #ef754c;
+    }
+
+    .alert-box-wrap {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 999;
+    }
+
+    .alert-box-wrap .alert-content {
+        padding: 20px;
+        display: flex;
+        flex: 0 0 500px;
+        max-width: 500px;
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    .alert-box-wrap .alert-content h3 {
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0 0 5px;
+    }
+
+    .alert-box-wrap .alert-content .close-alert label {
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        font-size: 30px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    .alert-warning-popup .alert-content {
+        border: 2px solid #f2a53b;
+        background-color: #fef2da;
+    }
+
+    .alert-warning-popup .alert-content h3 {
+        color: #f2a53b;
+    }
+
+    .alert-warning-popup .alert-content .close-alert label {
+        color: #f2a53b;
+    }
+
+    .alert-error-popup .alert-content {
+        border: 2px solid #ef754c;
+        background-color: #ffe7e2;
+    }
+
+    .alert-error-popup .alert-content h3 {
+        color: #ef754c;
+    }
+
+    .alert-error-popup .alert-content p {
+        color: #92685f;
+    }
+
+    .alert-error-popup .alert-content .close-alert label {
+        color: #ef754c;
+    }
+
+    #alert-warning-popup:checked+.alert-box-wrap {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease-in;
+    }
+
+
+
+    #alert-warning-popup:checked+.alert-box-wrap .alert-content {
+        animation: zoomIn 0.3s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+        0% {
+            transform: scale(0.8);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    /*responsive*/
+    @media(max-width: 500px) {
+        .alert-box-wrap {
+            padding: 0 15px;
+        }
+
+        .alert-box-wrap .alert-content {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <script>
+        let numero = 1
+        let logIncorrecto = document.getElementById('accionar');
+        // if (data["exito"] === false) {
+        if (numero === 1) {
+            logIncorrecto.textContent = "sssss";
+            // alert("hola");
+        } 
+    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <label for="alert-warning-popup" class="alert-btn alert-warning-btn">ALERTA
+                    WARNING</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- alert warning popup start -->
+    <input type="checkbox" id="alert-warning-popup" class="input-hidden">
+    <div class="alert-box-wrap alert-warning-popup">
+        <div class="alert-content">
+            <div class="body">
+                <h3 id="accionar">Aqui iria el valor de mi ["resultad0"]</h3>
+            </div>
+            <div class="close-alert">
+                <label for="alert-warning-popup">&times;</label>
+            </div>
+        </div>
+    </div>
+    <!-- alert warning popup start -->
+
+</body>
+
+</html>

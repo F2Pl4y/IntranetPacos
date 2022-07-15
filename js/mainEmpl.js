@@ -120,6 +120,7 @@ function empGet(id) {
 
 function empEliminar(id) {
     const url = window.location.pathname;
+    const logIncorrecto = document.getElementById('DeleteIncorrecto');
     $.ajax({
         type: "DELETE",
         url: dominio2 + "empleados/delete/" + id + "/",
@@ -134,6 +135,14 @@ function empEliminar(id) {
                 }
                 empSelect();
             }
+            if (data["exito"] === false) {
+                // myModalValidarDelete.modal('show');
+                $('#myModalValidarDelete').modal('show');
+                logIncorrecto.textContent = data["resultado"];
+            }
+            // else {
+            //     logIncorrecto.textContent = data["resultado"]
+            // }
         }
     });
     return false;
@@ -189,7 +198,7 @@ function AdminInsert() {
     document.getElementById("formulario").reset();
 }
 
-function cursoUpdate() {
+function empleadoUpdate() {
     const url = window.location.pathname;
     var registrosEmpl = new FormData();
     registrosEmpl.append("txtidEmpleado", $('#txtidEmpleado').val());
@@ -198,7 +207,7 @@ function cursoUpdate() {
     registrosEmpl.append("txtpasswordEmpleado", $('#txtpasswordEmpleado').val());
     registrosEmpl.append("txtidCargo", $('#contenidoCargosList3').val());
     registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
-    // registrosEmpl.append("txtContraseñaAdmin", $('#txtContraseñaAdmin').val());
+    registrosEmpl.append("txtContraseñaAdmin", $('#txtContraseñaAdmin').val());
 
     // registrosEmpl.append("txtencuestasRealizadas", $('#txtencuestasRealizadas').val());
     $.ajax({
@@ -211,9 +220,11 @@ function cursoUpdate() {
         processData: false,
         success: function (data) {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+                modalDatosLogin();
                 AdminSelect();
             }
             if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
+                modalDatosLogin();
                 empSelect();
             }
             // crearMensaje(data["mensaje"]);
@@ -229,10 +240,10 @@ window.addEventListener('load', (e) => {
     boton1.addEventListener('click', (e) => {
         e.preventDefault();
         if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
-            cursoUpdate();
+            empleadoUpdate();
         }
         if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
-            cursoUpdate();
+            empleadoUpdate();
         }
     });
 

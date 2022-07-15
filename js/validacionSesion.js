@@ -45,7 +45,7 @@ function visualizarPassword() {
 
 function validarOperaciones(idCargo) {
     let cadena = "";
-    if (idCargo === 1) {
+    // if (idCargo === 1) {
         cadena = '<li>' +
             '<a href="trabajadores.html">' +
             '<i class="fa fa-user-tie"></i>Trabajadores' +
@@ -53,7 +53,7 @@ function validarOperaciones(idCargo) {
             '</li>' +
             '<li>' +
             '<a href="encuesta.html">' +
-            '<i class="fa fa-check-square-o"></i>Encuestas' +
+            '<i class="fa fa-check-square-o"></i>Dashboard' +
             '</a>' +
             '</li>' +
             '<li>' +
@@ -61,15 +61,15 @@ function validarOperaciones(idCargo) {
             '<i class="fa fa-lock-open"></i>Cuentas Admin' +
             '</a>' +
             '</li>' +
+            '<li>' +
+            '<a href="ofertas.html">' +
+            '<i class="fa fa-utensils"></i>Ofertas' +
+            '</a>' +
+            '</li>' +
             '<hr style="height: 10px;background-color: white;"></hr>' +
             '<li style="display: contents;">' +
             '<a href="moduloEncuesta.html">' +
             '<i class="fa fa-list-alt"></i>Modulo de encuestas' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="ofertas.html">' +
-            '<i class="fa fa-utensils"></i>Ofertas' +
             '</a>' +
             '</li>' +
             '<li>' +
@@ -83,33 +83,33 @@ function validarOperaciones(idCargo) {
             '</a>' +
             '</li>'
             ;
-    } else {
-        cadena = '<li>' +
-            '<a href="pedidos.html">' +
-            '<i class="fa fa-utensils"></i>Pedidos' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="carta.html">' +
-            '<i class="fa fa-utensils"></i>Carta' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="ofertas.html">' +
-            '<i class="fa fa-utensils"></i>Ofertas' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="moduloEncuesta.html">' +
-            '<i class="fa fa-check-square-o"></i>Modulo de encuestas' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="ofertas.html">' +
-            '<i class="fa fa-check-square-o"></i>Ofertas' +
-            '</a>' +
-            '</li>';
-    }
+    // } else {
+        // cadena = '<li>' +
+        //     '<a href="pedidos.html">' +
+        //     '<i class="fa fa-utensils"></i>Pedidos' +
+        //     '</a>' +
+        //     '</li>' +
+        //     '<li>' +
+        //     '<a href="carta.html">' +
+        //     '<i class="fa fa-utensils"></i>Carta' +
+        //     '</a>' +
+        //     '</li>' +
+        //     '<li>' +
+        //     '<a href="ofertas.html">' +
+        //     '<i class="fa fa-utensils"></i>Ofertas' +
+        //     '</a>' +
+        //     '</li>' +
+        //     '<li>' +
+        //     '<a href="moduloEncuesta.html">' +
+        //     '<i class="fa fa-check-square-o"></i>Modulo de encuestas' +
+        //     '</a>' +
+        //     '</li>' +
+            // '<li>' +
+            // '<a href="ofertas.html">' +
+            // '<i class="fa fa-check-square-o"></i>Ofertas' +
+            // '</a>' +
+            // '</li>';
+    // }
     $('#main-nav').html(cadena);
 }
 

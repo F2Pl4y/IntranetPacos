@@ -1,5 +1,5 @@
-const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominio2 = "http://127.0.0.1:5000/";
+// const dominio2 = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominio2 = "http://127.0.0.1:5000/";
 
 function cargosCombo2() {
     $.ajax({
@@ -107,11 +107,7 @@ function empGet(id) {
             $('#txtidEmpleado').val(data["resultado"]["idEmpleado"]);
             $('#txtnombreEmpleado').val(data["resultado"]["nombreEmpleado"]);
             $('#txtcorreoEmpleado').val(data["resultado"]["correoEmpleado"]);
-            // $('#txtencuestasRealizadas').val(data["resultado"]["encuestasRealizadas"]);
-            // $('#txtestado').val(data["resultado"]["estado"]);
             $('#contenidoCargosList3').val(data["resultado"]["idCargo"]);
-            // $('#txtidCargo').val(data["resultado"]["idCargo"]);
-            // $('#tituloModal').html("Actualizando datos del empleado: <br>" + data["resultado"]["nombreEmpleado"]);
             $('#tituloModal').html("<br>''" + data["resultado"]["nombreEmpleado"] + "''");
         }
     });
@@ -120,16 +116,17 @@ function empGet(id) {
 
 function empEliminar(id) {
     const url = window.location.pathname;
-    const logIncorrecto = document.getElementById('DeleteIncorrecto');
+    const inputValue = document.getElementById("validaID").value;
+    console.log(inputValue);
     $.ajax({
         type: "DELETE",
-        url: dominio2 + "empleados/delete/" + id + "/",
+        url: dominio2 + "empleados/delete/" + id + "/" + inputValue + "/",
         dataType: "json",
         success: function (data) {
             if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
                 AdminSelect();
             }
-            if (url === "/pages/trabajadores.html") {
+            if (url === "/pages/trabajadores.html" || url === "/pages/trabajadores") {
                 if ($('#myModal3X').is(':visible') == true) {
                     ocultar4();
                 }
@@ -137,8 +134,11 @@ function empEliminar(id) {
             }
             if (data["exito"] === false) {
                 // myModalValidarDelete.modal('show');
-                $('#myModalValidarDelete').modal('show');
-                logIncorrecto.textContent = data["resultado"];
+                if (url === "/pages/cuentasadmin.html" || url === "/pages/cuentasadmin") {
+                    const logIncorrecto = document.getElementById('DeleteIncorrecto');
+                    $('#myModalValidarDelete').modal('show');
+                    logIncorrecto.textContent = data["resultado"];
+                }
             }
             // else {
             //     logIncorrecto.textContent = data["resultado"]

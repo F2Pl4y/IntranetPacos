@@ -1,5 +1,5 @@
-const dominioSesion = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominioSesion = "http://127.0.0.1:5000/";
+// const dominioSesion = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominioSesion = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
 
@@ -46,69 +46,69 @@ function visualizarPassword() {
 function validarOperaciones(idCargo) {
     let cadena = "";
     // if (idCargo === 1) {
-        cadena = '<li>' +
-            '<a href="trabajadores.html">' +
-            '<i class="fa fa-user-tie"></i>Trabajadores' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="encuesta.html">' +
-            '<i class="fa fa-check-square-o"></i>Dashboard' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="cuentasadmin.html">' +
-            '<i class="fa fa-lock-open"></i>Cuentas Admin' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="ofertas.html">' +
-            '<i class="fa fa-utensils"></i>Ofertas' +
-            '</a>' +
-            '</li>' +
-            '<hr style="height: 10px;background-color: white;"></hr>' +
-            '<li style="display: contents;">' +
-            '<a href="moduloEncuesta.html">' +
-            '<i class="fa fa-list-alt"></i>Modulo de encuestas' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="pedidos.html">' +
-            '<i class="fa fa-utensils"></i>Pedidos' +
-            '</a>' +
-            '</li>' +
-            '<li>' +
-            '<a href="carta.html">' +
-            '<i class="fa fa-utensils"></i>Carta' +
-            '</a>' +
-            '</li>'
-            ;
+    cadena = '<li>' +
+        '<a href="trabajadores.html">' +
+        '<i class="fa fa-user-tie"></i>Trabajadores' +
+        '</a>' +
+        '</li>' +
+        '<li>' +
+        '<a href="encuesta.html">' +
+        '<i class="fa fa-check-square-o"></i>Dashboard' +
+        '</a>' +
+        '</li>' +
+        '<li>' +
+        '<a href="cuentasadmin.html">' +
+        '<i class="fa fa-lock-open"></i>Cuentas Admin' +
+        '</a>' +
+        '</li>' +
+        '<li>' +
+        '<a href="ofertas.html">' +
+        '<i class="fa fa-utensils"></i>Ofertas' +
+        '</a>' +
+        '</li>' +
+        '<hr style="height: 10px;background-color: white;"></hr>' +
+        '<li style="display: contents;">' +
+        '<a href="moduloEncuesta.html">' +
+        '<i class="fa fa-list-alt"></i>Modulo de encuestas' +
+        '</a>' +
+        '</li>' +
+        '<li>' +
+        '<a href="pedidos.html">' +
+        '<i class="fa fa-utensils"></i>Pedidos' +
+        '</a>' +
+        '</li>' +
+        '<li>' +
+        '<a href="carta.html">' +
+        '<i class="fa fa-utensils"></i>Carta' +
+        '</a>' +
+        '</li>'
+        ;
     // } else {
-        // cadena = '<li>' +
-        //     '<a href="pedidos.html">' +
-        //     '<i class="fa fa-utensils"></i>Pedidos' +
-        //     '</a>' +
-        //     '</li>' +
-        //     '<li>' +
-        //     '<a href="carta.html">' +
-        //     '<i class="fa fa-utensils"></i>Carta' +
-        //     '</a>' +
-        //     '</li>' +
-        //     '<li>' +
-        //     '<a href="ofertas.html">' +
-        //     '<i class="fa fa-utensils"></i>Ofertas' +
-        //     '</a>' +
-        //     '</li>' +
-        //     '<li>' +
-        //     '<a href="moduloEncuesta.html">' +
-        //     '<i class="fa fa-check-square-o"></i>Modulo de encuestas' +
-        //     '</a>' +
-        //     '</li>' +
-            // '<li>' +
-            // '<a href="ofertas.html">' +
-            // '<i class="fa fa-check-square-o"></i>Ofertas' +
-            // '</a>' +
-            // '</li>';
+    // cadena = '<li>' +
+    //     '<a href="pedidos.html">' +
+    //     '<i class="fa fa-utensils"></i>Pedidos' +
+    //     '</a>' +
+    //     '</li>' +
+    //     '<li>' +
+    //     '<a href="carta.html">' +
+    //     '<i class="fa fa-utensils"></i>Carta' +
+    //     '</a>' +
+    //     '</li>' +
+    //     '<li>' +
+    //     '<a href="ofertas.html">' +
+    //     '<i class="fa fa-utensils"></i>Ofertas' +
+    //     '</a>' +
+    //     '</li>' +
+    //     '<li>' +
+    //     '<a href="moduloEncuesta.html">' +
+    //     '<i class="fa fa-check-square-o"></i>Modulo de encuestas' +
+    //     '</a>' +
+    //     '</li>' +
+    // '<li>' +
+    // '<a href="ofertas.html">' +
+    // '<i class="fa fa-check-square-o"></i>Ofertas' +
+    // '</a>' +
+    // '</li>';
     // }
     $('#main-nav').html(cadena);
 }
@@ -218,6 +218,8 @@ function modalDatosLogin() {
                 carta += `<div>Encuestas realizadas: ${data["resultado"]["encuestasRealizadas"]}
                     </div>`
                 carta += `<div>Cargo: ${data["resultado"]["nombreCargo"]}
+                    </div>`
+                carta += `<div><input id="validaID" type="hidden" value="${data["resultado"]["idEmpleado"]}">
                     </div>`
                 $('#llenarperfil').html(carta);
             }

@@ -1,5 +1,5 @@
-const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
-// const dominio = "http://127.0.0.1:5000/";
+// const dominio = "https://f3rn4nd021py.pythonanywhere.com/";
+const dominio = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     const url = window.location.pathname;
     const botonCargos = document.getElementById('btnEnviarCI');
@@ -104,17 +104,9 @@ function cargosCombo() {
         success: function (data) {
             var tabla = '';
             $.each(data["resultado"], function (llave, valor) {
-                // console.log("el combo box id es:" + valor["idCargo"]);
-                // console.log(valor["idCargo"].value);
-                // if (document.getElementById("AgregarEmpleadoBtn").value == 1) {
-                //     var template = '<option value="' + valor["idCargo"] + '">' + '&Nombre del cargoc:&nbsp;' + valor["nombreCargo"];
-                //     template += '</option>';
-                //     tabla += template;
-                // } else {
                 var template = '<option value="' + valor["idCargo"] + '">' + valor["nombreCargo"];
                 template += '</option>';
                 tabla += template;
-                // }
             });
             $('#contenidoCargosList').html(tabla);
             $('#contenidoCargosList2').html(tabla);

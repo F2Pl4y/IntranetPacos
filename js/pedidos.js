@@ -58,7 +58,7 @@ function ListarProductosG() {
                 var template = '<div class="col-md-4">';
                 template += '<div class="product-Box">';
                 template += '<div class="product-img">';
-                template += `<img id="idImgCarta" class="img-fluid" src="http://127.0.0.1:5000/platillos/foto/2022024704descargar2" alt="${valor["imagen"]}">`;
+                template += `<img id="idImgCarta" class="img-fluid" src="${dominioCategoria}/curso/foto/${valor["imagen"]}" alt="${valor["imagen"]}">`;
                 template += '</div>';
                 template += '<div class="product-content">';
                 template += '<h3>' + valor["nombreProducto"] + '</h3>';

@@ -61,8 +61,8 @@ function validarOperaciones(idCargo) {
         '</a>' +
         '</li>' +
         '<li>' +
-        '<a href="ofertas.html">' +
-        '<i class="fa fa-utensils"></i>Ofertas' +
+        '<a href="pedidos2.html">' +
+        '<i class="fa fa-utensils"></i>Ofertas2' +
         '</a>' +
         '</li>' +
         '<hr style="height: 10px;background-color: white;"></hr>' +

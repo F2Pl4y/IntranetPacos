@@ -9,10 +9,16 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/styleadmin.css">
+
+    <!-- agregado para listado -->
+    <link rel="stylesheet" href="../css/listadoProducto.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css" media="all">
     <link rel="shortcut icon" href="#">
 </head>
 
 <body>
+
     <div class="modal fade" id="cuenta">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -41,7 +47,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">
-                        Registrar Platillos
+                        LISTA DE SU PEDIDO
                     </h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -69,7 +75,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Hamburguesa</td>
+                                    <td>Producto</td>
                                     <td>Pollo</td>
                                     <td>20.00</td>
                                     <td>Este pollo está a un precio muy razonable</td>
@@ -253,40 +259,47 @@
     </nav>
     <main class="mainOfertas">
         <div class="primario">
-            <h3>LISTADO DE LA CARTA</h3>
+            <h3 id="tituloGPedidos">LISTADO GENERAL DE LA CARTA</h3>
             <div class="adicional">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Nombresss</span>
-                    </div>
-                    <input style="z-index: 0;" type="text" class="form-control" placeholder="Buscar por nombre">
-                </div>
-                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearOferta">Insertar</a>
-                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Categorias">Categorias</a>
-                <select name="cars" class="custom-select">
-                    <option selected value="Todos">Todos</option>
-                    <option value="Promociones">Promociones</option>
-                    <option value="Pollos a la brasa">Pollos a la brasa</option>
-                    <option value="Carnes a la parrilla">Carnes a la parrilla</option>
-                    <option value="Aves a la parrilla">Aves a la parrilla</option>
-                    <option value="Comidas criollas">Comidas criollas</option>
-                    <option value="Ensaladas">Ensaladas</option>
-                    <option value="Piqueos">Piqueos</option>
-                    <option value="Bebidas refrescantes">Bebidas refrescantes</option>
+                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearOferta"
+                    onclick="insertPedido()">Solicitar Pedido</a>
+                <select id="categoriaCargosList" name="cars" class="custom-select">
                 </select>
             </div>
-            <div class="ofertas-content">
-            </div>
+            <!-- inicio del codigo adicional -->
+            <section class="product-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 id="tituloProductos" class="titaleProduct"></h3>
+                        </div>
+                    </div>
+                    <div class="row" id="ProductosCarta">
+                        <!-- <div class="col-md-4">
+                            <div class="product-Box">
+                                <div class="product-img"><img id="idImgCarta" class="img-fluid" src=""
+                                        alt="alt texto - - > *ingrese url *">
+                                </div>
+                                <div class="product-content">
+                                    <h3>Beach Decoration</h3>
+                                    <div class="priceTag">₹.300</div>
+                                    <div class="contenbox">
+                                        <p>descripcion</p>
+                                        <ul class="bottom-Link">
+                                            <li><a href="#" class="fa fa-shopping-cart"></a></li>
+                                            <li><a href="#" class="ReadMore">ReadMore</a></li>
+                                            <li><a href="#" class="fa fa-search"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
         </div>
         <div class="secundario">
             <ul id="nombreCategorias">
-                <!-- <li><a href="#" class="btn opcionesOfertas">Promociones</a></li> -->
-                <!-- <li id="" value=""><a href="#" class="btn opcionesOfertas">Promociones</a></li> -->
-                <!-- <li><a href="#" >Parrillas</a></li>
-                <li><a href="#" class="btn opcionesOfertas">Comida criolla</a></li>
-                <li><a href="#" class="btn opcionesOfertas">Ensaladas</a></li>
-                <li><a href="#" class="btn opcionesOfertas">Piqueos</a></li>
-                <li><a href="#" class="btn opcionesOfertas">Bebidas</a></li> -->
             </ul>
         </div>
     </main>
@@ -297,7 +310,7 @@
     <script src="../js/efectoAnimacion.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/validacionSesion.js"></script>
-    <script src="../js/"></script>
+    <script src="../js/pedidos.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,164 @@
+@charset "utf-8";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #292929;
+  background-color: #fff;
+}
+
+.product-Box {
+  overflow: hidden;
+  position: relative;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4);
+}
+
+.product-img > img {
+  max-width: 100%;
+  height: auto;
+  transform-origin: 65% 75%;
+  transition: transform 1s, filter 0.5s ease-in-out;
+}
+
+.product-img {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  transition: ease-in 0.5 all;
+  position: relative;
+}
+#idImgCarta {
+    /* width: 100%; */
+    /* Asignamos una altura mínima */
+    min-height: 50%;
+    /* background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/1b/Square_200x200.png'); */
+    background-size: cover;
+    background-position: center;
+}
+.product-img > img:hover {
+  transform: scale(1.05);
+}
+
+.product-img:hover::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 0px;
+  right: 0;
+  top: 0px;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.product-content {
+  text-align: center;
+  padding: 15px;
+}
+
+.product-content h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.product-content p {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.product-content .priceTag {
+  font-size: 25px;
+  font-weight: 600;
+  color: #f75f05;
+}
+
+.product-section {
+  padding: 100px 0px;
+}
+
+.titaleProduct {
+  position: relative;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-size: 30px;
+  padding-bottom: 20px;
+  font-weight: 600;
+}
+
+.titaleProduct::before {
+  content: "";
+  width: 50px;
+  height: 4px;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  background-color: tomato;
+}
+
+.bottom-Link {
+  margin: 20px 0 0 0;
+  padding: 10px 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+.bottom-Link > li {
+  flex: 1;
+}
+
+.bottom-Link > li > a {
+  color: tomato;
+}
+
+.bottom-Link > li > a:hover {
+  text-decoration: none;
+}
+
+.bottom-Link > li > a.ReadMore {
+  background-color: tomato;
+  color: #fff;
+  padding: 10px 30px;
+  color: #fff;
+}
+
+.bottom-Link > li:first-child {
+  text-align: left;
+}
+
+.bottom-Link > li:last-child {
+  text-align: right;
+}
+
+.contenbox {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: ease-in 0.2s all;
+}
+
+.product-Box:hover .contenbox {
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+}
+
+.product-Box:hover {
+  position: absolute;
+  top: -20px;
+  left: 15px;
+  right: 15px;
+  z-index: 99;
+}
+
+.product-Box {
+  margin-bottom: 30px;
+}

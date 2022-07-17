@@ -2,80 +2,119 @@
 const dominioCategoria = "http://127.0.0.1:5000/";
 window.addEventListener('load', (e) => {
     cargarCategorias();
+    cargarCategoriasOption();
+    ListarProductosG();
 });
 function cargarCategorias() {
-    const id = sessionStorage.getItem("idEmpleado");
-    if (id !== null) {
-        $.ajax({
-            type: "GET",
-            url: dominioCategoria + "categorias/select2/",
-            dataType: "json",
-            success: function (data) {
-                $('#fertitulo').html("sss");
+    // const id = sessionStorage.getItem("idEmpleado");
+    // if (id !== null) {
+    $.ajax({
+        type: "GET",
+        url: dominioCategoria + "categorias/select2/",
+        dataType: "json",
+        success: function (data) {
             var tabla = '';
             $.each(data["resultado"], function (llave, valor) {
-                let cadena = "";
+                var cadena = "";
                 cadena = '<li>' +
-                    '<a href="trabajadores.html">' +
-                    '<i class="fa fa-user-tie"></i> ${data[valor]["correoEmpleado"]' +
-                    '</a>' +
-                    '</li>' 
-                    // '<li>' +
-                    // '<a href="encuesta.html">' +
-                    // '<i class="fa fa-check-square-o"></i>Dashboard' +
-                    // '</a>' +
-                    // '</li>' +
-                    // '<li>' +
-                    // '<a href="cuentasadmin.html">' +
-                    // '<i class="fa fa-lock-open"></i>Cuentas Admin' +
-                    // '</a>' +
-                    // '</li>' +
-                    // '<li>' +
-                    // '<a href="ofertas.html">' +
-                    // '<i class="fa fa-utensils"></i>Ofertas' +
-                    // '</a>' +
-                    // '</li>' +
-                    // '<hr style="height: 10px;background-color: white;"></hr>' +
-                    // '<li style="display: contents;">' +
-                    // '<a href="moduloEncuesta.html">' +
-                    // '<i class="fa fa-list-alt"></i>Modulo de encuestas' +
-                    // '</a>' +
-                    // '</li>' +
-                    // '<li>' +
-                    // '<a href="pedidos.html">' +
-                    // '<i class="fa fa-utensils"></i>Pedidos' +
-                    // '</a>' +
-                    // '</li>' +
-                    // '<li>' +
-                    // '<a href="carta.html">' +
-                    // '<i class="fa fa-utensils"></i>Carta' +
-                    // '</a>' +
-                    // '</li>'
-                    ;
+                    `<a onclick="ListarProductosGet('${valor["nombreCategoria"]}')" value="${valor["idCategoria"]}" href="#" class="btn opcionesOfertas"> ${valor["nombreCategoria"]} </a></li>`
+                tabla += cadena;
             });
-                $('#nombreCategorias').html(cadena);
-            }
+            $('#nombreCategorias').html(tabla);
+        }
 
-        });
-    }
+    });
+    // }
 }
-// function cargosCombo() {
-//     $.ajax({
-//         type: "GET",
-//         url: dominioCategoria + "cargos/select2/",
-//         dataType: "json",
-//         success: function (data) {
-//             var tabla = '';
-//             $.each(data["resultado"], function (llave, valor) {
-//                 var template = '<option value="' + valor["idCargo"] + '">' + valor["nombreCargo"];
-//                 template += '</option>';
-//                 tabla += template;
-//             });
-//             $('#contenidoCargosList').html(tabla);
-//             $('#contenidoCargosList2').html(tabla);
-//             $('#contenidoCargosList3').html(tabla);
-//             $('#contenidoCargosList4').html(tabla);
-//             $('#contenidoCargosList5').html(tabla);
-//         }
-//     });
-// }
+function insertPedido() {
+    const inputValue2 = document.getElementById("validaID").value;
+    console.log(inputValue2);
+}
+function cargarCategoriasOption() {
+    $.ajax({
+        type: "GET",
+        url: dominioCategoria + "categorias/select2/",
+        dataType: "json",
+        success: function (data) {
+            var tabla = '';
+            $.each(data["resultado"], function (llave, valor) {
+                var template = '<option value="' + valor["idCategoria"] + '">' + valor["nombreCategoria"];
+                template += '</option>';
+                tabla += template;
+            });
+            $('#categoriaCargosList').html(tabla);
+        }
+    });
+}
+function ListarProductosG() {
+    $.ajax({
+        type: "GET",
+        url: dominioCategoria + "productosg/select/",
+        dataType: "json",
+        success: function (data) {
+            var tabla = '';
+            // src="http://127.0.0.1:5000/platillos/foto/${valor["idProducto"]}/
+            $.each(data["resultado"], function (llave, valor) {
+                var template = '<div class="col-md-4">';
+                template += '<div class="product-Box">';
+                template += '<div class="product-img">';
+                template += `<img id="idImgCarta" class="img-fluid" src="http://127.0.0.1:5000/platillos/foto/2022024704descargar2" alt="${valor["imagen"]}">`;
+                template += '</div>';
+                template += '<div class="product-content">';
+                template += '<h3>' + valor["nombreProducto"] + '</h3>';
+                template += '<div class="priceTag">' + valor["precio"] + '</div>';
+                template += '<div class="contenbox">';
+                template += '<p>' + valor["descripcion"] + '</p>';
+                template += '<ul class="bottom-Link">';
+                template += '<li><a href="#" class="fa fa-shopping-cart"></a></li>';
+                template += '<li><a href="#" class="ReadMore">ReadMore</a></li>';
+                template += '<li><a href="#" class="fa fa-search"></a></li>';
+                template += '</ul>';
+                template += '</div>';
+                template += '</div>';
+                template += '</div>';
+                template += '</div>';
+                tabla += template;
+            });
+            $('#ProductosCarta').html(tabla);
+        }
+    });
+}
+function ListarProductosGet(miname) {
+
+    $.ajax({
+        type: "GET",
+        url: dominioCategoria + "productos/select/" + miname + "/",
+        dataType: "json",
+        success: function (data) {
+            var tabla = '';
+            $('#tituloProductos').html('"' + miname + '"');
+            $('#tituloGPedidos').html('');
+            // $('#ProductosCarta').html(tabla);
+            console.log("hola");
+            $.each(data["resultado"], function (llave, valor) {
+                var template = '<div class="col-md-4">';
+                template += '<div class="product-Box">';
+                template += '<div class="product-img">';
+                template += '<img id="idImgCarta" class="img-fluid" src="" alt="alt texto --> ' + valor["imagen"] + '">';
+                template += '</div>';
+                template += '<div class="product-content">';
+                template += '<h3>' + valor["nombreProducto"] + '</h3>';
+                template += '<div class="priceTag">' + valor["precio"] + '</div>';
+                template += '<div class="contenbox">';
+                template += '<p>' + valor["descripcion"] + '</p>';
+                template += '<ul class="bottom-Link">';
+                template += '<li><a href="#" class="fa fa-shopping-cart"></a></li>';
+                template += '<li><a href="#" class="ReadMore">ReadMore</a></li>';
+                template += '<li><a href="#" class="fa fa-search"></a></li>';
+                template += '</ul>';
+                template += '</div>';
+                template += '</div>';
+                template += '</div>';
+                template += '</div>';
+                tabla += template;
+            });
+            $('#ProductosCarta').html(tabla);
+        }
+    });
+}

@@ -21,7 +21,10 @@ function mostrarPassword() {
 function SoloNumeros(a) {
     return !!((keynum = window.event ? a.keyCode : a.which) > 47 && keynum < 58) || 8 == keynum || 13 == keynum
 }
+function SoloNumerosDecimal(a) {
+    return !!((keynum = window.event ? a.keyCode : a.which) > 47 && keynum < 58) || 8 == keynum || 13 == keynum || 46 == keynum
+}
 $("#limpiarAgregar").click(function () {
-    $('input[type="text"]').val("")
+    $('input[type="text"]').val("");
 })
 

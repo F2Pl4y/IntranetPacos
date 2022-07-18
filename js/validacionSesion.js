@@ -60,11 +60,11 @@ function validarOperaciones(idCargo) {
         '<i class="fa fa-lock-open"></i>Cuentas Admin' +
         '</a>' +
         '</li>' +
-        '<li>' +
-        '<a href="pedidos2.html">' +
-        '<i class="fa fa-utensils"></i>Ofertas2' +
-        '</a>' +
-        '</li>' +
+        // '<li>' +
+        // '<a href="ofertas.html">' +
+        // '<i class="fa fa-utensils"></i>Ofertas' +
+        // '</a>' +
+        // '</li>' +
         '<hr style="height: 10px;background-color: white;"></hr>' +
         '<li style="display: contents;">' +
         '<a href="moduloEncuesta.html">' +
@@ -77,7 +77,7 @@ function validarOperaciones(idCargo) {
         '</a>' +
         '</li>' +
         '<li>' +
-        '<a href="carta.html">' +
+        '<a href="pedidos2.html">' +
         '<i class="fa fa-utensils"></i>Carta' +
         '</a>' +
         '</li>'

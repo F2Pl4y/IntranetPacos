@@ -67,7 +67,7 @@ function obtenervalores(miid, precio, nombre, preciounit) {
         template += item;
         template += '</td>';
         tabla += template;
-        ListaNombre.push({ idProducto: miid, precio: (parseFloat(value) * preciounit).toFixed(2), preciounit: precio, idEmpleado: valueIDempleado, nombreCliente: valueNombCli });
+        ListaNombre.push({ idProducto: miid, precio: (parseFloat(value) * preciounit).toFixed(2), preciounit: precio, idEmpleado: valueIDempleado, nombreCliente: valueNombCli, cantidad:  value});
     }); $('#contenidocarro').html(tabla);
     miarray.forEach(function (item, index, arr) {
         // console.log("Posición " + index + ": " + item);

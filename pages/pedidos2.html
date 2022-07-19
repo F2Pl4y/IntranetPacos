@@ -52,7 +52,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- <form class="formulario" id="formularioPedido"> -->
-                        <!-- <div class="form-group col-10">
+                    <!-- <div class="form-group col-10">
                             <div>Ingresa la imagen del producto</div>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="customFile">
@@ -86,7 +86,7 @@
                             </select>
                         </div>
                         <div class="form-group"> -->
-                        <button class="btn btn-success" onclick="SolicitarPedido()">Aceptar</button>
+                    <button class="btn btn-success" onclick="SolicitarPedido()" data-dismiss="modal">Aceptar</button>
                     <!-- </form> -->
                 </div>
             </div>
@@ -323,18 +323,17 @@
             <div class="adicional">
                 <div class="form-group col-10">
                     <div>
-                        <label for="email">Nombre del cliente</label>
-                        <input type="text" class="form-control" name="txtnombreCliente"
-                            placeholder="Ingrese su nombre" id="txtnombreProducto2" data-toggle="tooltip"
-                            data-placement="right" title="Su nombre debe ser igual o mayor a 3 dígitos"
-                            onkeypress="return SoloLetras(event);">
+                        <!-- <label for="email">Nombre del cliente</label> -->
+                        <input type="text" class="form-control" name="txtnombreCliente" placeholder="Nombre del cliente"
+                            id="txtnombreProducto2" data-toggle="tooltip" data-placement="right"
+                            title="Su nombre debe ser igual o mayor a 3 dígitos" onkeypress="return SoloLetras(event);">
                     </div>
+                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearOferta">Solicitar Pedido</a>
                 </div>
-                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearOferta">Solicitar Pedido</a>
                 <!-- <a href="#" class="btn btn-success" data-toggle="modal" data-target="#crearOferta" onclick="">Insertar
                     Producto</a> -->
-                <a href="#" class="btn btn-success" onclick="llamartd();">Insertar
-                    Producto</a>
+                <!-- <a href="#" class="btn btn-success" onclick="llamartd();">Insertar
+                    Producto</a> -->
                 <select id="categoriaCargosList" name="cars" class="custom-select">
                 </select>
             </div>

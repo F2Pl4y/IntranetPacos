@@ -140,9 +140,6 @@ function empEliminar(id) {
                     logIncorrecto.textContent = data["resultado"];
                 }
             }
-            // else {
-            //     logIncorrecto.textContent = data["resultado"]
-            // }
         }
     });
     return false;
@@ -208,7 +205,6 @@ function empleadoUpdate() {
     registrosEmpl.append("txtidCargo", $('#contenidoCargosList3').val());
     registrosEmpl.append("txtidCargo", $('#txtidCargo').val());
     registrosEmpl.append("txtContraseñaAdmin", $('#txtContraseñaAdmin').val());
-
     // registrosEmpl.append("txtencuestasRealizadas", $('#txtencuestasRealizadas').val());
     $.ajax({
         type: "PUT",

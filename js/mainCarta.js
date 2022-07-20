@@ -30,19 +30,20 @@ window.addEventListener('load', (e) => {
 });
 
 function platillosSelect(idCategoria) {
+    // var valueIDempleado2 = document.getElementById("CategoriaFocus").value;
+    // console.log(valueIDempleado2);
     $.ajax({
         type: "GET",
         url: `${dominio2}/platillos/selectCateg/${idCategoria}`,
         dataType: "json",
         success: function (data) {
-            console.log("nombre del producto");
-            console.log(valor["nombreProducto"].value);
             let contenido = '';
             $.each(data["resultado"], function (llave, valor) {
                 contenido += `<div class="cardOfertas efectoCarta">`;
                 contenido += `<div class="front">`;
                 contenido += `<div class="img">`;
-                contenido += `<img src="http://127.0.0.1:5000/platillos/foto/${valor["nombreProducto"]}/${valor["imagen"]}" alt="${valor["imagen"]}">`;
+                // contenido += `<img src="http://127.0.0.1:5000/platillos/foto/${valor["nombreProducto"]}/${valor["imagen"]}" alt="${valor["imagen"]}">`;
+                contenido += `<img src="http://127.0.0.1:5000/platillos/foto/${idCategoria}/${valor["imagen"]}" alt="${valor["imagen"]}">`;
                 contenido += `<div class="back">`;
                 contenido += `<p>${valor["descripcion"]}</p>`;
                 contenido += `</div>`;
@@ -69,7 +70,8 @@ function categoriaFiltro() {
         success: function (response) {
             let contenidoHTML = ``;
             response["resultado"].forEach(categoria => {
-                contenidoHTML += `<li><a href="#" class="btn opcionesOfertas" onclick="filtroCategoria(${categoria["idCategoria"]})">${categoria["nombreCategoria"]}</a></li>`;
+                contenidoHTML += `<li><a href="#" id="CategoriaFocus" class="btn opcionesOfertas" onclick="filtroCategoria(${categoria["idCategoria"]})" value="${categoria["nombreCategoria"]}">${categoria["nombreCategoria"]}</a></li>`;
+                // contenidoHTML += `<li><a href="#" id="${categoria["nombreCategoria"]}" class="btn opcionesOfertas" onclick="filtroCategoria(${categoria["idCategoria"]})" value="${categoria["nombreCategoria"]}">${categoria["nombreCategoria"]}</a></li>`;
             });
             $('#categoriaFiltro2').html(contenidoHTML);
         }

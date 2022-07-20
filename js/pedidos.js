@@ -17,7 +17,7 @@ function ListarProductosG() {
                 template += '<div class="product-Box">';
                 template += '<div class="product-img">';
                 if (valor["imagen"] != "foto.jpg") {
-                    template += `<img id="idImgCarta" class="img-fluid" src="${dominioCategoria}/pedido/foto/${valor["imagen"]}/" alt="${valor["imagen"]}">`;
+                    template += `<img id="idImgCarta" class="img-fluid" src="${dominioCategoria}pedido/foto/${valor["imagen"]}/" alt="${valor["imagen"]}">`;
                 }
                 template += '</div>';
                 template += '<div class="product-content">';

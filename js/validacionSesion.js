@@ -80,6 +80,11 @@ function validarOperaciones(idCargo) {
         '<a href="pedidos2.html">' +
         '<i class="fa fa-utensils"></i>Carta' +
         '</a>' +
+        '</li>'+
+        '<li>' +
+        '<a href="carta.html">' +
+        '<i class="fa fa-utensils"></i>Carta Carta' +
+        '</a>' +
         '</li>'
         ;
     $('#main-nav').html(cadena);
